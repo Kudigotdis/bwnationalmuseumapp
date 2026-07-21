@@ -1,0 +1,392 @@
+╔══════════════════════════════════════════════════════════════════════════════╗
+║     BOTSWANA MUSEUM APP - JSON INTEGRATION ARCHITECTURE DIAGRAM              ║
+║                                                                              ║
+║  This shows how 24 JSON files flow into your museum app                     ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+
+┌──────────────────────────────────────────────────────────────────────────────┐
+│                          JSON FILES (./data/ folder)                          │
+│                               24 Files                                        │
+└──────────────────────────────────────────────────────────────────────────────┘
+
+                                    │
+                                    │ loadMuseumData()
+                                    ↓
+                        ┌───────────────────────┐
+                        │  MUSEUM_DATA Object   │
+                        │  (stores all JSON)    │
+                        └───────────────────────┘
+
+                                    │
+                                    │ populateAppData()
+                     ┌──────────────┼──────────────┬──────────────┐
+                     ↓              ↓              ↓              ↓
+            ┌─────────────────┐ ┌──────────────┐ ┌────────────┐ ┌────────────┐
+            │ CULTURES        │ │ ARTIFACTS    │ │ GAMES      │ │MUSEUM_INFO │
+            │ CULTURE_SUB     │ │              │ │            │ │            │
+            │ (array)         │ │ (array)      │ │ (array)    │ │ (object)   │
+            └─────────────────┘ └──────────────┘ └────────────┘ └────────────┘
+                    │                   │              │              │
+                    │                   │              │              │
+                    ↓                   ↓              ↓              ↓
+            ┌──────────────┐  ┌─────────────────┐ ┌────────────┐ ┌──────────┐
+            │  LEARN TAB   │  │   EXPLORE TAB   │ │ LEARN TAB  │ │ MENU TAB │
+            │              │  │                 │ │ (Trivia)   │ │          │
+            │ • Traditions │  │ • Collections   │ │            │ │ • Contact│
+            │ • Ceremonies │  │   - Animals     │ │ • 4 Games  │ │ • Hours  │
+            │ • Music      │  │   - Birds       │ │            │ │ • Address│
+            │ • Stories    │  │   - Plants      │ │            │ │          │
+            │ • Language   │  │   - Foods       │ │            │ │          │
+            │ • Kingdoms   │  │   - Totems      │ │            │ │          │
+            └──────────────┘  └─────────────────┘ └────────────┘ └──────────┘
+
+
+═════════════════════════════════════════════════════════════════════════════════
+
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                    DETAILED FILE MAPPING FLOWS                              │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+
+COLLECTIONS (EXPLORE TAB) FLOW
+════════════════════════════════════════════════════════════════════════════════
+
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ INPUT JSON FILES                       │  PROCESSING        │  OUTPUT ARRAYS │
+├──────────────────────────────────────────────────────────────────────────────┤
+│                                        │                    │                │
+│ Botswana Animals.json                  │                    │                │
+│  ├─ animals[{name, icon, desc}]    →   │ Parse & Extract    │  ARTIFACTS     │
+│  └─ ...                                 │ Create items[]     │  ├─ animals    │
+│                                        │                    │  ├─ ...        │
+│ Botswana Birds.json                    │  Transform to      │                │
+│  ├─ birds[{name, icon, desc}]      →   │  {id, name,        │  ARTIFACTS     │
+│  └─ ...                                │   icon, desc}      │  ├─ birds      │
+│                                        │                    │  ├─ ...        │
+│ Botswana Plants & Trees.json           │                    │                │
+│  ├─ plants[{name, icon, desc}]     →   │                    │  ARTIFACTS     │
+│  └─ ...                                │                    │  ├─ plants     │
+│                                        │                    │  ├─ ...        │
+│ Botswana Foods and Beverages.json      │                    │                │
+│  ├─ foods[{name, icon, desc}]      →   │                    │  ARTIFACTS     │
+│  └─ ...                                │                    │  ├─ foods      │
+│                                        │                    │  ├─ ...        │
+│ Botswana Totems (Seboko).json          │                    │                │
+│  ├─ totems[{name, icon, desc}]     →   │                    │  ARTIFACTS     │
+│  └─ ...                                │                    │  ├─ totems     │
+│                                        │                    │  └─ ...        │
+└──────────────────────────────────────────────────────────────────────────────┘
+
+RESULT IN APP: User taps "Explore" → sees 5 collections → clicks one → sees items
+
+
+CULTURES & EDUCATION (LEARN TAB - Cultures) FLOW
+════════════════════════════════════════════════════════════════════════════════
+
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ INPUT JSON FILES                   │  PROCESSING      │  OUTPUT STRUCTURE    │
+├──────────────────────────────────────────────────────────────────────────────┤
+│                                    │                  │                      │
+│ Botswana Traditional.json          │  Extract &       │  CULTURES[0]         │
+│  └─ intro, practices...         →  │  Organize        │  ├─ id: traditions   │
+│                                    │  into categories │  ├─ name             │
+│ Botswana Traditional Music.json    │                  │  ├─ icon             │
+│  └─ music styles...             →  │  Create          │  └─ desc             │
+│                                    │  CULTURE_SUB     │                      │
+│ Initiation Ceremonies.json         │  with sub-items  │  CULTURE_SUB[        │
+│  └─ bogwera, bojale...          →  │                  │    'traditions'      │
+│                                    │  Map each JSON   │  ] = [               │
+│ Botswana Funeral Rites.json        │  to a sub-topic  │    {name: "..."},    │
+│  └─ practices, customs...       →  │                  │    {...}             │
+│                                    │                  │  ]                   │
+│ Botswana Marriage Customs.json     │                  │                      │
+│  └─ traditions...               →  │                  │  CULTURES[1]         │
+│                                    │                  │  ├─ id: ceremonies   │
+│ Botswana Naming Conventions.json   │                  │  └─ ... (etc)        │
+│  └─ naming practices...         →  │                  │                      │
+│                                    │                  │  CULTURE_SUB[        │
+│ Botswana Folklore, Proverbs.json   │                  │    'ceremonies'      │
+│  └─ tales, proverbs...          →  │                  │  ] = [...]           │
+│                                    │                  │                      │
+│ Main & Minority Languages.json     │                  │  CULTURES[4]         │
+│  └─ languages...                →  │                  │  ├─ id: language     │
+│                                    │                  │  └─ ...              │
+│ Botswana Tswana Kingdoms.json      │                  │                      │
+│  └─ kingdoms, rulers...         →  │                  │  CULTURES[5]         │
+│                                    │                  │  ├─ id: kingdoms     │
+│ Botswana - Historical People.json  │                  │  └─ ...              │
+│  └─ people, biographies...      →  │                  │                      │
+└──────────────────────────────────────────────────────────────────────────────┘
+
+RESULT IN APP: User taps "Learn" → sees 6 culture categories → clicks one → 
+               sees sub-topics from that category's JSON
+
+
+TRIVIA GAMES (LEARN TAB - Games) FLOW
+════════════════════════════════════════════════════════════════════════════════
+
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ INPUT JSON FILES                      │  PROCESSING      │  OUTPUT           │
+├──────────────────────────────────────────────────────────────────────────────┤
+│                                       │                  │                   │
+│ Botswana - Historical People.json     │  Extract key     │  GAMES[0]         │
+│  ├─ people[{name, role}]          →   │  facts from JSON │  ├─ id: history   │
+│  └─ Extract: "Who was X?"             │                  │  ├─ title         │
+│                                       │  Generate Q&A:   │  ├─ questions[5]  │
+│ Botswana Animals.json                 │  - Question text │  │ ├─ q: "..."    │
+│  ├─ animals[{name, habitat}]      →   │  - 4 options     │  │ ├─ options[4]  │
+│  └─ Extract: "Where do X live?"       │  - Correct ans   │  │ └─ correct: 0   │
+│                                       │                  │  └─ ...           │
+│ Botswana Birds.json                   │                  │                   │
+│  ├─ birds[{name, sciName}]        →   │                  │  GAMES[1]         │
+│  └─ Extract: "What is X?"             │                  │  ├─ id: birds     │
+│                                       │                  │  └─ questions[5]  │
+│ Botswana Foods and Beverages.json     │                  │                   │
+│  └─ Extract trivia questions       →  │                  │  GAMES[2]         │
+│                                       │                  │  ├─ id: foods     │
+│ Botswana Traditional.json             │                  │  └─ questions[5]  │
+│  └─ Extract cultural knowledge     →  │                  │                   │
+│                                       │                  │  GAMES[3]         │
+│                                       │                  │  ├─ id: culture   │
+│                                       │                  │  └─ questions[5]  │
+└──────────────────────────────────────────────────────────────────────────────┘
+
+RESULT IN APP: User taps "Play" on a game → sees 5 questions → answers each one →
+               gets score based on correct answers
+
+
+MUSEUM INFO (MENU TAB) FLOW
+════════════════════════════════════════════════════════════════════════════════
+
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ INPUT JSON FILES            │  PROCESSING      │  OUTPUT OBJECT             │
+├──────────────────────────────────────────────────────────────────────────────┤
+│                             │                  │                            │
+│ Botswana Museums.json       │  Extract first   │  MUSEUM_INFO = {           │
+│  ├─ name                 →  │  museum entry    │    name: "...",            │
+│  ├─ phones               →  │  Get contact     │    phones: [],             │
+│  ├─ emails               →  │  info            │    emails: [],             │
+│  ├─ address              →  │                  │    address: "...",         │
+│  ├─ hours                →  │                  │    hours: "...",           │
+│  └─ website              →  │                  │    website: "..."          │
+│                             │                  │  }                         │
+│ Botswana National Museum    │                  │                            │
+│ Events.json (optional)      │  Enhance with    │  (optional: add events     │
+│  └─ events[...]          →  │  events list     │   to MUSEUM_INFO)          │
+└──────────────────────────────────────────────────────────────────────────────┘
+
+RESULT IN APP: User taps "Menu" → sees "Call Museum" showing phone from JSON →
+               sees "Email Us" showing email from JSON → etc
+
+
+═════════════════════════════════════════════════════════════════════════════════
+
+
+CODE EXECUTION FLOW DIAGRAM
+════════════════════════════════════════════════════════════════════════════════
+
+Page Load
+   │
+   ├─→ HTML renders (buttons, layout)
+   │
+   ├─→ JavaScript loads (functions defined)
+   │
+   └─→ Run Initialization Code:
+
+       loadMuseumData()
+       │
+       ├─→ Fetch ./data/Animals.json → MUSEUM_DATA.BotswanaAnimals
+       ├─→ Fetch ./data/Birds.json → MUSEUM_DATA.ComprehensiveGuide...
+       ├─→ Fetch ./data/Traditions.json → MUSEUM_DATA.BotswaraTraditional
+       ├─→ ... (repeat for all 24 files)
+       │
+       └─→ When all loaded:
+           │
+           └─→ populateAppData()
+               │
+               ├─→ populateCultures() 
+               │   └─ Create CULTURES[] and CULTURE_SUB[]
+               │
+               ├─→ populateArtifacts()
+               │   └─ Create ARTIFACTS[] with collections
+               │
+               ├─→ populateGames()
+               │   └─ Create GAMES[] with trivia questions
+               │
+               └─→ populateMuseumInfo()
+                   └─ Update MUSEUM_INFO object
+       
+       showTab('about') → Render ABOUT tab with data
+       updateNavHighlight() → Highlight nav button
+
+
+═════════════════════════════════════════════════════════════════════════════════
+
+
+DATA STRUCTURE EXAMPLES
+════════════════════════════════════════════════════════════════════════════════
+
+ARTIFACTS Example:
+────────────────────────────────────────────────────────────────────────────────
+ARTIFACTS = [
+  {
+    id: "animals",
+    name: "Animals",
+    icon: "🦁",
+    items: [
+      {
+        id: "lion",
+        name: "Lion",
+        icon: "🦁",
+        desc: "The king of savanna...",
+        tags: ["predator", "mammal"]
+      },
+      { ... more animals ... }
+    ]
+  },
+  { ... more collections ... }
+]
+
+
+CULTURES Example:
+────────────────────────────────────────────────────────────────────────────────
+CULTURES = [
+  {
+    id: "traditions",
+    name: "Traditions & Customs",
+    icon: "🎭",
+    desc: "Explore cultural heritage..."
+  },
+  { ... more cultures ... }
+]
+
+CULTURE_SUB = {
+  "traditions": [
+    {
+      id: "naming",
+      name: "Naming Conventions",
+      icon: "📛",
+      desc: "How names are chosen..."
+    },
+    { ... more sub-topics ... }
+  ],
+  "ceremonies": [ ... ],
+  ...
+}
+
+
+GAMES Example:
+────────────────────────────────────────────────────────────────────────────────
+GAMES = [
+  {
+    id: "history-game",
+    title: "Historical Figures",
+    icon: "👑",
+    desc: "Test your knowledge...",
+    questions: [
+      {
+        q: "Who was Seretse Khama?",
+        options: ["First President", "Musician", "Trader", "Explorer"],
+        correct: 0
+      },
+      { ... more questions ... }
+    ]
+  },
+  { ... more games ... }
+]
+
+
+═════════════════════════════════════════════════════════════════════════════════
+
+
+FILE SIZE & LOAD TIMES ESTIMATE
+════════════════════════════════════════════════════════════════════════════════
+
+Estimated for typical JSON files:
+
+│ Category │ File Size │ Count │ Total Size │ Load Time*│
+├──────────┼───────────┼───────┼────────────┼──────────┤
+│Collections│   ~50KB   │   5  │   ~250KB  │  ~100ms  │
+│Cultures   │   ~40KB   │   8  │   ~320KB  │  ~150ms  │
+│History    │   ~30KB   │   3  │   ~90KB   │   ~50ms  │
+│Reference  │   ~20KB   │   3  │   ~60KB   │   ~40ms  │
+├──────────┼───────────┼───────┼────────────┼──────────┤
+│ TOTAL     │           │  24  │   ~720KB  │ ~340ms  │
+└──────────┴───────────┴───────┴────────────┴─────────┘
+
+*Estimates for modern browsers with good connection.
+ Actual times will vary based on your JSON file sizes.
+
+
+═════════════════════════════════════════════════════════════════════════════════
+
+
+ERROR HANDLING FLOW
+════════════════════════════════════════════════════════════════════════════════
+
+loadMuseumData()
+│
+├─ Try to fetch Animals.json
+│  ├─ Success? Add to MUSEUM_DATA
+│  └─ Fail? 
+│     ├─ Log warning to console
+│     └─ Set placeholder in MUSEUM_DATA
+│
+├─ Try to fetch Birds.json
+│  ├─ Success? Add to MUSEUM_DATA
+│  └─ Fail?
+│     ├─ Log warning to console
+│     └─ Set placeholder in MUSEUM_DATA
+│
+... (repeat for all 24) ...
+│
+└─ Even if 5 fail, app still loads
+   └─ Those sections show "No data available" or fallback content
+
+
+═════════════════════════════════════════════════════════════════════════════════
+
+
+QUICK START CHECKLIST
+════════════════════════════════════════════════════════════════════════════════
+
+☐ Step 1: Organize Files
+  ☐ Create /data folder in project root
+  ☐ Copy all 24 JSON files to /data folder
+  ☐ Test that ./data/Botswana\ Animals.json is accessible
+
+☐ Step 2: Add Loading Code
+  ☐ Add loadMuseumData() function to HTML
+  ☐ Add populateAppData() function to HTML
+  ☐ Add helper functions (populateCultures, populateArtifacts, etc)
+
+☐ Step 3: Update Initialization
+  ☐ Change: showTab('about');
+  ☐ To: loadMuseumData().then(() => showTab('about'));
+
+☐ Step 4: Test
+  ☐ Open browser console
+  ☐ Check for any 404 errors
+  ☐ Run: debugMuseumData() in console
+  ☐ Click through all tabs
+
+☐ Step 5: Deploy
+  ☐ Verify console is clean (no errors)
+  ☐ Test on mobile device
+  ☐ Remove debug logging
+  ☐ Deploy to server
+
+
+═════════════════════════════════════════════════════════════════════════════════
+
+This diagram should help you and your AI agent understand exactly how the
+24 JSON files integrate into your museum app!
+
+Questions? Refer to:
+- BotswanaMuseumApp_JSONIntegrationGuide.md (comprehensive guide)
+- JSONIntegration_CodeSnippets.js (ready-to-use code)
+- AIAgent_ImplementationPrompt.md (prompts for your AI helper)
+
+Good luck! 🇧🇼

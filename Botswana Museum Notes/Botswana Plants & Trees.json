@@ -1,0 +1,175 @@
+{
+  "plants": [
+    {
+      "id": "baobab",
+      "english_name": "Baobab",
+      "setswana_name": "Mowana",
+      "latin_name": "Adansonia digitata",
+      "category": "Iconic & Giant Trees",
+      "regions": ["Okavango Delta", "Chobe", "Makgadikgadi Pans"],
+      "description": "Ancient giant tree that thrives in dry, hot savannas. Some specimens are over 2,000 years old. Chapman's Baobab in the Makgadikgadi Pans was a famous landmark used as a beacon by early explorers.",
+      "cultural_relevance": "Known as the 'Tree of Life', of immense cultural and spiritual significance. Site for community gatherings, storytelling, and worship. Highly nutritious fruit (rich in Vitamin C) used in traditional dishes. Every part of the tree—bark for rope, leaves for medicine—is utilized. Symbol of resilience and life.",
+      "uses": ["Fruit for food", "Bark for rope", "Leaves for medicine"]
+    },
+    {
+      "id": "mopane",
+      "english_name": "Mopane",
+      "setswana_name": "Mophane",
+      "latin_name": "Colophospermum mopane",
+      "category": "Iconic & Giant Trees",
+      "regions": ["Okavango Delta", "Chobe", "Tuli Block"],
+      "description": "Dominant tree in northern Botswana, covering vast areas. Thrives in hot, low-lying areas with poor, alkaline soils. Often forms dense pure stands known as 'mopane woodland'.",
+      "cultural_relevance": "Cornerstone of local livelihoods. Wood is hard, dense, termite-resistant—used for building homes, storage bins, livestock fences, and firewood. Host plant for the mopane worm, a protein-rich caterpillar that is a highly valued and economically important food source.",
+      "uses": ["Wood for construction and firewood", "Host for edible caterpillars", "Medicinal: leaves for fever, bark for diarrhea, wounds, stomach and tooth aches"]
+    },
+    {
+      "id": "shepherds-tree",
+      "english_name": "Shepherd's Tree",
+      "setswana_name": "Motlomi / Motopi",
+      "latin_name": "Boscia albitrunca",
+      "category": "Iconic & Giant Trees",
+      "regions": ["Kalahari Desert", "Central Botswana"],
+      "description": "Extremely drought-resistant tree, often grows in association with termite mounds that provide moisture and nutrients in arid soil. Light-colored bark reflects sunlight.",
+      "cultural_relevance": "Vital resource in the Kalahari. Roots can be pounded to make porridge and a coffee substitute. Berries are used as a relish and have preservative qualities. A true survival tree.",
+      "uses": ["Roots for porridge and coffee substitute", "Berries as relish"]
+    },
+    {
+      "id": "sycamore-fig",
+      "english_name": "Sycamore Fig",
+      "setswana_name": "Mochaba",
+      "latin_name": "Ficus sycomorus",
+      "category": "Iconic & Giant Trees",
+      "regions": ["Okavango Delta", "Riverine areas"],
+      "description": "One of the most spectacular trees of the Okavango Delta, growing near permanent water sources. Massive, deeply fluted trunk can reach 20 meters high; natural holes shelter reptiles, rodents, and warthogs.",
+      "cultural_relevance": "Well-known landmark in the delta. Sweet, fig-like fruits are eaten by humans and animals. The strong, buttressed trunk is impossible for an elephant to uproot.",
+      "uses": ["Edible fruits"]
+    },
+    {
+      "id": "jackalberry-tree",
+      "english_name": "Jackalberry Tree",
+      "setswana_name": null,
+      "latin_name": "Diospyros mespiliformis",
+      "category": "Iconic & Giant Trees",
+      "regions": ["Okavango Delta", "Linyanti"],
+      "description": "Impressive tree found along permanent watercourses, growing over 25 meters tall, often on termite colonies. Straight trunk and dark-green crown.",
+      "cultural_relevance": "Famous for use in crafting mokoros (traditional dugout canoes). High-sugar-content fruit is a favorite of jackals, elephants, and many other animals.",
+      "uses": ["Wood for canoe making", "Edible fruit"]
+    },
+    {
+      "id": "real-fan-palm",
+      "english_name": "Real Fan Palm / Mokolwane Palm",
+      "setswana_name": "Mokolwane",
+      "latin_name": "Hyphaene petersiana",
+      "category": "Iconic & Giant Trees",
+      "regions": ["Okavango Delta", "Maun", "Nata", "Kgalagadi Desert fringes"],
+      "description": "Grows in open woodland, floodplains, and along riverbanks. Tall, bare stem up to 20 meters high.",
+      "cultural_relevance": "Arguably the most culturally significant plant in northern Botswana. For centuries part of the Wayeyi culture. Leaves used for basket weaving—major income source in the northwest. Produces sweet, orange fruit called gau, highly sought after. Sap used to make palm wine (motjema or motsema).",
+      "uses": ["Leaves for basket weaving", "Edible fruit (gau)", "Sap for palm wine"]
+    },
+    {
+      "id": "kalahari-white-bauhinia",
+      "english_name": "Kalahari White Bauhinia",
+      "setswana_name": null,
+      "latin_name": "Bauhinia petersiana",
+      "category": "Kalahari Desert Trees",
+      "regions": ["Kalahari Desert"],
+      "description": "A shrub or small tree found in the deep sands of the Kalahari. Hardy species that thrives in arid conditions.",
+      "cultural_relevance": "Its beautiful white flowers make it a notable sight in an otherwise stark landscape.",
+      "uses": []
+    },
+    {
+      "id": "silver-terminalia",
+      "english_name": "Silver Terminalia",
+      "setswana_name": null,
+      "latin_name": "Terminalia sericea",
+      "category": "Kalahari Desert Trees",
+      "regions": ["Kalahari Desert"],
+      "description": "Dominates the classic Kalahari environment. Identified by the silvery sheen on its blue-grey leaves, a characteristic that helps reflect harsh sunlight and conserve water.",
+      "cultural_relevance": "An iconic tree of the Kalahari.",
+      "uses": []
+    },
+    {
+      "id": "camel-thorn",
+      "english_name": "Camel Thorn",
+      "setswana_name": "Mogotlho",
+      "latin_name": "Acacia erioloba (Vachellia erioloba)",
+      "category": "Kalahari Desert Trees",
+      "regions": ["Kalahari", "Okavango"],
+      "description": "One of the most common woody species in Botswana, drought-resistant, often grows in sandy soils.",
+      "cultural_relevance": "Wood highly prized for its density; used for high-quality firewood and charcoal.",
+      "uses": ["Wood for firewood and charcoal"]
+    },
+    {
+      "id": "raisin-bush",
+      "english_name": "Raisin Bush",
+      "setswana_name": "Moretlwa",
+      "latin_name": "Grewia flava",
+      "category": "Shrubs & Small Trees",
+      "regions": ["Kalahari", "Western Botswana", "Savanna and bushveld areas"],
+      "description": "Common shrub in savanna and bushveld areas.",
+      "cultural_relevance": "Staple in rural livelihoods. Berries are eaten as snacks. One of the most mentioned wild edible plants in traditional Tswana diets.",
+      "uses": ["Edible berries"]
+    },
+    {
+      "id": "mogwana-tree",
+      "english_name": "Mogwana Tree",
+      "setswana_name": "Mogwana",
+      "latin_name": null,
+      "category": "Shrubs & Small Trees",
+      "regions": ["Bushveld"],
+      "description": "Tree of the bushveld.",
+      "cultural_relevance": "Notable for its fruit, which Tswana people use to make a very potent alcoholic brew, much stronger than beer made from grain.",
+      "uses": ["Fruit for brewing"]
+    },
+    {
+      "id": "wild-date-palm",
+      "english_name": "Wild Date Palm",
+      "setswana_name": "Mokolwane (also used for fan palm, but specifically Phoenix reclinata)",
+      "latin_name": "Phoenix reclinata",
+      "category": "Shrubs & Small Trees",
+      "regions": ["Okavango Delta", "Wetland areas"],
+      "description": "Evergreen palm growing in dense stands, often with curving stems.",
+      "cultural_relevance": "Edible fruit mentioned in Tswana folklore.",
+      "uses": ["Edible fruit"]
+    },
+    {
+      "id": "everlasting-imphepho",
+      "english_name": "Everlasting / Imphepho",
+      "setswana_name": null,
+      "latin_name": "Helichrysum odoratissimum",
+      "category": "Medicinal & Aromatic Plants",
+      "regions": ["Widespread in Botswana"],
+      "description": "Aromatic plant.",
+      "cultural_relevance": "Among the Tswana, dried parts are smoked or powdered and inhaled to relieve congestion and cough.",
+      "uses": ["Smoked/inhaled for respiratory relief"]
+    },
+    {
+      "id": "devils-claw",
+      "english_name": "Devil's Claw",
+      "setswana_name": "Sengaparile",
+      "latin_name": "Harpagophytum procumbens",
+      "category": "Medicinal & Aromatic Plants",
+      "regions": ["Kalahari", "Other dry regions"],
+      "description": "A plant of the Kalahari.",
+      "cultural_relevance": "World-renowned for its anti-inflammatory and analgesic properties. Harvested in Ghanzi, Kgalagadi, and Kweneng districts for export to European markets.",
+      "uses": ["Anti-inflammatory and pain relief"]
+    },
+    {
+      "id": "water-lilies",
+      "english_name": "Water Lilies (Blue & Floating Heart)",
+      "setswana_name": null,
+      "latin_name": "Various, e.g., Nymphaea nouchali (Blue Water Lily)",
+      "category": "Wetland & Aquatic Plants",
+      "regions": ["Okavango Delta permanent swamps and channels"],
+      "description": "Spectacular flowers defining the Okavango waterways.",
+      "cultural_relevance": "Favorite subject for photographers; a defining feature of the delta.",
+      "uses": []
+    }
+  ],
+  "region_summary": {
+    "Okavango Delta & Chobe": ["Baobab", "Sycamore Fig", "Jackalberry", "Mokolwane Palm", "Water Lilies", "Mopane"],
+    "Makgadikgadi Pans": ["Baobab (Chapman's)", "Mokolwane Palm"],
+    "Kalahari Desert": ["Baobab", "Shepherd's Tree", "Kalahari White Bauhinia", "Silver Terminalia", "Camel Thorn", "Raisin Bush", "Devil's Claw"],
+    "Central & Eastern Botswana": ["Shepherd's Tree", "Mogwana", "Mopane", "Raisin Bush"]
+  }
+}

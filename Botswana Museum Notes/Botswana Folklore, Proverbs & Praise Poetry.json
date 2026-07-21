@@ -1,0 +1,333 @@
+{
+  "metadata": {
+    "title": "Botswana Folklore, Proverbs & Praise Poetry",
+    "source": "Oral Tradition of the Tswana People",
+    "language": "Setswana",
+    "description": "A comprehensive collection of Tswana oral tradition including folklore (ditshomo), proverbs (maele), and praise poetry (maboko/leboko)",
+    "categories": ["folklore", "proverbs", "praisePoetry"]
+  },
+  "introduction": {
+    "title": "The Oral Tradition as Cultural Memory",
+    "content": "Before the arrival of writing and printing, the Tswana people preserved their history, values, laws, and wisdom through an extraordinarily rich oral tradition. This tradition encompassed folklore (ditshomo), proverbs (maele), and praise poetry (maboko or leboko)—each serving a distinct but complementary function in transmitting culture from generation to generation.",
+    "keyPoints": [
+      "The Setswana oral tradition is not merely entertainment; it is a sophisticated pedagogical system that teaches ethics, history, social norms, and practical wisdom.",
+      "Through stories, proverbs, and praise poems, the Tswana people have for centuries educated their young, reinforced community values, honoured their heroes, and made sense of the world around them.",
+      "Recitation of the Seboko (clan name) means an identification of a person, a self-explanation according to the one's family from which one descends."
+    ]
+  },
+  "folkloreOverview": {
+    "title": "Folklore (Ditshomo)",
+    "description": "Folklore—ditshomo in Setswana—encompasses the traditional stories, legends, myths, and fables that have been passed down orally through generations.",
+    "purposes": [
+      "Entertainment – they are enjoyed by children and adults alike",
+      "Moral instruction – they teach ethical values and proper behaviour",
+      "Historical record – they preserve the memory of events, migrations, and heroes",
+      "Cultural identity – they explain the origins of customs, totems, and institutions",
+      "Socialisation – they teach children about their place in the community"
+    ],
+    "animalSymbolism": {
+      "hare": "Clever trickster who outwits larger, more powerful animals",
+      "lion": "Represents strength and authority",
+      "hyena": "Embodies greed and foolishness"
+    }
+  },
+  "folklore": [
+    {
+      "id": "folklore_1",
+      "title": "The Story of the Crocodile and the Hare",
+      "setswanaTitle": null,
+      "story": "Long ago, the crocodile invited all the animals to a great feast beneath the waters of the river. The crocodile promised that it would be a magnificent celebration with the finest food and music. All the animals were excited—except for the hare. The hare was suspicious, for he knew that crocodiles were not to be trusted.\n\n\"I am feeling unwell,\" the hare told the other animals. \"I cannot attend.\"\n\nThe crocodile, upon hearing this, insisted that the hare must come. \"You cannot miss this feast!\" the crocodile declared. \"What will the other animals think if you are absent? I will send my brothers to escort you.\"\n\nSeeing no way to refuse without insulting the crocodile, the hare thought quickly. He said to the crocodile, \"Very well, I will come. But I will bring my drum with me, and I will play it to entertain the guests. It is the most beautiful drum in all the land, and everyone will want to hear it.\"\n\nThe crocodile agreed, and the hare arrived at the feast carrying his drum. As the animals gathered beneath the water, the hare began to play his drum—but he was not playing it as a musician. Instead, he placed the drum on the surface of the water, climbed onto it, and used it as a float to escape across the river.\n\nThe crocodile and his brothers were furious. They lunged after the hare, but the clever hare was already too far away. He paddled to the far shore and called back:\n\n\"You thought you could trick me, Crocodile! I may be small, but I am not foolish!\"",
+      "moral": "Intelligence and cunning can overcome brute strength. Size and power are not everything; wisdom and quick thinking are equally valuable. The story also teaches children to be cautious of those who seem too friendly.",
+      "culturalSignificance": "This story reinforces the value of wit over strength, a common theme in Tswana folklore. It teaches children to be discerning and not to trust appearances."
+    },
+    {
+      "id": "folklore_2",
+      "title": "The Greedy Hyena",
+      "setswanaTitle": null,
+      "story": "One day, a lion made a kill—a large, fat wildebeest. The lion settled down to eat, but soon the hyena arrived, drawn by the scent of fresh meat.\n\n\"Lion,\" said the hyena, \"you are the king of the animals. Surely you do not need to eat all of this meat yourself. You should share with your friends.\"\n\nThe lion was annoyed, but he was generous. He gave the hyena a generous portion of the meat. The hyena ate it quickly and then came back for more.\n\n\"Lion,\" said the hyena, \"I am still hungry. Surely you can spare a little more.\"\n\nThe lion gave the hyena more meat. Again, the hyena ate it quickly and returned.\n\nThis happened several times until the lion's kill was almost completely eaten—and most of it had gone to the hyena.\n\n\"You are greedy,\" the lion growled. \"You have taken more than your fair share. Leave before I become angry.\"\n\nThe hyena laughed. \"What will you do, Lion? You have already given me the meat. It is mine now.\"\n\nThe lion realised that the hyena was right—he had been too generous, and now he had almost nothing left for himself. He had learned a hard lesson about the dangers of excessive generosity and the nature of the greedy.",
+      "moral": "Greed leads to the destruction of trust and friendship. One should take only what is fair and not exploit the generosity of others. The story also teaches that one must be wise in giving, not giving so much that one impoverishes oneself.",
+      "culturalSignificance": "This story teaches the importance of moderation and wisdom in both giving and receiving. It warns against both greed and excessive generosity without boundaries."
+    },
+    {
+      "id": "folklore_3",
+      "title": "Why the Tortoise Has a Cracked Shell",
+      "setswanaTitle": null,
+      "story": "In the time before the stars were fixed in the sky, the tortoise was the messenger of the gods. He was trusted to carry important messages between the world of the spirits and the world of humans.\n\nOne day, the gods gave the tortoise a very important message to deliver to the humans below. \"Tortoise,\" said the gods, \"this message is urgent. You must deliver it without delay.\"\n\nThe tortoise set off with the message, but along the way, he grew tired and hungry. He came upon a tree laden with delicious fruit, and he could not resist. He set down the message and climbed the tree, eating his fill.\n\nWhile he was eating, the wind blew the message away, and it was lost. When the tortoise returned to the place where he had left the message, it was gone. He searched everywhere, but the message was nowhere to be found.\n\nWhen the gods asked for the reply to their message, the tortoise had nothing to give them. He had failed in his duty.\n\nThe gods were furious. \"You have failed us, Tortoise!\" they thundered. \"Your carelessness has caused a catastrophe among the humans!\"\n\nThey seized the tortoise and threw him from the sky. The tortoise fell to the earth, and his shell shattered upon impact. The gods, in their mercy, allowed the tortoise to live, but his shell never healed fully—which is why tortoises have patterned shells, with the cracks still visible.",
+      "moral": "Negligence and carelessness have consequences. One must fulfil one's duties and responsibilities, no matter how tempting distractions may be. The story also serves as an explanation for the natural world—why tortoises have patterned shells.",
+      "culturalSignificance": "This is an etiological myth that explains a natural phenomenon (the patterned shell of the tortoise) while simultaneously teaching the importance of responsibility and duty."
+    },
+    {
+      "id": "folklore_4",
+      "title": "The Sun and the Moon",
+      "setswanaTitle": null,
+      "story": "Long ago, when the world was young, the Sun and the Moon were siblings. The Sun was proud, hot-tempered, and boastful. He shone with blinding brightness and expected everyone to bow before him. The Moon was gentle, calm, and modest. She shone with a soft, silvery light that was pleasant to all.\n\nThe Sun would often boast: \"I am the greatest of all the heavenly bodies! Without me, there would be no light, no warmth, no life. I am the most important, the most powerful, the most magnificent!\"\n\nThe Moon would respond quietly: \"You are indeed powerful, my brother. But your brightness is sometimes too much. Your heat is sometimes too great.\"\n\nThe Sun grew angry at the Moon's words. \"What do you know?\" he shouted. \"You are only a pale reflection of my glory! You have no light of your own! Without me, you would be nothing!\"\n\nThe Moon wept at her brother's harsh words. She said, \"If that is how you feel, brother, then let us go before the gods and ask them to decide.\"\n\nThe Sun, confident in his power, agreed. When they appeared before the gods, the gods listened to both sides.\n\nThey said to the Sun: \"You are indeed bright, and you bring life to the earth. But your pride is your downfall. You believe that you are everything, and in your pride, you have hurt your own sister.\"\n\nTo the Moon they said: \"You are gentle and kind, and your light is a comfort to all. You see the value in others, and you do not boast.\"\n\nSo the gods decreed that the Sun and the Moon would rule the sky at different times. The Sun would rule by day, bringing his brightness and warmth. The Moon would rule by night, bringing her gentle light. But they would never meet—their paths would never cross—so that the Sun's pride would not be provoked and the Moon's gentleness would be preserved.\n\nThis is why the sun and the moon are never seen in the sky together—they were separated by the gods, a constant reminder of the dangers of pride and the value of humility.",
+      "moral": "Pride leads to division and separation. Humility and gentleness are virtues that bring peace. The story also serves as a cosmological explanation for a natural phenomenon—why the sun and moon appear in the sky at different times.",
+      "culturalSignificance": "This cosmological myth explains the separation of sun and moon while teaching the dangers of pride and the virtue of humility. It reinforces the cultural value of modesty."
+    },
+    {
+      "id": "folklore_5",
+      "title": "The Boy Who Herded the Chief's Cattle",
+      "setswanaTitle": null,
+      "story": "There was once a poor boy whose parents had died, leaving him with nothing. He was taken in by relatives who treated him cruelly, forcing him to do the hardest work for the smallest reward.\n\nOne day, the chief sent word that he needed a diligent boy to herd his cattle. The boy's relatives volunteered him, thinking that if he failed, he would be punished.\n\nThe boy took the cattle out to graze, and he proved to be an excellent herdsman. He knew the best grazing areas, he kept the cattle safe from predators, and he never lost a single animal. During the dry season, he led the cattle to hidden water sources that only he knew about. During the rainy season, he kept them safe from lightning and flooding.\n\nOne night, a pride of lions attacked the cattle. While other boys would have run away, this boy stood his ground. He used his fire and his shouts to frighten the lions away. He saved the entire herd.\n\nThe chief, hearing of the boy's bravery and diligence, called him to his court. \"You have shown great courage and wisdom,\" the chief said. \"You have protected my cattle as if they were your own. I am going to reward you.\"\n\nThe chief gave the boy cattle of his own—ten cows and a strong bull. The boy's fortunes were transformed. He was no longer poor. He built a home of his own, and in time, he earned the respect of the community.\n\nThe boy's diligence also earned him the chief's attention. The chief had a beautiful daughter, and he gave her to the boy in marriage. The boy, who had once been the poorest of the poor, became a man of great wealth and status—all because of his honesty, hard work, and cleverness.\n\nThe boy became known throughout the land as a man of integrity. He was appointed as a trusted advisor to the chief, and he governed the people with justice and compassion.",
+      "moral": "Diligence, honesty, and integrity are always rewarded, even when one starts with nothing. Those who are faithful in small things will be trusted with greater things. This story also reinforces the values of hard work and perseverance that are central to Tswana culture.",
+      "culturalSignificance": "This is a classic rags-to-riches story that reinforces the Tswana values of hard work, diligence, and integrity. It teaches that one's circumstances do not determine one's future—character and effort do. It also emphasizes the importance of trustworthiness in leadership."
+    }
+  ],
+  "proverbsOverview": {
+    "title": "Proverbs (Maele)",
+    "description": "Proverbs—maele in Setswana—are short, pithy sayings that express traditional wisdom, moral values, and practical advice. They are used in everyday conversation, in the kgotla (tribal council), in storytelling, and in teaching children. Proverbs are the condensed wisdom of the ancestors, passed down through generations.",
+    "characteristics": [
+      "Conciseness",
+      "Memorability",
+      "Depth",
+      "Metaphor and analogy comparing human behaviour to the natural world, animals, or daily activities"
+    ]
+  },
+  "proverbs": [
+    {
+      "id": "proverb_1",
+      "setswana": "Motho ke motho ka batho.",
+      "literalTranslation": "A person is a person because of other people.",
+      "meaning": "No one exists in isolation; we are defined by our relationships with others. This is the cornerstone of the Tswana philosophy of botho (humanity/ubuntu). The proverb teaches that human beings are inherently social creatures who need community, connection, and mutual support to thrive.",
+      "usage": "This proverb is frequently invoked in the kgotla to remind community members of their obligations to each other. It is also used to encourage cooperation, discourage selfishness, and promote community solidarity.",
+      "culturalSignificance": "This is perhaps the most famous and fundamental of all Tswana proverbs. It expresses the essence of Tswana ethics: that one's humanity is realised through others. It is invoked at weddings, funerals, community meetings, and in everyday life."
+    },
+    {
+      "id": "proverb_2",
+      "setswana": "Mmangwana o tshwara thipa ka fa bogaleng.",
+      "literalTranslation": "A mother holds the knife on the sharp side.",
+      "meaning": "A mother will do whatever it takes to protect her children. Maternal love is fierce and willing to face danger. Even if something is dangerous (like holding a knife by its sharp edge), a mother will do it for her children.",
+      "usage": "This proverb is used to acknowledge the extraordinary lengths that mothers go to for their children—whether it involves physical danger, financial sacrifice, or emotional endurance. It is also used to counsel children to respect their mothers.",
+      "culturalSignificance": "The proverb honours the role of mothers in Tswana society. Mothers are seen as the protectors, nurturers, and heart of the family. This proverb reinforces the high status of mothers and the expectation that they will be honoured and respected."
+    },
+    {
+      "id": "proverb_3",
+      "setswana": "Sejo sennye ga se fete molomo.",
+      "literalTranslation": "A small piece of food does not pass the mouth.",
+      "meaning": "Even the littlest of gifts are always appreciated. It is not the size of the gift that matters but the spirit in which it is given. The proverb teaches that one should not despise small offerings—they are still a source of nourishment and comfort.",
+      "usage": "This proverb is used to encourage generosity, even when one can only give a little. It is also used to thank someone for a small gift, acknowledging that the thought and effort are what truly matter.",
+      "culturalSignificance": "The proverb reflects Tswana values of generosity, hospitality, and community. In a society where resources are often limited, even small acts of sharing are valued and appreciated. It discourages pride and entitlement."
+    },
+    {
+      "id": "proverb_4",
+      "setswana": "Khumo le lehuma di lala mmogo.",
+      "literalTranslation": "Riches and poverty sleep in the same room.",
+      "meaning": "The rich may be well off today but could lose it all tomorrow, while the poor today may gain all the riches tomorrow. Fortune is fickle and can change suddenly. One should not be arrogant about wealth and should not despise the poor.",
+      "usage": "This proverb is used to remind people not to be prideful about their wealth or status. It is also used to encourage compassion for the poor, as one's circumstances can change at any time.",
+      "culturalSignificance": "The proverb reflects the Tswana understanding of life as unpredictable and changeable. It also expresses the value of humility—one should not look down on others, as the tables may turn. The proverb reinforces the importance of generosity and community support."
+    },
+    {
+      "id": "proverb_5",
+      "setswana": "Go nna le mathata a mabedi.",
+      "literalTranslation": "There are two sides to every story.",
+      "meaning": "One should carefully consider the consequences of their actions and hear all perspectives before making a judgment. This proverb is frequently cited in the kgotla to ensure fairness in dispute resolution.",
+      "usage": "This proverb is used to encourage listening, patience, and impartiality. It is particularly important in the kgotla where disputes are heard and resolved.",
+      "culturalSignificance": "The proverb reflects the Tswana commitment to fair process and consensus-building. In the kgotla, both parties in a dispute are heard, and decisions are made only after all perspectives have been considered. This proverb is a reminder of that fundamental principle of justice."
+    }
+  ],
+  "praisePoetryOverview": {
+    "title": "Praise Poetry (Maboko / Leboko)",
+    "description": "Praise poetry—maboko (plural) or leboko (singular)—is a highly developed oral art form among the Tswana. Praise poems honour chiefs, warriors, clans, and individuals, recounting their deeds, lineage, and virtues.",
+    "purpose": [
+      "Recount the deeds and accomplishments of the subject",
+      "Trace the lineage and ancestry of the subject",
+      "Describe the virtues and qualities of the subject",
+      "Inspire and encourage the subject and the community",
+      "Preserve the memory of important figures"
+    ],
+    "performanceContext": "Praise poetry is often performed at public ceremonies—such as chiefly inaugurations, weddings, and initiation ceremonies—and is accompanied by dance, music, and ritual.",
+    "structure": {
+      "parallelism": "Repeating patterns of language and meaning",
+      "metaphor": "Comparing the subject to animals, natural phenomena, and other powerful symbols",
+      "allusion": "Referring to historical events, genealogies, and cultural references",
+      "rhythm": "The poems are meant to be performed aloud and have a rhythmic quality",
+      "epithets": "Descriptive phrases that capture the essence of the subject"
+    }
+  },
+  "praisePoems": [
+    {
+      "id": "praise_1",
+      "title": "Praise of a Chief",
+      "setswana": "Yo o agilweng jaaka Jerusalema,\nJerusalema motse wa kganya.",
+      "literalTranslation": "The one who is built like Jerusalem, Jerusalem the glorious village.",
+      "meaning": "This praise compares a chief's town to the holy city of Jerusalem, emphasising its glory, order, and spiritual significance. The chief is not just a political leader but a sacred figure whose rule brings prosperity and civilisation.",
+      "culturalSignificance": "Jerusalem was known to the Tswana through the Bible, and comparing a chief's town to Jerusalem was the highest praise imaginable. It suggested that the chief's rule was ordained and that his kingdom was a place of blessing and order."
+    },
+    {
+      "id": "praise_2",
+      "title": "Praise of a Warrior",
+      "setswana": "Tau e tsene, tau e tsene,\nE kgoma lefatshe ka dinao,\nE tlhotlhomisa phokoje.",
+      "literalTranslation": "The lion has entered, the lion has entered, it strikes the earth with its feet, it makes the jackal tremble.",
+      "meaning": "This praise poem honours a warrior's bravery and prowess, comparing him to a lion—the king of the animals—that instils fear in all other creatures (represented by the jackal). The warrior is powerful, fearless, and dominant.",
+      "culturalSignificance": "The lion is the ultimate symbol of strength and courage in Tswana culture. By comparing a warrior to a lion, the poet is saying that the warrior embodies these ideals. The poem would be recited to inspire the warrior and the community, and to honour the warrior's achievements in battle."
+    },
+    {
+      "id": "praise_3",
+      "title": "Praise of the Bangwato Tribe",
+      "setswana": "Batho ba ga Masilo,\nBa noka e tshwana le lehloa,\nBa itshwarela ka dinaka.",
+      "literalTranslation": "The people of Masilo, of the river that is white like snow, who hold onto each other by the horns.",
+      "meaning": "This refers to the unity and solidarity of the Bangwato people. The river that is 'white like snow' likely refers to the Limpopo or a river with white, sandy banks. 'Holding onto each other by the horns' is a metaphor for mutual defence—cattle lock horns when fighting predators, protecting each other. The people of Masilo are united and protect one another.",
+      "culturalSignificance": "This praise poem expresses the pride of the Bangwato in their identity and their community. It is also an exhortation to unity—reminding the Bangwato that they must support each other and work together to survive and thrive."
+    },
+    {
+      "id": "praise_4",
+      "title": "Praise of a Chief's Lineage",
+      "setswana": "Mokopolo wa ga Mokgosi,\nWa ga Mmapeo, wa ga Mokwena,\nO tlhotlha jaaka letsatsi.",
+      "literalTranslation": "Descendant of Mokgosi, of Mmapeo, of Mokwena, you rise like the sun.",
+      "meaning": "This praise traces the chief's illustrious lineage, invoking the names of his ancestors to legitimise his rule. The comparison to the rising sun suggests that the chief brings hope, vitality, and progress to his people.",
+      "culturalSignificance": "Genealogy is extremely important in Tswana culture. A chief's legitimacy depends on his lineage and his connection to the founding ancestors. This praise poem reinforces the chief's authority by connecting him to the heroic ancestors who established the kingdom."
+    },
+    {
+      "id": "praise_5",
+      "title": "A Boy's Self-Praise from Bogwera",
+      "setswana": "Ke morwa ga Mokgosi,\nKe tsene bogwereng jaaka tau,\nGa ke boife loso,\nKe tla nna monna ka matla.",
+      "literalTranslation": "I am the son of Mokgosi, I entered initiation like a lion, I do not fear death, I will be a man of strength.",
+      "meaning": "This is a self-praise poem composed by a boy undergoing initiation (bogwera). He declares his identity (son of Mokgosi), his courage in facing the challenges of initiation (entering like a lion), his fearlessness (not fearing death), and his aspiration to become a strong man.",
+      "culturalSignificance": "Each boy participating in bogwera in the 19th century was required to write a praise poem about himself. This was a crucial part of the initiation process—it was the boy's way of asserting his identity, claiming his lineage, and declaring his readiness to become a man. It is a transformative act of self-definition."
+    }
+  ],
+  "oralTradition": {
+    "role": {
+      "educationAndSocialisation": [
+        "The history and genealogy of their people",
+        "The customs, laws, and values of their society",
+        "Practical wisdom for daily life",
+        "Ethics and morality",
+        "Respect for elders and authority",
+        "Community solidarity and botho (ubuntu)"
+      ],
+      "conflictResolution": "In the kgotla, proverbs and references to folklore are used in dispute resolution. A well-chosen proverb can make a point more effectively than a long argument. The elders' knowledge of proverbs and oral tradition is a sign of wisdom and authority.",
+      "identityAndBelonging": "Oral tradition connects individuals to their community, lineage, and history. Reciting one's leboko (praise poem) is a way of declaring one's identity and claiming one's place in the world. The shared knowledge of proverbs and folklore creates a sense of collective belonging.",
+      "artOfSpeech": "The ability to use proverbs and reference oral tradition effectively is a sign of eloquence and wisdom in Tswana culture. Skilled orators are admired and respected. The kgotla is a place where this art is displayed and celebrated."
+    },
+    "declineAndRevival": {
+      "declineFactors": {
+        "christianityAndColonialism": [
+          "Discouraged traditional practices associated with oral tradition",
+          "Replaced oral education with mission schools",
+          "Translated the Bible into Setswana, creating a written standard",
+          "Viewed oral traditions as 'pagan' and inferior"
+        ],
+        "urbanisation": [
+          "Extended families no longer live together, so elders cannot tell stories to children as they once did",
+          "Television, radio, and the internet have replaced oral storytelling as sources of entertainment",
+          "Young people often cannot speak Setswana fluently, let alone use proverbs"
+        ]
+      },
+      "revivalEfforts": [
+        "Recording and documenting oral traditions",
+        "Teaching Setswana and oral traditions in schools",
+        "Hosting cultural festivals and competitions",
+        "Publishing collections of proverbs and folktales",
+        "Using social media and digital platforms to share oral traditions"
+      ]
+    }
+  },
+  "summaryTable": [
+    {
+      "category": "Folklore",
+      "example": "The Story of the Crocodile and the Hare",
+      "setswana": null,
+      "translation": null,
+      "meaningFunction": "Intelligence overcomes brute strength"
+    },
+    {
+      "category": "Folklore",
+      "example": "The Greedy Hyena",
+      "setswana": null,
+      "translation": null,
+      "meaningFunction": "Greed destroys trust and friendship"
+    },
+    {
+      "category": "Folklore",
+      "example": "Why the Tortoise Has a Cracked Shell",
+      "setswana": null,
+      "translation": null,
+      "meaningFunction": "Negligence has consequences"
+    },
+    {
+      "category": "Folklore",
+      "example": "The Sun and the Moon",
+      "setswana": null,
+      "translation": null,
+      "meaningFunction": "Pride leads to division; humility brings peace"
+    },
+    {
+      "category": "Folklore",
+      "example": "The Boy Who Herded the Chief's Cattle",
+      "setswana": null,
+      "translation": null,
+      "meaningFunction": "Diligence, honesty, and integrity are rewarded"
+    },
+    {
+      "category": "Proverb",
+      "example": "Motho ke motho ka batho",
+      "setswana": "Motho ke motho ka batho.",
+      "translation": "A person is a person through other people",
+      "meaningFunction": "Humanity is realised through community (botho)"
+    },
+    {
+      "category": "Proverb",
+      "example": "Mmangwana o tshwara thipa ka fa bogaleng",
+      "setswana": "Mmangwana o tshwara thipa ka fa bogaleng.",
+      "translation": "A mother holds the knife on the sharp side",
+      "meaningFunction": "A mother will do anything to protect her children"
+    },
+    {
+      "category": "Proverb",
+      "example": "Sejo sennye ga se fete molomo",
+      "setswana": "Sejo sennye ga se fete molomo.",
+      "translation": "A small piece of food does not pass the mouth",
+      "meaningFunction": "Even small gifts are appreciated"
+    },
+    {
+      "category": "Proverb",
+      "example": "Khumo le lehuma di lala mmogo",
+      "setswana": "Khumo le lehuma di lala mmogo.",
+      "translation": "Riches and poverty sleep together",
+      "meaningFunction": "Fortune is fickle; do not despise the poor"
+    },
+    {
+      "category": "Proverb",
+      "example": "Go nna le mathata a mabedi",
+      "setswana": "Go nna le mathata a mabedi.",
+      "translation": "There are two sides to every story",
+      "meaningFunction": "Hear all perspectives before judging"
+    },
+    {
+      "category": "Praise Poem",
+      "example": "Yo o agilweng jaaka Jerusalema",
+      "setswana": "Yo o agilweng jaaka Jerusalema, Jerusalema motse wa kganya.",
+      "translation": "Built like Jerusalem, the glorious village",
+      "meaningFunction": "Chief's reign brings order and civilisation"
+    },
+    {
+      "category": "Praise Poem",
+      "example": "Tau e tsene, tau e tsene",
+      "setswana": "Tau e tsene, tau e tsene, E kgoma lefatshe ka dinao, E tlhotlhomisa phokoje.",
+      "translation": "The lion has entered, it strikes the earth",
+      "meaningFunction": "Warrior is strong, fearless, and dominant"
+    },
+    {
+      "category": "Praise Poem",
+      "example": "Batho ba ga Masilo, ba noka e tshwana le lehloa",
+      "setswana": "Batho ba ga Masilo, Ba noka e tshwana le lehloa, Ba itshwarela ka dinaka.",
+      "translation": "People of Masilo, of the river like snow",
+      "meaningFunction": "Bangwato unity and solidarity"
+    },
+    {
+      "category": "Praise Poem",
+      "example": "Mokopolo wa ga Mokgosi, o tlhotlha jaaka letsatsi",
+      "setswana": "Mokopolo wa ga Mokgosi, Wa ga Mmapeo, wa ga Mokwena, O tlhotlha jaaka letsatsi.",
+      "translation": "Descendant of Mokgosi, you rise like the sun",
+      "meaningFunction": "Chief's legitimate lineage brings hope"
+    },
+    {
+      "category": "Praise Poem",
+      "example": "Ke morwa ga Mokgosi, ke tsene bogwereng jaaka tau",
+      "setswana": "Ke morwa ga Mokgosi, Ke tsene bogwereng jaaka tau, Ga ke boife loso, Ke tla nna monna ka matla.",
+      "translation": "I am the son of Mokgosi, I entered initiation like a lion",
+      "meaningFunction": "Boy's courage and readiness for manhood"
+    }
+  ]
+}

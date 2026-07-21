@@ -1,0 +1,333 @@
+{
+  "metadata": {
+    "title": "Botswana Naming Conventions",
+    "source": "Tswana Culture and Tradition",
+    "language": "Setswana",
+    "description": "An exploration of the significance, philosophy, and practices of naming in Tswana culture, including semantic categories, gendered naming, tribal variations, and the role of names in identity and heritage."
+  },
+  "introduction": {
+    "title": "The Power and Significance of Names",
+    "content": "In Tswana culture, a name is far more than a mere label or identifier. A name is a statement of identity, a record of history, a declaration of values, and a connection to the spiritual realm. The Setswana naming process is highly influenced by the culture and traditions of the society, its religions, and the daily lives of the people. Personal names are regarded as semiotic resources that Batswana use to produce meaning and to further conserve their culture and traditions.",
+    "keyPoints": [
+      "Names are chosen with great care and deliberation, often after consultations with elders, and sometimes after divination or ritual observation.",
+      "A name can shape a person's destiny, reflect the circumstances of their birth, honour their ancestors, or express the hopes and aspirations of their family.",
+      "Setswana personal names are mainly context motivated—deeply embedded in the specific circumstances, events, relationships, and values of the family and community."
+    ]
+  },
+  "philosophy": {
+    "title": "The Philosophy of Naming",
+    "sections": [
+      {
+        "heading": "Names as Identity Markers",
+        "content": "A Setswana name is a primary marker of identity. When a person introduces themselves, their name immediately conveys information about their ethnic and cultural background, family lineage and clan affiliation, circumstances of their birth, values and aspirations of their family, and connection to ancestors and community.",
+        "additional": "In traditional Tswana society, a person's full name often includes their given name, their father's name, and their clan name, creating a comprehensive identity record."
+      },
+      {
+        "heading": "Names and Destiny",
+        "content": "There is a belief that names can influence a person's destiny. A child named Kgosi (chief) may be expected to show leadership qualities; Kitso (knowledge) may be expected to be wise. The name is not merely descriptive but aspirational—expressing what the family hopes the child will become."
+      },
+      {
+        "heading": "Names as Gifts",
+        "content": "Names are often seen as gifts from God or the ancestors. Many names express gratitude for the child's birth, especially in cases of difficult births or after long periods of infertility. Examples include Amogelang (receive/accept) and Dineo (gifts)."
+      },
+      {
+        "heading": "Names and Ancestors",
+        "content": "The practice of naming children after their grandparents or great-grandparents (theellano) is a way of honouring ancestors and ensuring that their names are commemorated and kept within the family, strengthening generational connections and preserving clan identity."
+      }
+    ]
+  },
+  "semanticCategories": {
+    "title": "Semantic Categories of Setswana Names",
+    "description": "A comprehensive study analysing 1,995 Botswana names categorised them into 19 semantic categories. The main categories and examples are:",
+    "categories": [
+      {
+        "name": "Circumstantial Names",
+        "description": "Names given based on the circumstances of birth.",
+        "examples": [
+          { "name": "Pholo", "meaning": "A huge harvest", "circumstance": "Child born during a time of plenty" },
+          { "name": "Pula", "meaning": "Rain", "circumstance": "Child born during the rainy season" },
+          { "name": "Tsholofelo", "meaning": "Hope", "circumstance": "Child born during a difficult time" },
+          { "name": "Tumelo", "meaning": "Faith", "circumstance": "Child born to parents who prayed for a child" },
+          { "name": "Kagiso", "meaning": "Peace", "circumstance": "Child born after a period of conflict" }
+        ]
+      },
+      {
+        "name": "Gratitude Names",
+        "description": "Names expressing thanks for the child's birth.",
+        "examples": [
+          { "name": "Amogelang", "meaning": "Receive or accept", "context": "Expressing gratitude for the gift of a child" },
+          { "name": "Dineo", "meaning": "Gifts", "context": "The child is seen as a gift from God" },
+          { "name": "Kealeboga", "meaning": "I thank", "context": "Direct expression of gratitude" },
+          { "name": "Lebogang", "meaning": "Be thankful", "context": "The family is thankful for the child" },
+          { "name": "Tshiamo", "meaning": "Blessing", "context": "The child is considered a blessing" }
+        ]
+      },
+      {
+        "name": "Aspirational Names",
+        "description": "Names expressing hopes and aspirations for the child.",
+        "examples": [
+          { "name": "Kitso", "meaning": "Knowledge", "aspiration": "Hope that the child will be wise and learned" },
+          { "name": "Kgosi", "meaning": "King or chief", "aspiration": "Hope that the child will be a leader" },
+          { "name": "Modiegi", "meaning": "Chosen one", "aspiration": "Hope that the child will be exceptional" },
+          { "name": "Motswane", "meaning": "Good", "aspiration": "Hope that the child will be good" },
+          { "name": "Bontle", "meaning": "Beauty", "aspiration": "Hope that the child will be beautiful (in character and appearance)" }
+        ]
+      },
+      {
+        "name": "Religious and Spiritual Names",
+        "description": "Names reflecting religious beliefs.",
+        "examples": [
+          { "name": "Modimo", "meaning": "God", "context": "Acknowledging God's role in the child's birth" },
+          { "name": "Itumeleng", "meaning": "Be happy", "context": "Joy in the Lord" },
+          { "name": "Boitumelo", "meaning": "Joy", "context": "Joy from God" },
+          { "name": "Obakeng", "meaning": "Praise (Him)", "context": "Praise to God" },
+          { "name": "Lefatshe", "meaning": "World", "context": "God's creation" }
+        ]
+      },
+      {
+        "name": "Royal and Leadership Names",
+        "description": "Names associated with leadership and royalty.",
+        "examples": [
+          { "name": "Kgosi", "meaning": "King or chief" },
+          { "name": "Mmusi", "meaning": "Ruler" },
+          { "name": "Kgosientsho", "meaning": "Chief of the nation" },
+          { "name": "Kabelo", "meaning": "Portion, inheritance (of leadership)" }
+        ]
+      },
+      {
+        "name": "Nature-Inspired Names",
+        "description": "Names derived from natural elements.",
+        "examples": [
+          { "name": "Sethunya", "meaning": "A flower", "element": "Beauty and growth" },
+          { "name": "Pula", "meaning": "Rain", "element": "Life-giving water" },
+          { "name": "Letsatsi", "meaning": "Sun", "element": "Warmth and light" },
+          { "name": "Naledi", "meaning": "Star", "element": "Guidance and brightness" },
+          { "name": "Mokgadi", "meaning": "A stream", "element": "Life and flow" },
+          { "name": "Tshidi", "meaning": "Hair (of the grass)", "element": "Growth and resilience" }
+        ]
+      },
+      {
+        "name": "Family and Lineage Names",
+        "description": "Names that connect the child to family.",
+        "examples": [
+          { "name": "Rra", "meaning": "Father", "connection": "Acknowledging the father" },
+          { "name": "Mma", "meaning": "Mother", "connection": "Acknowledging the mother" },
+          { "name": "Ntate", "meaning": "Father", "connection": "Respect for the father" },
+          { "name": "Mmè", "meaning": "Mother", "connection": "Respect for the mother" }
+        ]
+      }
+    ]
+  },
+  "genderedAspects": {
+    "title": "Gendered Aspects of Naming",
+    "description": "Given names in the Setswana language depict gendered attitudes and sexist discourse. Some names are specifically masculine or feminine, reflecting traditional gender roles and expectations.",
+    "masculineNames": [
+      { "name": "Kgosi", "meaning": "King/Chief", "association": "Male leadership" },
+      { "name": "Moagi", "meaning": "Builder", "association": "Male provider role" },
+      { "name": "Rre", "meaning": "Father", "association": "Male authority" },
+      { "name": "Tshepo", "meaning": "Hope (given to boys)", "association": "Masculine aspiration" },
+      { "name": "Mpho", "meaning": "Gift (given to boys)", "association": "Masculine gratitude" }
+    ],
+    "feminineNames": [
+      { "name": "Bontle", "meaning": "Beauty", "association": "Feminine beauty" },
+      { "name": "Lesedi", "meaning": "Light", "association": "Feminine illumination" },
+      { "name": "Mpho", "meaning": "Gift (given to girls)", "association": "Feminine gratitude" },
+      { "name": "Kgomotso", "meaning": "Comfort", "association": "Feminine nurturing" },
+      { "name": "Tshegofatso", "meaning": "Blessing", "association": "Feminine grace" }
+    ],
+    "unisexNames": [
+      { "name": "Tshiamo", "meaning": "Blessing" },
+      { "name": "Boitumelo", "meaning": "Joy" },
+      { "name": "Kabelo", "meaning": "Portion/inheritance" },
+      { "name": "Tumelo", "meaning": "Faith" }
+    ]
+  },
+  "tribalPractices": {
+    "title": "Naming Practices Across Tribes",
+    "tribes": [
+      {
+        "tribe": "Bangwato",
+        "description": "Among the Bangwato, naming practices reflect the strong pastoral heritage of the tribe. Names often reference cattle and livestock. The practice of naming children after ancestors and previous chiefs is particularly strong.",
+        "examples": [
+          { "name": "Nare", "meaning": "buffalo (a strong animal)" },
+          { "name": "Moruti", "meaning": "pastor (after Christian conversion)" },
+          { "name": "Khama", "meaning": "(from the name of the great chief)" }
+        ]
+      },
+      {
+        "tribe": "Bakwena",
+        "description": "The Bakwena have a strong tradition of religious naming, reflecting the influence of Chief Sechele I's conversion to Christianity. Christian names are often blended with Setswana names.",
+        "examples": [
+          { "name": "Sebele", "meaning": "(from the chief Sebele I)" },
+          { "name": "Koos", "meaning": "a Setswana form of Jacobus/James" },
+          { "name": "Modimo", "meaning": "acknowledging God" }
+        ]
+      },
+      {
+        "tribe": "Bakgatla",
+        "description": "The Bakgatla naming practices often incorporate the baboon (their totem) as a source of inspiration. Names that reference strength, intelligence, and community are common.",
+        "examples": []
+      },
+      {
+        "tribe": "Wayeyi",
+        "description": "The Wayeyi, who live in the Okavango Delta, incorporate water and fishing references into their names. Names may reference fish species, water plants, canoe traditions, and delta wildlife.",
+        "examples": [
+          { "name": "mokolwane", "meaning": "a water palm" },
+          { "name": "mokoro", "meaning": "canoe" },
+          { "name": "crocodile", "meaning": "referencing delta wildlife" }
+        ]
+      },
+      {
+        "tribe": "Herero",
+        "description": "The Herero have a distinct naming tradition that reflects their pastoral culture and their history of migration. Names often reference cattle, their central economic and cultural asset.",
+        "examples": [
+          { "name": "Katjiu", "meaning": "(referencing cattle)" },
+          { "name": "Kavari", "meaning": "(referencing something good)" },
+          { "name": "Tjiri", "meaning": "(referencing mercy)" }
+        ]
+      },
+      {
+        "tribe": "San (Basarwa)",
+        "description": "The San have naming practices that reflect their deep connection to nature. Names are often derived from animals, plants, natural phenomena, geographic features, or totemic animals. However, with the increasing dominance of Setswana, many San children are now given Setswana names, contributing to the erosion of San linguistic heritage.",
+        "examples": []
+      }
+    ]
+  },
+  "theellano": {
+    "title": "The Practice of Theellano (Namesake Naming)",
+    "description": "Theellano is a Setswana term for the practice of naming a child after their grandparents or great-grandparents.",
+    "purpose": [
+      "Honouring ancestors – keeping their memory alive",
+      "Strengthening family bonds – connecting generations",
+      "Preserving clan identity – maintaining lineage",
+      "Ensuring continuity – passing on names through generations"
+    ],
+    "typicalPattern": "A firstborn son is typically named after his paternal grandfather, a firstborn daughter after her paternal grandmother, a second son after the maternal grandfather, and so on.",
+    "significance": "A person named after an ancestor is believed to carry the spirit of that ancestor. They may be expected to emulate the virtues of the namesake, honour their memory, continue their legacy, and seek guidance from the namesake's spirit. The relationship between a person and their namesake (the motlhare) is considered sacred."
+  },
+  "totemSystem": {
+    "title": "Naming and the Totem System",
+    "description": "The totem system (seboko) is closely connected to naming. A person's totem is often incorporated into their praise name (leboko), referenced in their family name, and used in formal introductions. When a person recites their leboko, they are identifying their clan and their lineage, which are closely tied to their totem."
+  },
+  "contextualNature": {
+    "title": "Contextual Nature of Naming",
+    "description": "Setswana names are largely contextual. The same name can carry different meanings in different contexts.",
+    "examples": [
+      {
+        "name": "Pula",
+        "meaning": "rain literally, but in naming context may express hope for rain or gratitude for rain"
+      },
+      {
+        "name": "Dineo",
+        "meaning": "gifts generally, but in naming context expresses gratitude for the gift of the child"
+      },
+      {
+        "name": "Tshepo",
+        "meaning": "hope generally, but in naming context expresses hope for a better future"
+      }
+    ]
+  },
+  "contemporaryPractices": {
+    "title": "Contemporary Naming Practices",
+    "sections": [
+      {
+        "heading": "The Influence of Christianity",
+        "content": "Christianity has had a profound influence on naming practices in Botswana. Many Batswana now have biblical names or names that reference Christian concepts.",
+        "examples": [
+          { "biblicalName": "Jacob", "setswanaForm": "Koos" },
+          { "biblicalName": "John", "setswanaForm": "Jone" },
+          { "biblicalName": "Mary", "setswanaForm": "Maria" },
+          { "biblicalName": "Peter", "setswanaForm": "Petros" },
+          { "biblicalName": "David", "setswanaForm": "Dafid" }
+        ]
+      },
+      {
+        "heading": "Urbanisation and Modernisation",
+        "content": "Urbanisation has led to changes in naming practices: shorter names, English names (sometimes alongside Setswana names), fashionable names, and unique spellings of traditional names."
+      },
+      {
+        "heading": "The Role of Names in Social Status",
+        "content": "Names can also indicate social status and education. Families with higher education levels may choose more 'modern' or English-sounding names, while traditional families may choose more 'authentic' Setswana names, creating a subtle hierarchy of names that reflects broader social stratification."
+      }
+    ]
+  },
+  "exampleNames": {
+    "men": [
+      { "name": "Kgosi", "meaning": "King/Chief", "culturalContext": "Leadership and authority" },
+      { "name": "Kitso", "meaning": "Knowledge", "culturalContext": "Wisdom and learning" },
+      { "name": "Modiegi", "meaning": "Chosen one", "culturalContext": "Chosen for a special purpose" },
+      { "name": "Motswane", "meaning": "Good", "culturalContext": "A good person" },
+      { "name": "Tshepo", "meaning": "Hope", "culturalContext": "Hope for the future" },
+      { "name": "Mpho", "meaning": "Gift", "culturalContext": "A gift from God" },
+      { "name": "Kabelo", "meaning": "Portion/inheritance", "culturalContext": "An inherited blessing" },
+      { "name": "Tumelo", "meaning": "Faith", "culturalContext": "Faith in God" },
+      { "name": "Boikanyo", "meaning": "Trust", "culturalContext": "Trustworthiness" },
+      { "name": "Mogomotsi", "meaning": "Comforter", "culturalContext": "One who comforts others" }
+    ],
+    "women": [
+      { "name": "Bontle", "meaning": "Beauty", "culturalContext": "Inner and outer beauty" },
+      { "name": "Lesedi", "meaning": "Light", "culturalContext": "Illumination and guidance" },
+      { "name": "Dineo", "meaning": "Gifts", "culturalContext": "A gift from God" },
+      { "name": "Kgomotso", "meaning": "Comfort", "culturalContext": "One who brings comfort" },
+      { "name": "Tshiamo", "meaning": "Blessing", "culturalContext": "A blessed child" },
+      { "name": "Boitumelo", "meaning": "Joy", "culturalContext": "Joy from God" },
+      { "name": "Tshegofatso", "meaning": "Blessing", "culturalContext": "A blessing to the family" },
+      { "name": "Mmapula", "meaning": "Mother of rain", "culturalContext": "One who brings life-giving water" },
+      { "name": "Koketso", "meaning": "Increase", "culturalContext": "The family is increasing" },
+      { "name": "Sethunya", "meaning": "Flower", "culturalContext": "Beauty and growth" }
+    ],
+    "unisex": [
+      { "name": "Tshiamo", "meaning": "Blessing", "culturalContext": "A blessed child" },
+      { "name": "Boitumelo", "meaning": "Joy", "culturalContext": "Joy from God" },
+      { "name": "Kabelo", "meaning": "Portion/inheritance", "culturalContext": "An inherited blessing" },
+      { "name": "Tumelo", "meaning": "Faith", "culturalContext": "Faith in God" },
+      { "name": "Kagiso", "meaning": "Peace", "culturalContext": "Peace in the family" }
+    ]
+  },
+  "preservation": {
+    "title": "The Preservation of Naming Traditions",
+    "content": "Despite the influences of Christianity, modernisation, and urbanisation, naming traditions remain strong in Botswana. Most Batswana still consult elders before choosing a name, consider circumstances of the birth, honour ancestors through namesake naming, express gratitude through names, and connect children to their lineage and community. The Setswana naming system is a living tradition that continues to evolve while maintaining its core cultural values."
+  },
+  "summaryTable": [
+    {
+      "category": "Circumstantial",
+      "description": "Names based on birth circumstances",
+      "examples": "Pholo (harvest), Pula (rain), Tsholofelo (hope)"
+    },
+    {
+      "category": "Gratitude",
+      "description": "Names expressing thanks",
+      "examples": "Amogelang (receive), Dineo (gifts), Kealeboga (I thank)"
+    },
+    {
+      "category": "Aspirational",
+      "description": "Names expressing hopes",
+      "examples": "Kitso (knowledge), Kgosi (chief), Modiegi (chosen one)"
+    },
+    {
+      "category": "Religious/Spiritual",
+      "description": "Names reflecting faith",
+      "examples": "Modimo (God), Boitumelo (joy), Tumelo (faith)"
+    },
+    {
+      "category": "Royal/Leadership",
+      "description": "Names of leaders",
+      "examples": "Kgosi (king), Mmusi (ruler), Kabelo (inheritance)"
+    },
+    {
+      "category": "Nature-Inspired",
+      "description": "Names from nature",
+      "examples": "Sethunya (flower), Letsatsi (sun), Naledi (star)"
+    },
+    {
+      "category": "Family/Lineage",
+      "description": "Names connecting to family",
+      "examples": "Rra (father), Mma (mother), Ntate (father)"
+    },
+    {
+      "category": "Theellano",
+      "description": "Namesake naming",
+      "examples": "Named after grandparents or ancestors"
+    }
+  ]
+}

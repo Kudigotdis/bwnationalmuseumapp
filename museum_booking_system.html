@@ -1,0 +1,1449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>Botswana National Museum - Booking System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    /* ===== COLOR SCHEME ===== */
+    :root {
+      --ocean-blue: #1A7EA8;
+      --terracotta: #D17226;
+      --white: #FFFFFF;
+      --black: #000000;
+      --bg: #FFFFFF;
+      --surface: #F5F5F5;
+      --card: #FFFFFF;
+      --border: #E0E0E0;
+      --text: #2C2C2C;
+      --muted: #666666;
+      --faint: #999999;
+      --danger: #C15C4A;
+      --success: #4CAF50;
+      --shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      display: flex;
+      justify-content: center;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    #frame {
+      width: 100%;
+      max-width: 980px;
+      min-height: 100vh;
+      background: var(--bg);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      box-shadow: 0 0 40px rgba(0,0,0,0.06);
+    }
+
+    /* Header */
+    header {
+      padding: 24px 20px;
+      border-bottom: 2px solid var(--border);
+      background: var(--bg);
+    }
+
+    header h1 {
+      font-family: 'Fraunces', serif;
+      font-size: 28px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    header p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* Tab Navigation */
+    .tab-nav {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+      background: var(--surface);
+      overflow-x: auto;
+      padding: 0 20px;
+    }
+
+    .tab-btn {
+      flex-shrink: 0;
+      padding: 14px 20px;
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      color: var(--muted);
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .tab-btn:hover {
+      color: var(--text);
+    }
+
+    .tab-btn.active {
+      color: var(--ocean-blue);
+      border-bottom-color: var(--ocean-blue);
+    }
+
+    /* Content */
+    .content {
+      flex: 1;
+      overflow-y: auto;
+      padding: 24px 20px;
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    /* Grid Layout */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 24px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px;
+      box-shadow: var(--shadow);
+    }
+
+    .card h3 {
+      font-family: 'Fraunces', serif;
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: var(--text);
+    }
+
+    .card h4 {
+      font-family: 'Fraunces', serif;
+      font-size: 15px;
+      font-weight: 600;
+      margin-top: 16px;
+      margin-bottom: 10px;
+      color: var(--text);
+    }
+
+    /* Calendar */
+    .calendar {
+      width: 100%;
+    }
+
+    .calendar-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .calendar-header h4 {
+      margin: 0;
+      font-family: 'Fraunces', serif;
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .calendar-nav {
+      display: flex;
+      gap: 8px;
+    }
+
+    .calendar-nav button {
+      padding: 6px 12px;
+      background: var(--ocean-blue);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 12px;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+
+    .calendar-nav button:hover {
+      background: #155a7f;
+    }
+
+    .weekdays {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 4px;
+      margin-bottom: 8px;
+    }
+
+    .weekday {
+      text-align: center;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--faint);
+      padding: 8px 0;
+      text-transform: uppercase;
+    }
+
+    .dates {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 4px;
+    }
+
+    .date {
+      aspect-ratio: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 13px;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .date:hover {
+      background: var(--border);
+    }
+
+    .date.available {
+      color: var(--ocean-blue);
+      font-weight: 600;
+    }
+
+    .date.available:hover {
+      background: rgba(26,126,168,0.1);
+      border-color: var(--ocean-blue);
+    }
+
+    .date.selected {
+      background: var(--ocean-blue);
+      color: white;
+      border-color: var(--ocean-blue);
+    }
+
+    .date.unavailable {
+      background: #fafafa;
+      color: var(--faint);
+      cursor: not-allowed;
+    }
+
+    /* Form Elements */
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 6px;
+      font-family: 'JetBrains Mono', monospace;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      color: var(--text);
+      background: white;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: var(--ocean-blue);
+      box-shadow: 0 0 0 3px rgba(26,126,168,0.1);
+    }
+
+    /* Time Slots */
+    .time-slots {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+
+    .time-slot {
+      padding: 10px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      text-align: center;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 500;
+      transition: all 0.15s;
+    }
+
+    .time-slot:hover {
+      border-color: var(--ocean-blue);
+      background: rgba(26,126,168,0.05);
+    }
+
+    .time-slot.selected {
+      background: var(--ocean-blue);
+      color: white;
+      border-color: var(--ocean-blue);
+    }
+
+    .time-slot.unavailable {
+      background: #fafafa;
+      color: var(--faint);
+      cursor: not-allowed;
+    }
+
+    /* Menu Browser */
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .menu-item {
+      padding: 12px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .menu-item:hover {
+      border-color: var(--ocean-blue);
+      background: rgba(26,126,168,0.05);
+    }
+
+    .menu-item.selected {
+      border-color: var(--ocean-blue);
+      background: rgba(26,126,168,0.1);
+    }
+
+    .menu-item-name {
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .menu-item-price {
+      font-size: 12px;
+      color: var(--ocean-blue);
+      font-weight: 600;
+    }
+
+    .menu-item-desc {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    /* Buttons */
+    button.primary-btn, input[type="submit"] {
+      background: var(--ocean-blue);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      padding: 12px 20px;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.15s;
+      width: 100%;
+    }
+
+    button.primary-btn:hover, input[type="submit"]:hover {
+      background: #155a7f;
+    }
+
+    button.secondary-btn {
+      background: var(--terracotta);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      padding: 10px 16px;
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+
+    button.secondary-btn:hover {
+      background: #a85b20;
+    }
+
+    /* Counter */
+    .counter {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .counter label {
+      flex: 1;
+      margin: 0;
+    }
+
+    .counter-controls {
+      display: flex;
+      gap: 4px;
+    }
+
+    .counter-btn {
+      width: 36px;
+      height: 36px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: var(--text);
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 14px;
+      transition: all 0.15s;
+    }
+
+    .counter-btn:hover {
+      background: var(--ocean-blue);
+      color: white;
+      border-color: var(--ocean-blue);
+    }
+
+    .counter-display {
+      width: 50px;
+      text-align: center;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    /* Summary / Calculator */
+    .summary {
+      background: var(--surface);
+      border: 2px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      margin: 16px 0;
+    }
+
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      margin-bottom: 8px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .summary-row:last-child {
+      border-bottom: none;
+      padding-top: 8px;
+      border-top: 1px solid var(--border);
+      font-weight: 600;
+      font-size: 15px;
+    }
+
+    .summary-row .label {
+      color: var(--muted);
+    }
+
+    .summary-row .value {
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .summary-row:last-child .label {
+      color: var(--ocean-blue);
+    }
+
+    .summary-row:last-child .value {
+      color: var(--ocean-blue);
+    }
+
+    /* Pricing Table */
+    .pricing-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      margin: 12px 0;
+    }
+
+    .pricing-table th {
+      background: var(--ocean-blue);
+      color: white;
+      padding: 10px;
+      text-align: left;
+      font-weight: 600;
+      border-radius: 6px 6px 0 0;
+    }
+
+    .pricing-table td {
+      padding: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .pricing-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* Availability Badge */
+    .badge {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 12px;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .badge.available {
+      background: rgba(76,175,80,0.2);
+      color: #2e7d32;
+    }
+
+    .badge.limited {
+      background: rgba(209,114,38,0.2);
+      color: #a85b20;
+    }
+
+    .badge.full {
+      background: rgba(193,92,74,0.2);
+      color: #8b3e35;
+    }
+
+    /* Section with border */
+    .section {
+      margin-bottom: 24px;
+    }
+
+    .section-title {
+      font-family: 'Fraunces', serif;
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--ocean-blue);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .two-col {
+        grid-template-columns: 1fr;
+      }
+
+      .menu-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .time-slots {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    /* Success Message */
+    .success-message {
+      display: none;
+      background: rgba(76,175,80,0.1);
+      border: 1px solid rgba(76,175,80,0.5);
+      border-radius: 10px;
+      padding: 16px;
+      margin-bottom: 16px;
+      color: #2e7d32;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .success-message.show {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+<div id="frame">
+  <header>
+    <h1>🏛️ Botswana National Museum</h1>
+    <p>Bookings & Reservations System</p>
+  </header>
+
+  <div class="tab-nav">
+    <button class="tab-btn active" data-tab="tickets" onclick="switchTab('tickets')">🎫 Museum Tickets</button>
+    <button class="tab-btn" data-tab="restaurant" onclick="switchTab('restaurant')">🍽️ Restaurant</button>
+    <button class="tab-btn" data-tab="venue" onclick="switchTab('venue')">🏗️ Venue Rental</button>
+    <button class="tab-btn" data-tab="summary" onclick="switchTab('summary')">📊 Booking Summary</button>
+  </div>
+
+  <div class="content">
+    <!-- TICKETS TAB -->
+    <div id="tickets" class="tab-content active">
+      <h2 style="font-family: 'Fraunces', serif; font-size: 22px; margin-bottom: 20px;">Museum Entry Tickets</h2>
+
+      <div class="two-col">
+        <!-- Ticket Type Selection -->
+        <div class="card">
+          <h3>Select Ticket Type</h3>
+          <div style="margin-top: 12px;">
+            <div style="margin-bottom: 12px;">
+              <input type="radio" id="ticket-standard" name="ticket-type" value="standard" onchange="updateTicketType()" checked>
+              <label for="ticket-standard" style="display: inline; margin-left: 6px; text-transform: capitalize; font-weight: 400; font-family: 'Inter', sans-serif;">Standard Entry - P75</label>
+              <p style="font-size: 12px; color: var(--muted); margin-left: 24px; margin-top: 4px;">General admission, all galleries</p>
+            </div>
+            <div style="margin-bottom: 12px;">
+              <input type="radio" id="ticket-student" name="ticket-type" value="student" onchange="updateTicketType()">
+              <label for="ticket-student" style="display: inline; margin-left: 6px; text-transform: capitalize; font-weight: 400; font-family: 'Inter', sans-serif;">Student - P40</label>
+              <p style="font-size: 12px; color: var(--muted); margin-left: 24px; margin-top: 4px;">With valid student ID</p>
+            </div>
+            <div style="margin-bottom: 12px;">
+              <input type="radio" id="ticket-child" name="ticket-type" value="child" onchange="updateTicketType()">
+              <label for="ticket-child" style="display: inline; margin-left: 6px; text-transform: capitalize; font-weight: 400; font-family: 'Inter', sans-serif;">Child (6-12) - P35</label>
+              <p style="font-size: 12px; color: var(--muted); margin-left: 24px; margin-top: 4px;">Ages 6-12 years</p>
+            </div>
+            <div style="margin-bottom: 12px;">
+              <input type="radio" id="ticket-senior" name="ticket-type" value="senior" onchange="updateTicketType()">
+              <label for="ticket-senior" style="display: inline; margin-left: 6px; text-transform: capitalize; font-weight: 400; font-family: 'Inter', sans-serif;">Senior (60+) - P50</label>
+              <p style="font-size: 12px; color: var(--muted); margin-left: 24px; margin-top: 4px;">Ages 60 and above</p>
+            </div>
+            <div style="margin-bottom: 12px;">
+              <input type="radio" id="ticket-group" name="ticket-type" value="group" onchange="updateTicketType()">
+              <label for="ticket-group" style="display: inline; margin-left: 6px; text-transform: capitalize; font-weight: 400; font-family: 'Inter', sans-serif;">Group (10+) - P60/person</label>
+              <p style="font-size: 12px; color: var(--muted); margin-left: 24px; margin-top: 4px;">Groups of 10 or more</p>
+            </div>
+          </div>
+
+          <h4 style="margin-top: 20px;">Add-ons</h4>
+          <div style="margin-top: 12px;">
+            <div style="margin-bottom: 8px;">
+              <input type="checkbox" id="addon-guide" value="guide">
+              <label for="addon-guide" style="display: inline; margin-left: 6px; text-transform: capitalize; font-weight: 400; font-family: 'Inter', sans-serif;">Guided Tour (+P120)</label>
+            </div>
+            <div style="margin-bottom: 8px;">
+              <input type="checkbox" id="addon-audio" value="audio">
+              <label for="addon-audio" style="display: inline; margin-left: 6px; text-transform: capitalize; font-weight: 400; font-family: 'Inter', sans-serif;">Audio Guide (+P40)</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Date & Time Selection -->
+        <div class="card">
+          <h3>Select Date & Time</h3>
+          <div class="calendar">
+            <div class="calendar-header">
+              <h4 id="cal-month-year"></h4>
+              <div class="calendar-nav">
+                <button onclick="prevMonth()">← Prev</button>
+                <button onclick="nextMonth()">Next →</button>
+              </div>
+            </div>
+            <div class="weekdays">
+              <div class="weekday">Sun</div>
+              <div class="weekday">Mon</div>
+              <div class="weekday">Tue</div>
+              <div class="weekday">Wed</div>
+              <div class="weekday">Thu</div>
+              <div class="weekday">Fri</div>
+              <div class="weekday">Sat</div>
+            </div>
+            <div class="dates" id="calendar-dates"></div>
+          </div>
+
+          <h4 style="margin-top: 16px;">Select Time Slot</h4>
+          <div class="time-slots" id="time-slots">
+            <div class="time-slot" onclick="selectTime('09:00')">09:00 AM</div>
+            <div class="time-slot" onclick="selectTime('11:00')">11:00 AM</div>
+            <div class="time-slot" onclick="selectTime('13:00')">01:00 PM</div>
+            <div class="time-slot" onclick="selectTime('15:00')">03:00 PM</div>
+            <div class="time-slot" onclick="selectTime('16:00')">04:00 PM</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Visitor Count -->
+      <div class="card">
+        <h3>Number of Visitors</h3>
+        <div class="counter">
+          <label>Total Visitors</label>
+          <div class="counter-controls">
+            <button class="counter-btn" onclick="decreaseTickets()">−</button>
+            <div class="counter-display" id="visitor-count">1</div>
+            <button class="counter-btn" onclick="increaseTickets()">+</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RESTAURANT TAB -->
+    <div id="restaurant" class="tab-content">
+      <h2 style="font-family: 'Fraunces', serif; font-size: 22px; margin-bottom: 20px;">Restaurant Reservation</h2>
+
+      <div class="two-col">
+        <!-- Date & Party Size -->
+        <div class="card">
+          <h3>Reservation Details</h3>
+          
+          <div class="form-group">
+            <label>Dining Date</label>
+            <input type="date" id="rest-date" onchange="updateRestaurantAvailability()">
+          </div>
+
+          <div class="form-group">
+            <label>Time</label>
+            <select id="rest-time" onchange="updateRestaurantAvailability()">
+              <option value="">Select time...</option>
+              <option value="12:00">12:00 PM (Lunch)</option>
+              <option value="12:30">12:30 PM</option>
+              <option value="13:00">01:00 PM</option>
+              <option value="13:30">01:30 PM</option>
+              <option value="14:00">02:00 PM</option>
+              <option value="18:00">06:00 PM (Dinner)</option>
+              <option value="18:30">06:30 PM</option>
+              <option value="19:00">07:00 PM</option>
+              <option value="19:30">07:30 PM</option>
+              <option value="20:00">08:00 PM</option>
+            </select>
+          </div>
+
+          <div class="counter">
+            <label>Party Size</label>
+            <div class="counter-controls">
+              <button class="counter-btn" onclick="decreasePartySize()">−</button>
+              <div class="counter-display" id="party-size">2</div>
+              <button class="counter-btn" onclick="increasePartySize()">+</button>
+            </div>
+          </div>
+
+          <div id="rest-availability" style="margin-top: 12px; padding: 10px; background: rgba(76,175,80,0.1); border-radius: 6px; font-size: 13px;">
+            ✓ Tables available
+          </div>
+        </div>
+
+        <!-- Seating & Add-ons -->
+        <div class="card">
+          <h3>Seating Preference</h3>
+          
+          <div style="margin-bottom: 12px;">
+            <input type="radio" id="seating-indoor" name="seating" value="indoor" checked>
+            <label for="seating-indoor" style="display: inline; margin-left: 6px; text-transform: capitalize; font-weight: 400; font-family: 'Inter', sans-serif;">Indoor Dining</label>
+          </div>
+          <div style="margin-bottom: 12px;">
+            <input type="radio" id="seating-outdoor" name="seating" value="outdoor">
+            <label for="seating-outdoor" style="display: inline; margin-left: 6px; text-transform: capitalize; font-weight: 400; font-family: 'Inter', sans-serif;">Outdoor Courtyard</label>
+          </div>
+          <div style="margin-bottom: 12px;">
+            <input type="radio" id="seating-any" name="seating" value="any">
+            <label for="seating-any" style="display: inline; margin-left: 6px; text-transform: capitalize; font-weight: 400; font-family: 'Inter', sans-serif;">No Preference</label>
+          </div>
+
+          <h4 style="margin-top: 20px;">Special Occasions</h4>
+          <div style="margin-bottom: 8px;">
+            <input type="checkbox" id="occasion-birthday" value="birthday">
+            <label for="occasion-birthday" style="display: inline; margin-left: 6px; text-transform: capitalize; font-weight: 400; font-family: 'Inter', sans-serif;">Birthday Celebration</label>
+          </div>
+          <div style="margin-bottom: 8px;">
+            <input type="checkbox" id="occasion-anniversary" value="anniversary">
+            <label for="occasion-anniversary" style="display: inline; margin-left: 6px; text-transform: capitalize; font-weight: 400; font-family: 'Inter', sans-serif;">Anniversary</label>
+          </div>
+
+          <h4 style="margin-top: 20px;">Dietary Requirements</h4>
+          <div style="margin-bottom: 8px;">
+            <input type="checkbox" id="diet-vegan" value="vegan">
+            <label for="diet-vegan" style="display: inline; margin-left: 6px; text-transform: capitalize; font-weight: 400; font-family: 'Inter', sans-serif;">Vegan</label>
+          </div>
+          <div style="margin-bottom: 8px;">
+            <input type="checkbox" id="diet-glutenfree" value="glutenfree">
+            <label for="diet-glutenfree" style="display: inline; margin-left: 6px; text-transform: capitalize; font-weight: 400; font-family: 'Inter', sans-serif;">Gluten-Free</label>
+          </div>
+          <div style="margin-bottom: 8px;">
+            <input type="checkbox" id="diet-halal" value="halal">
+            <label for="diet-halal" style="display: inline; margin-left: 6px; text-transform: capitalize; font-weight: 400; font-family: 'Inter', sans-serif;">Halal</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Menu Selection & Pre-Ordering -->
+      <div class="card">
+        <h3>Pre-Order Meals (Optional)</h3>
+        <p style="color: var(--muted); font-size: 13px; margin-bottom: 14px;">Select items to ensure availability and faster service. You can also order when seated.</p>
+
+        <div class="form-group">
+          <label>Filter by Category</label>
+          <select id="menu-filter" onchange="filterMenuItems()">
+            <option value="">All Items</option>
+            <option value="morning">Morning Starters</option>
+            <option value="setswana">Setswana Traditional</option>
+            <option value="modern">Modern Café Bites</option>
+            <option value="desserts">Milkshakes & Desserts</option>
+            <option value="drinks">Beverages</option>
+          </select>
+        </div>
+
+        <div class="section-title">Available Dishes</div>
+        <div class="menu-grid" id="menu-items-container">
+          <!-- Populated by JavaScript -->
+        </div>
+      </div>
+
+      <!-- Pre-Order Summary -->
+      <div class="summary" id="preorder-summary" style="display: none;">
+        <div style="margin-bottom: 12px;">
+          <strong style="font-family: 'Fraunces', serif; font-size: 15px;">Pre-Ordered Items</strong>
+        </div>
+        <div id="preorder-items"></div>
+      </div>
+
+      <div class="form-group">
+        <label>Special Requests</label>
+        <textarea id="rest-notes" placeholder="Any allergies, preferences, or special requests..." style="resize: vertical; min-height: 80px;"></textarea>
+      </div>
+
+      <button class="primary-btn" onclick="confirmRestaurant()">Reserve Table</button>
+    </div>
+
+    <!-- VENUE TAB -->
+    <div id="venue" class="tab-content">
+      <h2 style="font-family: 'Fraunces', serif; font-size: 22px; margin-bottom: 20px;">Venue Rental for Events</h2>
+
+      <div class="two-col">
+        <!-- Event Details -->
+        <div class="card">
+          <h3>Event Details</h3>
+
+          <div class="form-group">
+            <label>Event Type</label>
+            <select>
+              <option>Select event type...</option>
+              <option>Wedding Reception</option>
+              <option>Corporate Event</option>
+              <option>Conference</option>
+              <option>Exhibition</option>
+              <option>Private Party</option>
+              <option>Workshop / Seminar</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Event Date</label>
+            <input type="date" id="venue-date" onchange="updateVenueAvailability()">
+          </div>
+
+          <div class="form-group">
+            <label>Time (Duration)</label>
+            <select id="venue-duration" onchange="updateVenueAvailability()">
+              <option value="">Select duration...</option>
+              <option value="3">3 Hours</option>
+              <option value="4">4 Hours</option>
+              <option value="6">6 Hours (Half Day)</option>
+              <option value="8">8 Hours (Full Day)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Expected Guests</label>
+            <input type="number" id="venue-guests" min="50" placeholder="Minimum 50 guests" onchange="updateVenuePricing()">
+          </div>
+        </div>
+
+        <!-- Venue Options -->
+        <div class="card">
+          <h3>Venue Options</h3>
+
+          <div style="margin-bottom: 14px;">
+            <h4>Main Hall</h4>
+            <p style="font-size: 13px; color: var(--muted); margin-bottom: 8px;">Capacity: 300 people | P1,500 – 2,000 per hour</p>
+            <div id="main-hall-availability" class="badge available">Available</div>
+          </div>
+
+          <div style="margin-bottom: 14px;">
+            <h4>Courtyard Pavilion</h4>
+            <p style="font-size: 13px; color: var(--muted); margin-bottom: 8px;">Capacity: 150 people | P1,000 – 1,500 per hour</p>
+            <div id="pavilion-availability" class="badge available">Available</div>
+          </div>
+
+          <div style="margin-bottom: 14px;">
+            <h4>Seminar Rooms (1-3)</h4>
+            <p style="font-size: 13px; color: var(--muted); margin-bottom: 8px;">Each: 50-80 people | P600 – 1,000 per hour</p>
+            <div id="seminar-availability" class="badge available">Available</div>
+          </div>
+
+          <input type="checkbox" id="venue-catering" onchange="updateVenuePricing()">
+          <label for="venue-catering" style="display: inline; margin-left: 6px; text-transform: capitalize; font-weight: 400; font-family: 'Inter', sans-serif;">Include Museum Café Catering</label>
+        </div>
+      </div>
+
+      <!-- Catering Menu (if selected) -->
+      <div class="card" id="catering-section" style="display: none;">
+        <h3>Catering Menu Selection</h3>
+        <p style="color: var(--muted); font-size: 13px; margin-bottom: 14px;">Choose dishes for your guests. Pricing calculated per person.</p>
+
+        <div class="form-group">
+          <label>Catering Style</label>
+          <select id="catering-style" onchange="updateCateringMenu()">
+            <option value="">Select catering style...</option>
+            <option value="traditional">Traditional Setswana (P85/person)</option>
+            <option value="modern">Modern Café Mix (P75/person)</option>
+            <option value="premium">Premium Selection (P120/person)</option>
+            <option value="custom">Build Your Own Menu</option>
+          </select>
+        </div>
+
+        <div id="catering-items" style="display: none;">
+          <div class="menu-grid" id="catering-menu-container"></div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Organizer Name *</label>
+        <input type="text" placeholder="Full name">
+      </div>
+
+      <div class="form-group">
+        <label>Email Address *</label>
+        <input type="email" placeholder="your@email.com">
+      </div>
+
+      <div class="form-group">
+        <label>Phone Number *</label>
+        <input type="tel" placeholder="+267...">
+      </div>
+
+      <div class="form-group">
+        <label>Special Requests</label>
+        <textarea placeholder="Decorations, entertainment, special setup..." style="resize: vertical; min-height: 80px;"></textarea>
+      </div>
+
+      <button class="primary-btn" onclick="confirmVenue()">Send Venue Inquiry</button>
+    </div>
+
+    <!-- SUMMARY TAB -->
+    <div id="summary" class="tab-content">
+      <h2 style="font-family: 'Fraunces', serif; font-size: 22px; margin-bottom: 20px;">Your Booking Summary</h2>
+
+      <div class="success-message" id="success-message">
+        ✓ Booking confirmed! A confirmation email will be sent shortly.
+      </div>
+
+      <div class="two-col">
+        <!-- Tickets Summary -->
+        <div class="card">
+          <h3>🎫 Museum Tickets</h3>
+          <div id="ticket-summary">
+            <p style="color: var(--muted); font-size: 13px;">No ticket booking yet.</p>
+          </div>
+        </div>
+
+        <!-- Restaurant Summary -->
+        <div class="card">
+          <h3>🍽️ Restaurant Reservation</h3>
+          <div id="restaurant-summary">
+            <p style="color: var(--muted); font-size: 13px;">No reservation yet.</p>
+          </div>
+        </div>
+
+        <!-- Venue Summary -->
+        <div class="card">
+          <h3>🏗️ Venue Booking</h3>
+          <div id="venue-summary">
+            <p style="color: var(--muted); font-size: 13px;">No venue booking yet.</p>
+          </div>
+        </div>
+
+        <!-- Overall Calculator -->
+        <div class="card">
+          <h3>💰 Total Cost Calculator</h3>
+          <div class="summary">
+            <div class="summary-row">
+              <span class="label">Ticket Total:</span>
+              <span class="value" id="calc-tickets">P0</span>
+            </div>
+            <div class="summary-row">
+              <span class="label">Restaurant:</span>
+              <span class="value" id="calc-restaurant">P0</span>
+            </div>
+            <div class="summary-row">
+              <span class="label">Venue Rental:</span>
+              <span class="value" id="calc-venue">P0</span>
+            </div>
+            <div class="summary-row">
+              <span class="label">TAX (14%):</span>
+              <span class="value" id="calc-tax">P0</span>
+            </div>
+            <div class="summary-row">
+              <span class="label">GRAND TOTAL:</span>
+              <span class="value" id="calc-total">P0</span>
+            </div>
+          </div>
+
+          <button class="primary-btn" onclick="finalizeBooking()">Finalize & Checkout</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Booking Contact Information</h3>
+        <div class="form-group">
+          <label>Full Name *</label>
+          <input type="text" id="booking-name" placeholder="Your full name">
+        </div>
+        <div class="form-group">
+          <label>Email Address *</label>
+          <input type="email" id="booking-email" placeholder="your@email.com">
+        </div>
+        <div class="form-group">
+          <label>Phone Number *</label>
+          <input type="tel" id="booking-phone" placeholder="+267...">
+        </div>
+        <button class="primary-btn" onclick="submitAllBookings()">Complete All Bookings</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* =========================================================
+   STATE & GLOBAL DATA
+========================================================= */
+
+let bookingState = {
+  ticket: {
+    type: 'standard',
+    date: null,
+    time: null,
+    count: 1,
+    addons: [],
+    price: 75
+  },
+  restaurant: {
+    date: null,
+    time: null,
+    partySize: 2,
+    seating: 'any',
+    preOrders: [],
+    notes: '',
+    price: 0
+  },
+  venue: {
+    type: null,
+    date: null,
+    duration: null,
+    guests: 50,
+    catering: false,
+    price: 0
+  },
+  contact: {
+    name: '',
+    email: '',
+    phone: ''
+  }
+};
+
+const MENU_DATA = {
+  morning: [
+    { id: 'MS01', name: 'Sunrise Breakfast', price: 55, cat: 'morning' },
+    { id: 'MS02', name: 'Farmhouse Omelette', price: 65, cat: 'morning' },
+    { id: 'MS03', name: 'Fully Loaded Feast', price: 110, cat: 'morning' },
+  ],
+  setswana: [
+    { id: 'TM01', name: 'Traditional Lebelele Combo', price: 95, cat: 'setswana' },
+    { id: 'TM02', name: 'Beef Seswaa Bowl', price: 85, cat: 'setswana' },
+    { id: 'TM03', name: 'Goat Seswaa Plate', price: 90, cat: 'setswana' },
+    { id: 'TM04', name: 'Koko ya Setswana', price: 85, cat: 'setswana' },
+  ],
+  modern: [
+    { id: 'MC01', name: 'Flame-Grilled Pork Chops', price: 120, cat: 'modern' },
+    { id: 'MC02', name: 'The Sesame Wrap', price: 75, cat: 'modern' },
+    { id: 'MC03', name: 'Museum Smash Burger', price: 85, cat: 'modern' },
+  ],
+  desserts: [
+    { id: 'MD01', name: 'Vanilla Shake', price: 40, cat: 'desserts' },
+    { id: 'MD02', name: 'Strawberry Shake', price: 40, cat: 'desserts' },
+    { id: 'MD03', name: 'Malva Pudding', price: 45, cat: 'desserts' },
+  ],
+  drinks: [
+    { id: 'SD01', name: 'Coca-Cola (300ml)', price: 20, cat: 'drinks' },
+    { id: 'SD02', name: 'Fresh Juice', price: 25, cat: 'drinks' },
+    { id: 'HB04', name: 'Cappuccino', price: 32, cat: 'drinks' },
+  ]
+};
+
+let currentMonth = new Date();
+
+/* =========================================================
+   TAB SWITCHING
+========================================================= */
+
+function switchTab(tabName) {
+  document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+  document.getElementById(tabName).classList.add('active');
+  document.querySelector(`[data-tab="${tabName}"]`).classList.add('active');
+  
+  if (tabName === 'summary') updateSummary();
+  if (tabName === 'restaurant') renderMenuItems();
+}
+
+/* =========================================================
+   CALENDAR & DATE SELECTION
+========================================================= */
+
+function renderCalendar() {
+  const year = currentMonth.getFullYear();
+  const month = currentMonth.getMonth();
+  const monthName = currentMonth.toLocaleString('default', { month: 'long', year: 'numeric' });
+  
+  document.getElementById('cal-month-year').textContent = monthName;
+  
+  const firstDay = new Date(year, month, 1);
+  const lastDay = new Date(year, month + 1, 0);
+  const prevLastDay = new Date(year, month, 0).getDate();
+  
+  const datesContainer = document.getElementById('calendar-dates');
+  datesContainer.innerHTML = '';
+  
+  // Previous month's days
+  for (let i = firstDay.getDay() - 1; i >= 0; i--) {
+    const day = prevLastDay - i;
+    const dateEl = document.createElement('div');
+    dateEl.className = 'date unavailable';
+    dateEl.textContent = day;
+    datesContainer.appendChild(dateEl);
+  }
+  
+  // Current month's days
+  for (let day = 1; day <= lastDay.getDate(); day++) {
+    const dateEl = document.createElement('div');
+    const dateObj = new Date(year, month, day);
+    const dateStr = dateObj.toISOString().split('T')[0];
+    
+    // Simple availability: disable past dates
+    const isPast = dateObj < new Date();
+    
+    dateEl.className = 'date';
+    if (isPast) {
+      dateEl.classList.add('unavailable');
+    } else {
+      dateEl.classList.add('available');
+      dateEl.onclick = () => selectDate(dateStr);
+    }
+    dateEl.textContent = day;
+    datesContainer.appendChild(dateEl);
+  }
+  
+  // Next month's days
+  const remainingDays = 42 - datesContainer.children.length;
+  for (let day = 1; day <= remainingDays; day++) {
+    const dateEl = document.createElement('div');
+    dateEl.className = 'date unavailable';
+    dateEl.textContent = day;
+    datesContainer.appendChild(dateEl);
+  }
+}
+
+function prevMonth() {
+  currentMonth = new Date(currentMonth.getFullYear(), currentMonth.getMonth() - 1);
+  renderCalendar();
+}
+
+function nextMonth() {
+  currentMonth = new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1);
+  renderCalendar();
+}
+
+function selectDate(dateStr) {
+  bookingState.ticket.date = dateStr;
+  document.querySelectorAll('.date.selected').forEach(el => el.classList.remove('selected'));
+  event.target.classList.add('selected');
+}
+
+function selectTime(time) {
+  bookingState.ticket.time = time;
+  document.querySelectorAll('.time-slot.selected').forEach(el => el.classList.remove('selected'));
+  event.target.classList.add('selected');
+}
+
+/* =========================================================
+   TICKET MANAGEMENT
+========================================================= */
+
+function updateTicketType() {
+  const selected = document.querySelector('input[name="ticket-type"]:checked').value;
+  const prices = {
+    standard: 75,
+    student: 40,
+    child: 35,
+    senior: 50,
+    group: 60
+  };
+  bookingState.ticket.type = selected;
+  bookingState.ticket.price = prices[selected];
+}
+
+function increaseTickets() {
+  if (bookingState.ticket.count < 20) {
+    bookingState.ticket.count++;
+    document.getElementById('visitor-count').textContent = bookingState.ticket.count;
+  }
+}
+
+function decreaseTickets() {
+  if (bookingState.ticket.count > 1) {
+    bookingState.ticket.count--;
+    document.getElementById('visitor-count').textContent = bookingState.ticket.count;
+  }
+}
+
+/* =========================================================
+   RESTAURANT MANAGEMENT
+========================================================= */
+
+function increasePartySize() {
+  if (bookingState.restaurant.partySize < 30) {
+    bookingState.restaurant.partySize++;
+    document.getElementById('party-size').textContent = bookingState.restaurant.partySize;
+  }
+}
+
+function decreasePartySize() {
+  if (bookingState.restaurant.partySize > 1) {
+    bookingState.restaurant.partySize--;
+    document.getElementById('party-size').textContent = bookingState.restaurant.partySize;
+  }
+}
+
+function updateRestaurantAvailability() {
+  const date = document.getElementById('rest-date').value;
+  const time = document.getElementById('rest-time').value;
+  bookingState.restaurant.date = date;
+  bookingState.restaurant.time = time;
+  
+  // Simulate availability
+  if (date && time) {
+    document.getElementById('rest-availability').innerHTML = '✓ Tables available for selected date and time';
+  }
+}
+
+function renderMenuItems() {
+  const container = document.getElementById('menu-items-container');
+  container.innerHTML = '';
+  
+  let allItems = [];
+  Object.values(MENU_DATA).forEach(items => allItems.push(...items));
+  
+  allItems.forEach(item => {
+    const div = document.createElement('div');
+    div.className = 'menu-item';
+    div.onclick = () => selectMenuItem(item.id, div);
+    div.innerHTML = `
+      <div class="menu-item-name">${item.name}</div>
+      <div class="menu-item-price">P${item.price}</div>
+    `;
+    container.appendChild(div);
+  });
+}
+
+function selectMenuItem(itemId, el) {
+  el.classList.toggle('selected');
+  
+  if (el.classList.contains('selected')) {
+    bookingState.restaurant.preOrders.push(itemId);
+  } else {
+    bookingState.restaurant.preOrders = bookingState.restaurant.preOrders.filter(id => id !== itemId);
+  }
+  
+  updatePreOrderSummary();
+}
+
+function updatePreOrderSummary() {
+  if (bookingState.restaurant.preOrders.length === 0) {
+    document.getElementById('preorder-summary').style.display = 'none';
+    return;
+  }
+  
+  document.getElementById('preorder-summary').style.display = 'block';
+  
+  let total = 0;
+  let html = '';
+  
+  bookingState.restaurant.preOrders.forEach(itemId => {
+    for (let cat in MENU_DATA) {
+      const item = MENU_DATA[cat].find(i => i.id === itemId);
+      if (item) {
+        total += item.price;
+        html += `<div style="display: flex; justify-content: space-between; font-size: 12px; padding: 4px 0;">
+          <span>${item.name}</span>
+          <span>P${item.price}</span>
+        </div>`;
+      }
+    }
+  });
+  
+  html += `<div style="border-top: 1px solid var(--border); padding-top: 8px; margin-top: 8px; display: flex; justify-content: space-between; font-weight: 600; font-size: 13px;">
+    <span>Pre-Order Total</span>
+    <span>P${total}</span>
+  </div>`;
+  
+  document.getElementById('preorder-items').innerHTML = html;
+  bookingState.restaurant.price = total;
+}
+
+function filterMenuItems() {
+  // Implementation for filtering
+}
+
+function confirmRestaurant() {
+  alert('Restaurant reservation submitted! Check your email for confirmation.');
+}
+
+/* =========================================================
+   VENUE MANAGEMENT
+========================================================= */
+
+function updateVenueAvailability() {
+  const date = document.getElementById('venue-date').value;
+  const duration = document.getElementById('venue-duration').value;
+  bookingState.venue.date = date;
+  bookingState.venue.duration = duration;
+}
+
+function updateVenuePricing() {
+  const guests = parseInt(document.getElementById('venue-guests').value) || 50;
+  bookingState.venue.guests = guests;
+  bookingState.venue.catering = document.getElementById('venue-catering').checked;
+  
+  if (bookingState.venue.catering) {
+    document.getElementById('catering-section').style.display = 'block';
+  } else {
+    document.getElementById('catering-section').style.display = 'none';
+  }
+}
+
+function updateCateringMenu() {
+  document.getElementById('catering-items').style.display = 'block';
+}
+
+function confirmVenue() {
+  alert('Venue inquiry submitted! Our team will contact you within 24 hours.');
+}
+
+/* =========================================================
+   SUMMARY & CHECKOUT
+========================================================= */
+
+function updateSummary() {
+  let ticketHtml = '<p style="color: var(--muted); font-size: 13px;">No ticket booking yet.</p>';
+  if (bookingState.ticket.date) {
+    const ticketTotal = bookingState.ticket.price * bookingState.ticket.count;
+    ticketHtml = `
+      <div style="font-size: 13px;">
+        <div style="margin-bottom: 8px;">
+          <strong>${bookingState.ticket.type}</strong> × ${bookingState.ticket.count} = <strong>P${ticketTotal}</strong>
+        </div>
+        <div style="font-size: 12px; color: var(--muted);">
+          📅 ${bookingState.ticket.date}<br>
+          🕐 ${bookingState.ticket.time || 'Not selected'}
+        </div>
+      </div>
+    `;
+  }
+  document.getElementById('ticket-summary').innerHTML = ticketHtml;
+  
+  let restHtml = '<p style="color: var(--muted); font-size: 13px;">No reservation yet.</p>';
+  if (bookingState.restaurant.date) {
+    restHtml = `
+      <div style="font-size: 13px;">
+        <div style="margin-bottom: 8px;">
+          Party of ${bookingState.restaurant.partySize}
+        </div>
+        <div style="font-size: 12px; color: var(--muted);">
+          📅 ${bookingState.restaurant.date}<br>
+          🕐 ${bookingState.restaurant.time || 'Not selected'}<br>
+          ${bookingState.restaurant.preOrders.length > 0 ? `Pre-orders: ${bookingState.restaurant.preOrders.length} items` : 'No pre-orders'}
+        </div>
+      </div>
+    `;
+  }
+  document.getElementById('restaurant-summary').innerHTML = restHtml;
+  
+  updateCalculator();
+}
+
+function updateCalculator() {
+  const ticketTotal = bookingState.ticket.date ? (bookingState.ticket.price * bookingState.ticket.count) : 0;
+  const restaurantTotal = bookingState.restaurant.price || 0;
+  const venueTotal = bookingState.venue.price || 0;
+  
+  const subtotal = ticketTotal + restaurantTotal + venueTotal;
+  const tax = Math.round(subtotal * 0.14);
+  const total = subtotal + tax;
+  
+  document.getElementById('calc-tickets').textContent = 'P' + ticketTotal;
+  document.getElementById('calc-restaurant').textContent = 'P' + restaurantTotal;
+  document.getElementById('calc-venue').textContent = 'P' + venueTotal;
+  document.getElementById('calc-tax').textContent = 'P' + tax;
+  document.getElementById('calc-total').textContent = 'P' + total;
+}
+
+function finalizeBooking() {
+  const name = document.getElementById('booking-name').value;
+  if (!name) {
+    alert('Please enter your name');
+    return;
+  }
+  alert('Proceeding to checkout...');
+}
+
+function submitAllBookings() {
+  const name = document.getElementById('booking-name').value;
+  const email = document.getElementById('booking-email').value;
+  const phone = document.getElementById('booking-phone').value;
+  
+  if (!name || !email || !phone) {
+    alert('Please fill in all contact information');
+    return;
+  }
+  
+  bookingState.contact = { name, email, phone };
+  
+  // Show success message
+  document.getElementById('success-message').classList.add('show');
+  
+  // Reset form
+  setTimeout(() => {
+    alert(`Booking confirmed!\n\nConfirmation details have been sent to ${email}`);
+  }, 500);
+}
+
+/* =========================================================
+   INIT
+========================================================= */
+
+window.addEventListener('DOMContentLoaded', () => {
+  renderCalendar();
+  renderMenuItems();
+  updateCalculator();
+});
+</script>
+</body>
+</html>

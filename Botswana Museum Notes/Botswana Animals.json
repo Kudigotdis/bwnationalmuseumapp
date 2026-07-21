@@ -1,0 +1,324 @@
+{
+  "animals": [
+    {
+      "id": 1,
+      "englishName": "African Bush Elephant",
+      "setswanaName": "Tlou",
+      "latinName": "Loxodonta africana",
+      "category": "Big Five",
+      "regions": ["Okavango Delta", "Chobe National Park", "Makgadikgadi Pans"],
+      "regionExplanation": "Found across the Okavango Delta, Chobe National Park, and the Makgadikgadi Pans. Botswana hosts the largest elephant population in Africa (over 130,000). During the dry season, the Chobe River can concentrate up to 50,000 elephants. Abundant permanent water sources and vast, protected woodlands make this an elephant stronghold.",
+      "culturalRelevance": "In Tswana culture, the elephant symbolizes power and might. Its ivory was historically a prized trade commodity and a symbol of chiefly status. It features prominently in royal regalia and oral traditions."
+    },
+    {
+      "id": 2,
+      "englishName": "Lion",
+      "setswanaName": "Tau",
+      "latinName": "Panthera leo",
+      "category": "Big Five",
+      "regions": ["Moremi Game Reserve", "Chobe National Park", "Central Kalahari Game Reserve"],
+      "regionExplanation": "Widespread across all major reserves – particularly Moremi Game Reserve, Chobe National Park, and the Central Kalahari Game Reserve. Abundant prey populations sustain healthy prides. Kalahari lions are famed for their impressive black manes, adapted to the harsh desert environment.",
+      "culturalRelevance": "The lion is deeply revered in Tswana culture. Among the Bakgatla and other Tswana tribes, lions could only be hunted with the chief's permission – typically when they became livestock raiders, for chiefly inauguration robes, or as a rite of passage for young warriors. Its roar is mimicked in tribal praise songs (maboko), symbolizing bravery, strength, and leadership."
+    },
+    {
+      "id": 3,
+      "englishName": "Leopard",
+      "setswanaName": "Lengau / Nkwe",
+      "latinName": "Panthera pardus",
+      "category": "Big Five",
+      "regions": ["Okavango Delta", "Kalahari Desert"],
+      "regionExplanation": "Distributed across all protected areas, from the Okavango Delta to the Kalahari Desert. Highly adaptable, they thrive in woodlands, rocky outcrops, and riverine forests, where they ambush prey.",
+      "culturalRelevance": "Like the lion, the leopard was a chiefly animal. Leopard skins were traditionally worn exclusively by chiefs and royal family members as a mark of high status, authority, and dignity. Unauthorized hunting was strictly forbidden."
+    },
+    {
+      "id": 4,
+      "englishName": "African Buffalo",
+      "setswanaName": "Nare",
+      "latinName": "Syncerus caffer",
+      "category": "Big Five",
+      "regions": ["Okavango Delta", "Chobe National Park"],
+      "regionExplanation": "Concentrated in the northern regions, particularly the Okavango Delta and Chobe National Park. They prefer grasslands and savannas close to water. The northern floodplains provide lush grazing and mud-wallowing sites, which are essential for their health.",
+      "culturalRelevance": "The buffalo symbolizes strength, resilience, and untamed nature. In traditional societies, successfully hunting a buffalo was considered one of the ultimate tests of a warrior’s courage, as they are notoriously dangerous when wounded."
+    },
+    {
+      "id": 5,
+      "englishName": "Black Rhinoceros / White Rhinoceros",
+      "setswanaName": "Tšhukudu",
+      "latinName": "Diceros bicornis (Black) / Ceratotherium simum (White)",
+      "category": "Big Five",
+      "regions": ["Okavango Delta", "Khama Rhino Sanctuary"],
+      "regionExplanation": "Found in the Okavango Delta, but the premier viewing location is the Khama Rhino Sanctuary (near Serowe), a dedicated safe haven. Due to intense poaching pressure, they are confined to heavily fortified, secure areas with 24/7 anti-poaching patrols.",
+      "culturalRelevance": "Historically, rhino horn was valued in traditional medicine, but modern Botswana places immense cultural emphasis on conservation. The rhino is now a national symbol of successful anti-poaching efforts and biodiversity protection."
+    },
+    {
+      "id": 6,
+      "englishName": "South African Giraffe",
+      "setswanaName": "Seboko / Thutlwa",
+      "latinName": "Giraffa camelopardalis giraffa",
+      "category": "Large Herbivores",
+      "regions": ["Chobe National Park", "Okavango Delta", "Central Kalahari Game Reserve"],
+      "regionExplanation": "Widespread in Chobe National Park, the Okavango Delta, and the Central Kalahari. Botswana's vast acacia savannas provide their primary food source. They are particularly common along riverine woodlands.",
+      "culturalRelevance": "The giraffe appears in Tswana folklore as a symbol of foresight, grace, and the ability to see beyond immediate challenges (due to its height)."
+    },
+    {
+      "id": 7,
+      "englishName": "Hippopotamus",
+      "setswanaName": "Kubu",
+      "latinName": "Hippopotamus amphibius",
+      "category": "Large Herbivores",
+      "regions": ["Okavango Delta", "Chobe River", "Linyanti River"],
+      "regionExplanation": "Heavily concentrated in permanent waters – especially the Okavango Delta, Chobe River, and Linyanti River. These permanent waterways provide deep pools for daytime resting and lush banks for nocturnal grazing.",
+      "culturalRelevance": "In Tswana mythology, the hippo is regarded as a guardian of waterways and is often featured in cautionary folktales about respecting the boundaries of nature."
+    },
+    {
+      "id": 8,
+      "englishName": "Burchell's Zebra / Plains Zebra",
+      "setswanaName": "Kgama / Pitsi",
+      "latinName": "Equus quagga burchellii",
+      "category": "Large Herbivores",
+      "regions": ["Savute", "Kalahari Desert", "Chobe National Park", "Moremi Game Reserve"],
+      "regionExplanation": "Abundant across the northern reserves and the Kalahari. They are famous for their migrations, particularly the zebra migration in the Savute region, which is one of the longest mammal migrations in Africa, driven by seasonal rainfall and water availability.",
+      "culturalRelevance": "The zebra's stripes are a common motif in Tswana art, pottery, and traditional décor, symbolizing harmony, balance, and the interconnectedness of light and dark."
+    },
+    {
+      "id": 9,
+      "englishName": "Sable Antelope",
+      "setswanaName": "Phala / Tshilohwane",
+      "latinName": "Hippotragus niger",
+      "category": "Antelopes",
+      "regions": ["Chobe National Park", "Linyanti"],
+      "regionExplanation": "Found in Chobe National Park and the Linyanti region. They prefer woodland savannas with medium to tall grasses. The northern protected woodlands offer the perfect mosaic of shade and grazing.",
+      "culturalRelevance": "The sable is one of Botswana's national symbols. Its image appears on the Botswana Police Service badge, symbolizing pride, resilience, and vigilance. It is deeply respected for its fierce defense against predators."
+    },
+    {
+      "id": 10,
+      "englishName": "Common Eland",
+      "setswanaName": "Phofu",
+      "latinName": "Taurotragus oryx",
+      "category": "Antelopes",
+      "regions": ["Kalahari Desert", "Chobe National Park", "Moremi Game Reserve"],
+      "regionExplanation": "Found in the Kalahari and northern reserves. As the largest antelope, they are highly adaptable, thriving from desert scrub to savanna woodlands, moving widely to find seasonal grazing.",
+      "culturalRelevance": "The eland is a symbol of abundance, fertility, and sustenance in Tswana culture. Its rich milk and nutritious meat made it a highly prized game animal in pre-colonial diets."
+    },
+    {
+      "id": 11,
+      "englishName": "Gemsbok / Southern Oryx",
+      "setswanaName": "Kukama",
+      "latinName": "Oryx gazella",
+      "category": "Antelopes",
+      "regions": ["Kalahari Desert"],
+      "regionExplanation": "Primarily found in the Kalahari Desert. Their unique physiological adaptations – including a nasal cooling system and the ability to raise their body temperature to avoid sweating – make them the signature species of the arid Kalahari ecosystem.",
+      "culturalRelevance": "The gemsbok is an iconic symbol of the Kalahari. Its striking black-and-white face markings are widely used in tourism branding and local crafts."
+    },
+    {
+      "id": 12,
+      "englishName": "Common Tsessebe",
+      "setswanaName": "Tsessebe",
+      "latinName": "Damaliscus lunatus lunatus",
+      "category": "Antelopes",
+      "regions": ["Chobe National Park", "Moremi Game Reserve", "Linyanti"],
+      "regionExplanation": "Found in northern reserves (Chobe, Moremi, and the Linyanti). They prefer open grasslands and floodplains. Interestingly, the English name 'tsessebe' is directly borrowed from the Setswana name, highlighting its local prominence. It is also the fastest-running antelope in Africa.",
+      "culturalRelevance": "The name's direct linguistic borrowing signifies how deeply embedded this animal is in the local landscape and language."
+    },
+    {
+      "id": 13,
+      "englishName": "Red Lechwe",
+      "setswanaName": "Letswee",
+      "latinName": "Kobus leche",
+      "category": "Antelopes",
+      "regions": ["Okavango Delta"],
+      "regionExplanation": "Endemic to the Okavango Delta. They have uniquely elongated hind legs, allowing them to bound effortlessly through flooded wetlands and shallow water, making them perfectly adapted to the delta's seasonal flooding.",
+      "culturalRelevance": "The red lechwe is the quintessential icon of the Okavango Delta ecosystem, representing the delicate balance between land and water."
+    },
+    {
+      "id": 14,
+      "englishName": "Waterbuck",
+      "setswanaName": "Motlose",
+      "latinName": "Kobus ellipsiprymnus",
+      "category": "Antelopes",
+      "regions": ["Chobe National Park", "Okavango Delta"],
+      "regionExplanation": "Found in Chobe National Park and the Okavango Delta. They never stray far from permanent water sources, as they need to drink daily and use water as an escape route from predators.",
+      "culturalRelevance": "Commonly seen on boat and mokoro safaris, making them a staple of the tourist experience."
+    },
+    {
+      "id": 15,
+      "englishName": "Impala",
+      "setswanaName": "Phala",
+      "latinName": "Aepyceros melampus",
+      "category": "Antelopes",
+      "regions": ["Chobe National Park", "Okavango Delta", "Moremi Game Reserve", "Central Kalahari Game Reserve", "Linyanti", "Savute", "Makgadikgadi Pans"],
+      "regionExplanation": "Ubiquitous across all reserves. They are the most numerous antelope in Botswana and serve as the primary prey for lions, leopards, and wild dogs. Their abundance is due to their adaptability and reproductive success.",
+      "culturalRelevance": "A Tswana proverb states, 'The intelligence of the antelope comes from the calf' – reflecting the idea that survival wisdom is passed down through generations, much like the vigilant behavior of impala herds."
+    },
+    {
+      "id": 16,
+      "englishName": "Greater Kudu",
+      "setswanaName": "Tholo",
+      "latinName": "Tragelaphus strepsiceros",
+      "category": "Antelopes",
+      "regions": ["Thorny bushveld", "Woodlands", "Central Kalahari"],
+      "regionExplanation": "Widespread across the country, particularly in thorny bushveld and woodlands. Their preference for dense thickets makes them a rewarding sighting.",
+      "culturalRelevance": "The kudu's spectacular spiral horns are highly valued in Tswana tradition – used as musical instruments (wind horns) during ceremonies and as decorative elements in chiefly households."
+    },
+    {
+      "id": 17,
+      "englishName": "Springbok",
+      "setswanaName": "Tshophe",
+      "latinName": "Antidorcas marsupialis",
+      "category": "Antelopes",
+      "regions": ["Kalahari Desert", "Makgadikgadi Pans"],
+      "regionExplanation": "Primarily found in the Kalahari Desert. They are supremely adapted to arid conditions, able to survive on sparse vegetation and even consume moisture-rich succulents.",
+      "culturalRelevance": "Famous for its unique 'pronking' (stotting) leaps, it is seen as a joyful symbol of the Kalahari's resilient life. Their image is often used in local arts depicting desert life."
+    },
+    {
+      "id": 18,
+      "englishName": "African Wild Dog",
+      "setswanaName": "Lekanyane / Letlhalerwa",
+      "latinName": "Lycaon pictus",
+      "category": "Carnivores",
+      "regions": ["Okavango Delta", "Chobe National Park", "Linyanti", "Kwadi"],
+      "regionExplanation": "Found in the Okavango Delta, Chobe, Linyanti, and Kwadi regions. Botswana is one of the last strongholds for this endangered species. They require enormous home ranges and stable prey populations, which the northern wilderness areas provide.",
+      "culturalRelevance": "As one of Africa's most endangered predators, its conservation has become a modern symbol of Botswana's commitment to protecting its natural heritage. International tourists specifically travel to Botswana to see them."
+    },
+    {
+      "id": 19,
+      "englishName": "South African Cheetah",
+      "setswanaName": "Letlotse / Lengau",
+      "latinName": "Acinonyx jubatus jubatus",
+      "category": "Carnivores",
+      "regions": ["Kalahari Desert", "Chobe National Park", "Moremi Game Reserve"],
+      "regionExplanation": "Found in the Kalahari and northern reserves. They favor open grasslands where they can use their incredible speed to hunt. The vast, flat landscapes of the Kalahari provide ideal hunting grounds with clear sightlines.",
+      "culturalRelevance": "The cheetah symbolizes grace, speed, and strategic hunting in Tswana oral traditions. It is admired for its precision."
+    },
+    {
+      "id": 20,
+      "englishName": "Spotted Hyena",
+      "setswanaName": "Phiri",
+      "latinName": "Crocuta crocuta",
+      "category": "Carnivores",
+      "regions": ["Moremi Game Reserve", "Chobe National Park", "Central Kalahari Game Reserve", "Linyanti", "Savute"],
+      "regionExplanation": "Widespread across all reserves. They are both scavengers and capable hunters, playing a vital ecological role in cleaning carcasses and controlling prey populations.",
+      "culturalRelevance": "The hyena's iconic whooping call is mimicked in traditional Tswana tribal praise-singing (dipina). Despite their scavenger reputation, they are respected for their matriarchal social structure."
+    },
+    {
+      "id": 21,
+      "englishName": "Brown Hyena",
+      "setswanaName": "Phiri (distinguished by context)",
+      "latinName": "Hyaena brunnea",
+      "category": "Carnivores",
+      "regions": ["Kalahari Desert", "Makgadikgadi Pans"],
+      "regionExplanation": "Primarily in the Kalahari Desert. They are rarer than spotted hyenas and are strictly scavengers, relying on carcasses left by larger predators. The Kalahari's arid expanses are their last major refuge in Botswana.",
+      "culturalRelevance": "Due to their rarity, spotting a brown hyena is considered a special and lucky event for safari-goers and local trackers alike."
+    },
+    {
+      "id": 22,
+      "englishName": "Serval",
+      "setswanaName": "Tadi",
+      "latinName": "Leptailurus serval",
+      "category": "Carnivores",
+      "regions": ["Okavango Delta"],
+      "regionExplanation": "Found in wetland and grassland areas, especially the Okavango Delta. Their extraordinarily long legs and large ears are adaptations for hunting rodents and birds in tall grasses and marshy areas.",
+      "culturalRelevance": "The Setswana expression 'tadi e amusa' references the serval in local idiom, showing its presence in the linguistic-cultural landscape."
+    },
+    {
+      "id": 23,
+      "englishName": "Caracal / African Lynx",
+      "setswanaName": "Thwane",
+      "latinName": "Felis caracal",
+      "category": "Carnivores",
+      "regions": ["Kalahari Desert", "Central hardveld"],
+      "regionExplanation": "Found in the drier regions of Botswana, including the Kalahari and the central hardveld. They are extremely shy, nocturnal, and rarely seen – making a sighting a prized moment for experienced safari enthusiasts.",
+      "culturalRelevance": "Because of its elusiveness, it features in folklore as a mysterious and powerful solitary spirit of the bush."
+    },
+    {
+      "id": 24,
+      "englishName": "Black-backed Jackal",
+      "setswanaName": "Phokojwe",
+      "latinName": "Canis mesomelas",
+      "category": "Carnivores",
+      "regions": ["Widespread across Botswana"],
+      "regionExplanation": "Widespread across the entire country. They are highly adaptable, thriving from deserts to wetlands. They are often seen patrolling roadsides and following larger predators.",
+      "culturalRelevance": "Their iconic evening howls are deeply woven into the soundscape of the African bush and feature in Tswana storytelling as messengers of the night."
+    },
+    {
+      "id": 25,
+      "englishName": "Nile Crocodile",
+      "setswanaName": "Kwena",
+      "latinName": "Crocodylus niloticus",
+      "category": "Aquatic & Reptilian",
+      "regions": ["Okavango Delta", "Chobe River", "Linyanti River"],
+      "regionExplanation": "Found in the Okavango Delta, Chobe River, and all major northern waterways. The permanent, warm waters and abundant prey (fish, antelopes) make these rivers an ideal habitat.",
+      "culturalRelevance": "The crocodile holds immense cultural significance. The Bakwena ('People of the Crocodile') are one of the eight major Tswana tribes, and the crocodile is their royal totem (seboko). They regard it as a sacred ancestor and do not eat or harm it."
+    },
+    {
+      "id": 26,
+      "englishName": "Ground Pangolin",
+      "setswanaName": "Kgapha",
+      "latinName": "Smutsia temminckii",
+      "category": "Rare & Special-Interest Mammals",
+      "regions": ["Across Botswana (rare)"],
+      "regionExplanation": "Found across Botswana but incredibly rare. They are nocturnal, solitary, and roll into an armored ball when threatened. The lack of permanent water is not an issue; they get moisture from ants and termites. Spotting one is a once-in-a-lifetime event.",
+      "culturalRelevance": "The pangolin is the most trafficked mammal in the world. In Botswana, it is strictly protected, and seeing one is regarded by local trackers as an omen of great spiritual fortune. Its scales, though used in some traditional practices, are now heavily penalized for possession."
+    },
+    {
+      "id": 27,
+      "englishName": "Aardwolf",
+      "setswanaName": "Tlhose",
+      "latinName": "Proteles cristata",
+      "category": "Rare & Special-Interest Mammals",
+      "regions": ["Kalahari Desert"],
+      "regionExplanation": "Found in the Kalahari. They are nocturnal and feed exclusively on termites, using their sticky tongues. They are not aggressive and are shy, making them a rare nocturnal sighting.",
+      "culturalRelevance": "Because they are rarely seen, they are considered a special find for veteran safari-goers, often associated with quiet stealth."
+    },
+    {
+      "id": 28,
+      "englishName": "Chacma Baboon",
+      "setswanaName": "Kgabo / Mokgoa",
+      "latinName": "Papio ursinus",
+      "category": "Rare & Special-Interest Mammals",
+      "regions": ["Riverine forests", "Rocky kopjes", "Widespread across Botswana"],
+      "regionExplanation": "Widespread across Botswana, from riverine forests to rocky kopjes. They are highly social and adaptable, thriving near water sources and even human settlements.",
+      "culturalRelevance": "The Baboon (Kgabo) is the totem (seboko) of the Bakgatla tribe. They believe the baboon is part of their ancestral lineage. It is strictly forbidden to kill or eat baboons, as doing so is believed to bring misfortune and ancestral wrath."
+    },
+    {
+      "id": 29,
+      "englishName": "Vervet Monkey",
+      "setswanaName": "Tshwene (sometimes grouped with Kgabo)",
+      "latinName": "Chlorocebus pygerythrus",
+      "category": "Rare & Special-Interest Mammals",
+      "regions": ["Woodland and riverine areas in northern Botswana"],
+      "regionExplanation": "Found in woodland and riverine areas, particularly in northern Botswana. They are diurnal and often seen in troops near camps and lodges.",
+      "culturalRelevance": "Along with the baboon, they share a subtle but present role in the totemic traditions of the Bakgatla, where monkeys are respected as kin and not harmed."
+    }
+  ],
+  "regionSummary": [
+    {
+      "region": "Okavango Delta",
+      "signatureAnimals": ["Elephant", "Buffalo", "Lion", "Leopard", "Hippo", "Crocodile", "Red Lechwe", "African Wild Dog", "Waterbuck", "Sitatunga", "Serval"]
+    },
+    {
+      "region": "Chobe National Park",
+      "signatureAnimals": ["Elephant", "Buffalo", "Lion", "Leopard", "Sable Antelope", "Tsessebe", "Hippo", "Nile Crocodile", "Impala"]
+    },
+    {
+      "region": "Moremi Game Reserve",
+      "signatureAnimals": ["Lion", "Leopard", "African Wild Dog", "Spotted Hyena", "Elephant", "Buffalo", "Red Lechwe", "Tsessebe", "Giraffe"]
+    },
+    {
+      "region": "Central Kalahari Game Reserve",
+      "signatureAnimals": ["Lion (black-maned)", "Gemsbok", "Springbok", "Brown Hyena", "Caracal", "Cheetah", "Eland", "Aardwolf"]
+    },
+    {
+      "region": "Linyanti & Savute",
+      "signatureAnimals": ["Elephant", "Lion (tree-climbing)", "Leopard", "African Wild Dog", "Spotted Hyena", "Zebra (migration)", "Sable Antelope"]
+    },
+    {
+      "region": "Makgadikgadi Pans",
+      "signatureAnimals": ["Zebra (migration)", "Flamingos (seasonal)", "Meerkat", "Brown Hyena", "Springbok", "Gemsbok"]
+    },
+    {
+      "region": "Khama Rhino Sanctuary",
+      "signatureAnimals": ["White Rhino", "Black Rhino", "Giraffe", "Eland", "Zebra"]
+    }
+  ]
+}

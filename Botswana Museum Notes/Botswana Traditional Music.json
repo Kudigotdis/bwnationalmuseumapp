@@ -1,0 +1,352 @@
+[
+  {
+    "id": 1,
+    "name": "Seburuburu (Bullroarer)",
+    "category": "Instrument",
+    "subcategory": "Idiophone",
+    "description": "A bullroarer made from bone, excavated from the Matlapaneng dig site. It is the oldest surviving instrument found in Botswana, dated to approximately 1,000 years ago."
+  },
+  {
+    "id": 2,
+    "name": "Bone Flute / Whistle",
+    "category": "Instrument",
+    "subcategory": "Aerophone",
+    "description": "A bone flute or whistle approximately 900 years old, uncovered at the Bosutswe site. It has a single opening that the player covers to vary pitch."
+  },
+  {
+    "id": 3,
+    "name": "Segaba / Segankuru",
+    "category": "Instrument",
+    "subcategory": "Chordophone",
+    "description": "A single-stringed bowed instrument, resembling a violin, held on the shoulder and played with a bow. It is the most documented traditional instrument in Botswana. Used for self or group entertainment, especially by young men herding cattle."
+  },
+  {
+    "id": 4,
+    "name": "Setinkane",
+    "category": "Instrument",
+    "subcategory": "Chordophone (Lamellophone)",
+    "description": "A thumb piano similar to the mbira, featuring fifteen metal strips mounted on a metal frame fastened to a wood soundboard. Used by both Batswana and San communities; the San have four different arrangements of keys."
+  },
+  {
+    "id": 5,
+    "name": "Lengope (Mouth Bow)",
+    "category": "Instrument",
+    "subcategory": "Chordophone",
+    "description": "A musical bow played by placing the bow against the mouth, which acts as a resonator."
+  },
+  {
+    "id": 6,
+    "name": "Segwana",
+    "category": "Instrument",
+    "subcategory": "Chordophone",
+    "description": "A stringed instrument made with a calabash resonator."
+  },
+  {
+    "id": 7,
+    "name": "Motontonyane (Tin Guitar)",
+    "category": "Instrument",
+    "subcategory": "Chordophone",
+    "description": "An improvised guitar made from a gasoline container, industrial wires, and wood. It has brought about a unique four-string guitar tradition in Botswana."
+  },
+  {
+    "id": 8,
+    "name": "Ditlhaka (Reed / Copper Pipes)",
+    "category": "Instrument",
+    "subcategory": "Aerophone",
+    "description": "Ensemble pipes where each musician plays a single note; a conductor (muklaba) ensures harmony. Practiced by the Balete and Batlokwa, especially for initiation graduation ceremonies. One of the two emblematic traditional music forms of Botswana."
+  },
+  {
+    "id": 9,
+    "name": "Lepapata (Antelope Horn)",
+    "category": "Instrument",
+    "subcategory": "Aerophone",
+    "description": "A wind instrument made from an antelope horn, particularly the kudu horn (lenaka la tholo). Traditionally used among the Bakwena; ongoing efforts to revitalise its use."
+  },
+  {
+    "id": 10,
+    "name": "Moropa (Tswana Drum)",
+    "category": "Instrument",
+    "subcategory": "Membranophone",
+    "description": "The Tswana conical drum, used during group dancing along with leg rattles and horns. Men dance while playing, and women clap and ululate."
+  },
+  {
+    "id": 11,
+    "name": "Matlhowa / Mathlo (Leg Rattles)",
+    "category": "Instrument",
+    "subcategory": "Idiophone",
+    "description": "Rattles worn on the legs during group dancing."
+  },
+  {
+    "id": 12,
+    "name": "Marapo (Bones)",
+    "category": "Instrument",
+    "subcategory": "Idiophone",
+    "description": "Bones used as percussion instruments."
+  },
+  {
+    "id": 13,
+    "name": "Yikandiso (Clapping Pieces)",
+    "category": "Instrument",
+    "subcategory": "Idiophone",
+    "description": "Pieces used as rhythmic accompaniment."
+  },
+  {
+    "id": 14,
+    "name": "Ngendjo (Bells)",
+    "category": "Instrument",
+    "subcategory": "Idiophone",
+    "description": "Bells used in various performances."
+  },
+  {
+    "id": 15,
+    "name": "Borankana (Phathisi)",
+    "category": "Genre",
+    "subcategory": null,
+    "description": "Traditional music and dance performed by the Bakwena tribe in the Kweneng District. Initiated between 1914 and 1916. Originally, only men and boys danced while women sang, clapped, and ululated. The name 'Phathisi' comes from pegging trousers to avoid them catching on bicycle chains."
+  },
+  {
+    "id": 16,
+    "name": "Setapa",
+    "category": "Genre",
+    "subcategory": null,
+    "description": "Traditional music and dance originating from the Bangwaketse tribe of Kanye village. Used to celebrate weddings and the harvest season."
+  },
+  {
+    "id": 17,
+    "name": "Huru, Tsutsube, Mokomoto, Selete, Ndazola, Chesa",
+    "category": "Genre",
+    "subcategory": null,
+    "description": "Other traditional musical genres in Botswana, reflecting the rich diversity of musical expression across different regions and communities."
+  },
+  {
+    "id": 18,
+    "name": "Bakalanga Music",
+    "category": "Regional Music",
+    "subcategory": null,
+    "description": "Distinct music of the Bakalanga people, with the Mwali religion forming the basis of wosana music. Includes rainmaking/praying music, wosana, mayile, and music for happy occasions, linking Bakalanga of Botswana and Zimbabwe through the Njelele sacred site."
+  },
+  {
+    "id": 19,
+    "name": "Wayeyi Music",
+    "category": "Regional Music",
+    "subcategory": null,
+    "description": "Music of the Wayeyi people of the Okavango Delta, intimately connected to their aquatic environment, with songs referencing fishing, the waters, and wildlife."
+  },
+  {
+    "id": 20,
+    "name": "San (Basarwa) Music",
+    "category": "Regional Music",
+    "subcategory": null,
+    "description": "Distinctive San musical traditions, including the use of the setinkane (thumb piano) and polyphonic singing, closely connected to hunting and gathering lifestyles."
+  },
+  {
+    "id": 21,
+    "name": "Culture Spears",
+    "category": "Contemporary Band",
+    "subcategory": null,
+    "description": "One of the most famous traditional music groups in Botswana, known for performing Tswana music and dance."
+  },
+  {
+    "id": 22,
+    "name": "Matsieng",
+    "category": "Contemporary Band",
+    "subcategory": null,
+    "description": "Well-known traditional music group in Botswana."
+  },
+  {
+    "id": 23,
+    "name": "Mokorwana",
+    "category": "Contemporary Band",
+    "subcategory": null,
+    "description": "A group performing Tswana music and dance."
+  },
+  {
+    "id": 24,
+    "name": "Ditaola",
+    "category": "Contemporary Band",
+    "subcategory": null,
+    "description": "Traditional music group."
+  },
+  {
+    "id": 25,
+    "name": "Makhirikhiri",
+    "category": "Contemporary Band",
+    "subcategory": null,
+    "description": "Traditional music group."
+  },
+  {
+    "id": 26,
+    "name": "Ngwao Letshwao (National Folklore Ensemble)",
+    "category": "Ensemble",
+    "subcategory": null,
+    "description": "Founded in 2005 in Gaborone to safeguard Botswana's culture and spread its knowledge internationally. Creates performances that represent the country's cultural richness and diversity."
+  },
+  {
+    "id": 27,
+    "name": "Maitisong Festival",
+    "category": "Festival",
+    "subcategory": null,
+    "description": "An annual ten-day festival at the Gaborone Theatre, giving local and African troupes the opportunity to perform traditional and contemporary music under excellent conditions."
+  },
+  {
+    "id": 28,
+    "name": "Rangers Marena",
+    "category": "Community Choir",
+    "subcategory": null,
+    "description": "Esteemed community singing group in Botswana."
+  },
+  {
+    "id": 29,
+    "name": "Tsa Malwelwe",
+    "category": "Community Choir",
+    "subcategory": null,
+    "description": "Known for the song 'Mahala', an esteemed community singing group."
+  },
+  {
+    "id": 30,
+    "name": "Zebras",
+    "category": "Community Choir",
+    "subcategory": null,
+    "description": "Esteemed community singing group."
+  },
+  {
+    "id": 31,
+    "name": "Maphoi",
+    "category": "Community Choir",
+    "subcategory": null,
+    "description": "Esteemed community singing group."
+  },
+  {
+    "id": 32,
+    "name": "Naro Giraffe Dance Group",
+    "category": "Community Choir",
+    "subcategory": null,
+    "description": "Esteemed community singing group from the San community."
+  },
+  {
+    "id": 33,
+    "name": "Seasonal Music",
+    "category": "Cultural Role",
+    "subcategory": "Music and Seasons",
+    "description": "Performance of traditional music is related to the agricultural season: autumn (letlhafula) – hoeing songs; winter (mariga) – children's fireside story songs; spring (dikgakologo) – women and children sing while chasing crops; summer (selemo) – beer-brewing, beer-songs and beer-dances."
+  },
+  {
+    "id": 34,
+    "name": "Initiation Ceremony Music (Moamo)",
+    "category": "Cultural Role",
+    "subcategory": "Ceremonial",
+    "description": "Music produced during initiation ceremonies (bogwera for boys, bojale for girls) is known as moamo."
+  },
+  {
+    "id": 35,
+    "name": "Community Singing",
+    "category": "Cultural Role",
+    "subcategory": "Performance Practice",
+    "description": "Core tradition featuring call-and-response pattern. The leader (motlhabeletsi) calls a single-line melody, and the group responds with a choral response. Often performed in age or gender groups, a cappella or with minimal accompaniment."
+  },
+  {
+    "id": 36,
+    "name": "Men's Songs (Dikoma)",
+    "category": "Cultural Role",
+    "subcategory": "Gender Roles",
+    "description": "Men traditionally sing dikoma, with themes of hunting, conquering enemies, and commemorating important social events."
+  },
+  {
+    "id": 37,
+    "name": "Women's Songs",
+    "category": "Cultural Role",
+    "subcategory": "Gender Roles",
+    "description": "Women sing ceremonial songs (birth, initiation), occupational songs (weeding, harvesting, winnowing, pounding), and lullabies."
+  },
+  {
+    "id": 38,
+    "name": "Mixed Choirs (Dikhwaere)",
+    "category": "Cultural Role",
+    "subcategory": "Performance Practice",
+    "description": "Common in the south of Botswana, in villages like Mochudi, Kanye, Moshupa, Molepolole, Tsabaong, and the Bobirwa region."
+  },
+  {
+    "id": 39,
+    "name": "Soloists",
+    "category": "Cultural Role",
+    "subcategory": "Performance Practice",
+    "description": "Renowned solo musicians such as Speech Madimabe, George Swabi, Stampore Malefho Mokwa, Ratsie Setlhako, Omponye 'Sheleng' Ositile, Boruru Oageng, Lonaka Matlapeng, and Solly Sebotso perform at public gatherings and kgotla meetings."
+  },
+  {
+    "id": 40,
+    "name": "Praise Poetry (Maboko)",
+    "category": "Cultural Role",
+    "subcategory": "Vocal Music",
+    "description": "Praise poetry is often performed with musical accompaniment, forming part of the Sotho-Tswana folk music repertoire alongside herding, work, initiation, and wedding music."
+  },
+  {
+    "id": 41,
+    "name": "Music in the Kgotla",
+    "category": "Cultural Role",
+    "subcategory": "Social Function",
+    "description": "Music is performed at the kgotla (public meeting forum), reinforcing community bonds and expressing collective values."
+  },
+  {
+    "id": 42,
+    "name": "Colonial Suppression",
+    "category": "Historical Context",
+    "subcategory": null,
+    "description": "During the colonial era, Tswana folk music was discouraged as it was considered a hindrance to 'proper development' and was viewed as 'pagan' by missionaries, who promoted hymns and Western music instead."
+  },
+  {
+    "id": 43,
+    "name": "Post-Independence Revival",
+    "category": "Historical Context",
+    "subcategory": null,
+    "description": "Since independence in 1966, folk music has been revived, though popular music from elsewhere remains dominant. Many indigenous instruments have been lost to rapid urbanisation."
+  },
+  {
+    "id": 44,
+    "name": "Peaks of Traditional Music",
+    "category": "Historical Context",
+    "subcategory": null,
+    "description": "Two peaks: the late 1960s, when public radio collected traditional sounds from all villages and broadcast them; and 2005–2010, when the music industry took off and traditional music was commercialised and given a prominent place on radio."
+  },
+  {
+    "id": 45,
+    "name": "Challenges to Traditional Music",
+    "category": "Historical Context",
+    "subcategory": null,
+    "description": "Loss of indigenous instruments and decline in intergenerational transmission as young people no longer practice traditional music. Efforts are underway to revitalise instruments like the kudu horn through documentation and performance."
+  },
+  {
+    "id": 46,
+    "name": "Georgina Lobatse",
+    "category": "Preservationist",
+    "subcategory": null,
+    "description": "A practitioner from Makobo village who plays the segaba to keep folklore music alive."
+  },
+  {
+    "id": 47,
+    "name": "Musical Structure: Pentatonic and Call-Response",
+    "category": "Musical Theory",
+    "subcategory": null,
+    "description": "Traditional Tswana communal music is largely pentatonic (five-note scale) with diversive symmetrical meter. Multipart songs often use call-and-response form, where the 'call' is segalodimo and the response segalo tlase."
+  },
+  {
+    "id": 48,
+    "name": "Song Classification",
+    "category": "Musical Theory",
+    "subcategory": null,
+    "description": "Traditional songs are either mainaane a segologolo (ancient traditional songs) or contemporary songs from a known composer (motlhami)."
+  },
+  {
+    "id": 49,
+    "name": "Wedding and Funeral Music",
+    "category": "Cultural Role",
+    "subcategory": "Ceremonial",
+    "description": "Wedding songs celebrate the union and offer counsel; funeral mourning songs express grief and honour the deceased."
+  },
+  {
+    "id": 50,
+    "name": "Rainmaking and Beer Gatherings",
+    "category": "Cultural Role",
+    "subcategory": "Ritual",
+    "description": "Music is used in rainmaking rituals to invoke ancestors, and beer-songs/dances are integral to social beer gatherings."
+  }
+]
