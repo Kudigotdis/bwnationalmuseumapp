@@ -463,6 +463,299 @@
 
     .playbtn:active { background: #155a7f; }
 
+    /* Museum image space (About tab, under header) */
+    .hero-image-space {
+      width: 100%;
+      height: 170px;
+      overflow: hidden;
+      position: relative;
+      background: var(--surface);
+    }
+
+    .hero-image-space img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* About tab hero: full natural image height, flexible per museum photo */
+    .hero-image-space.natural {
+      height: auto;
+      min-height: 140px;
+    }
+
+    .hero-image-space.natural img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+
+    .hero-image-space .img-label {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      padding: 22px 16px 10px;
+      background: linear-gradient(to top, rgba(0,0,0,0.55), transparent);
+      color: white;
+      font-family: 'Fraunces', serif;
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    /* Accordions */
+    .acc {
+      margin: 0 16px 10px;
+    }
+
+    .acc-btn {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      border: none;
+      border-radius: 14px;
+      padding: 14px 16px;
+      background: var(--ocean-blue);
+      color: white;
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+
+    .acc-btn .chev {
+      transition: transform 0.2s ease;
+      font-size: 12px;
+    }
+
+    .acc.open .acc-btn .chev {
+      transform: rotate(180deg);
+    }
+
+    .acc.open .acc-btn {
+      border-radius: 14px 14px 6px 6px;
+    }
+
+    .acc-body {
+      display: none;
+      padding-top: 10px;
+    }
+
+    .acc.open .acc-body {
+      display: block;
+    }
+
+    .acc-btn.orange { background: var(--terracotta); }
+
+    /* Featured / dance buttons */
+    .featured-row {
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      padding: 4px 4px 8px;
+      scrollbar-width: none;
+    }
+
+    .featured-row::-webkit-scrollbar { display: none; }
+
+    .feat-tile {
+      flex: 0 0 150px;
+      border-radius: 14px;
+      overflow: hidden;
+      background: var(--card);
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+
+    .feat-tile:active { background: var(--surface); }
+
+    .feat-tile img {
+      width: 100%;
+      height: 90px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .feat-tile .ft-label {
+      padding: 8px 10px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .feat-tile .ft-sub {
+      padding: 0 10px 10px;
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    /* Photo grids (Gallery / Display / Merch / Around) */
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      padding: 0 16px 4px;
+    }
+
+    .photo-grid .ptile {
+      border-radius: 12px;
+      overflow: hidden;
+      background: var(--card);
+      border: 1px solid var(--border);
+      aspect-ratio: 1 / 1;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .photo-grid .ptile img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .photo-grid .ptile .plabel {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 16px 8px 6px;
+      background: linear-gradient(to top, rgba(0,0,0,0.55), transparent);
+      color: white;
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .photo-grid.single { grid-template-columns: 1fr; }
+
+    .photo-grid.single .ptile { aspect-ratio: auto; height: 170px; }
+
+    /* Display item cards */
+    .display-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+
+    .display-card:active { background: var(--surface); }
+
+    .display-card img {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .display-card .dc-body {
+      padding: 10px 12px;
+    }
+
+    .display-card .dc-body h4 {
+      font-family: 'Fraunces', serif;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .display-card .dc-body p {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    /* Merch cards */
+    .merch-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+
+    .merch-card:active { background: var(--surface); }
+
+    .merch-card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .merch-card .mc-body {
+      padding: 10px 12px;
+    }
+
+    .merch-card .mc-body h4 {
+      font-family: 'Fraunces', serif;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .merch-card .mc-body .price {
+      color: var(--terracotta);
+      font-weight: 700;
+      font-size: 13px;
+      margin-bottom: 4px;
+    }
+
+    .merch-card .mc-body p {
+      font-size: 11px;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    /* Around Botswana tiles */
+    .around-tile {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 10px;
+      margin: 0 16px 10px;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+
+    .around-tile:active { background: var(--surface); }
+
+    .around-tile img {
+      width: 58px;
+      height: 58px;
+      border-radius: 10px;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    .around-tile .meta h3 {
+      font-family: 'Fraunces', serif;
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .around-tile .meta p {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    /* Lightbox for single-photo pages */
+    .single-photo {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 14px;
+      margin-bottom: 12px;
+    }
+
     /* Quiz screens */
     .quiz-head {
       padding: 16px 20px 10px;
@@ -680,7 +973,11 @@
       right: 0;
       display: flex;
       height: 60px;
-      background: var(--terracotta);
+      background: linear-gradient(to right,
+        var(--ocean-blue) 0%,
+        var(--ocean-blue) 60%,
+        var(--terracotta) 60%,
+        var(--terracotta) 100%);
       border-top: none;
       z-index: 25;
       box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
@@ -1154,9 +1451,9 @@
 <div id="frame">
   <!-- Logo space -->
   <div id="logoSpace">
-    <img src="Assets/logos/bw_national_museum_logo_badge.svg" alt="Botswana National Museum Logo">
+    <img src="Assets/logos/bw_country_logo_badge.webp" alt="Botswana National Museum Logo">
     <div class="logo-text">
-      Botswana National Museum
+      <span id="logoTitle">Botswana National Museum</span>
       <span class="sub">Art Gallery &amp; National Monument</span>
     </div>
   </div>
@@ -1174,11 +1471,11 @@
     <button class="navbtn active" data-tab="about" onclick="showTab('about')">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
     </button>
-    <button class="navbtn" data-tab="explore" onclick="showTab('explore')">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-    </button>
     <button class="navbtn" data-tab="engage" onclick="showTab('engage')">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+    </button>
+    <button class="navbtn" data-tab="explore" onclick="showTab('explore')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
     </button>
     <button class="navbtn" data-tab="learn" onclick="showTab('learn')">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
@@ -1192,6 +1489,7 @@
 <!-- Hidden file input for image uploads -->
 <input type="file" id="fileInput" accept="image/*" onchange="handleImageUpload(event)">
 
+<script src="app-data.js"></script>
 <script>
 /* =========================================================
    EMBEDDED RAW DATA (CORS-safe for file:// access)
@@ -7452,6 +7750,7 @@ let quizState = null;
 let timerHandle = null;
 let lastScrollY = 0;
 let currentUploadId = null;
+let selectedMuseumId = null;
 
 // Image storage
 const imageStorage = {};
@@ -8175,7 +8474,18 @@ let MUSEUMS = [
   { id: "tsodilo", name: "Tsodilo Hills", location: "Northwest", desc: "Over 4,500 rock paintings, sacred to the San people.", image: "" },
   { id: "domboshaba", name: "Domboshaba Ruins", location: "Masunga", desc: "Stone settlement of the Bakalanga, 15th–18th century.", image: "" },
   { id: "oldpalapye", name: "Old Palapye", location: "Palapye", desc: "Capital of the Bangwato under Khama III.", image: "" },
-  { id: "postal", name: "Botswana Post Philatelic Museum", location: "Gaborone", desc: "Stamps and postal artifacts since 1886.", image: "" }
+  { id: "postal", name: "Botswana Post Philatelic Museum", location: "Gaborone", desc: "Stamps and postal artifacts since 1886.", image: "" },
+  { id: "francistown", name: "Francistown City Museum", location: "Francistown", desc: "City museum showcasing Francistown's heritage.", image: "" },
+  { id: "sechele", name: "Kgosi Sechele I Museum", location: "Molepolole", desc: "Museum preserving Bakwena history and legacy.", image: "" },
+  { id: "bathoen2", name: "Kgosi Bathoen II Museum", location: "Kanye", desc: "Museum dedicated to Bangwaketse heritage.", image: "" },
+  { id: "khama_rhino", name: "Khama Rhino Sanctuary Education Centre", location: "Serowe", desc: "Education centre for wildlife conservation.", image: "" },
+  { id: "kuru", name: "Kuru Museum & Culture Centre", location: "D'Kar", desc: "San art and culture preservation centre.", image: "" },
+  { id: "livingstone", name: "Livingstone Museum", location: "Francistown", desc: "Heritage museum in Francistown.", image: "" },
+  { id: "mokolodi", name: "Mokolodi Nature Reserve Museum", location: "Gaborone", desc: "Nature reserve and wildlife education.", image: "" },
+  { id: "nhabe", name: "Nhabe Museum", location: "Maun", desc: "Museum showcasing Ngamiland heritage.", image: "" },
+  { id: "ntsweng", name: "Ntsweng Heritage Site", location: "Molepolole", desc: "Archaeological site of the Bakwena capital.", image: "" },
+  { id: "samora", name: "Samora Michel Museum", location: "Francistown", desc: "Museum honouring Mozambican liberation history.", image: "" },
+  { id: "supangwao", name: "Supa Ngwao Museum", location: "Francistown", desc: "Community museum in Francistown.", image: "" }
 ];
 
 /* =========================================================
@@ -8253,14 +8563,109 @@ function setHeader(eyebrow, title, showBack) {
   // Topbar removed; header info shown inline in each view
 }
 
+function updateLogoImage() {
+  const img = document.querySelector('#logoSpace img');
+  if (!img) return;
+  const isNationalMuseum = !selectedMuseumId || selectedMuseumId === 'botswana-national-museum';
+  img.src = isNationalMuseum
+    ? 'Assets/logos/bw_national_museum_logo_badge.svg'
+    : 'Assets/logos/bw_country_logo_badge.webp';
+}
+
+function updateLogoTitle(text) {
+  const el = document.getElementById('logoTitle');
+  if (el) el.textContent = text || 'Botswana National Museum';
+  updateLogoImage();
+}
+
+function selectedMuseumName() {
+  if (selectedMuseumId) {
+    const m = MUSEUMS.find(m => m.id === selectedMuseumId);
+    if (m) return m.name;
+  }
+  return 'Botswana National Museum';
+}
+
+function appArticle(collection, key) {
+  if (!APP_DATA || !APP_DATA[collection]) return null;
+  if (!key) return null;
+  return APP_DATA[collection].find(a => a.key === key) || null;
+}
+
+function paragraphsToHtml(text) {
+  if (!text) return '';
+  return text.split(/\n{2,}/).map(p => `<p>${p.replace(/\n/g, '<br>')}</p>`).join('');
+}
+
+function parseMuseumSections(body) {
+  const overview = [];
+  const groups = ['', '', '', '', '', '', ''];
+
+  if (!body) return { overview: '', groups };
+
+  const paragraphs = body.split(/\n{2,}/).filter(p => p.trim() && !/^---+\s*$/.test(p.trim()));
+  const headerPattern = /^\d+\.\s+[A-Z][A-Z0-9 '&+\-/()?:#,"]*$/;
+
+  let current = -1;
+  paragraphs.forEach(p => {
+    const lines = p.trim().split('\n');
+    const first = lines[0].trim();
+    const rest = lines.slice(1).join('\n').trim();
+    let section = -1;
+
+    if (/^quick fact/i.test(first)) section = 5;
+    else if (/^comparison:?\s*$/i.test(first)) section = 6;
+    else if (/^HOW TO EXPLAIN IT TO PEOPLE INTERESTED IN HISTORY:/.test(first)) section = 4;
+    else if (headerPattern.test(first)) {
+      if ((/\bMEANS\b/i.test(first) && /\b(CULTUR|HISTOR)/i.test(first)) || (/\bCULTUR/.test(first) && /\bHISTOR/.test(first))) section = 2;
+      else if (/TODAY|VISITING/.test(first)) section = 3;
+      else if (/WHAT'S INSIDE|WHAT'S AT|EXHIBIT|GALLER|EDUCATION CENTRE|IS THERE A MUSEUM/.test(first)) section = 1;
+      else section = 0;
+    }
+
+    if (section >= 0) {
+      current = section;
+      if (rest) groups[current] = groups[current] ? groups[current] + '\n\n' + rest : rest;
+    } else if (current < 0) {
+      overview.push(p);
+    } else {
+      groups[current] = groups[current] ? groups[current] + '\n\n' + p : p;
+    }
+  });
+
+  return { overview: overview.join('\n\n'), groups };
+}
+
+function toggleAcc(el) {
+  const acc = el.closest('.acc');
+  if (!acc) return;
+  const open = acc.classList.contains('open');
+  const parent = acc.parentElement;
+  if (parent) {
+    parent.querySelectorAll(':scope > .acc.open').forEach(a => {
+      if (a !== acc) a.classList.remove('open');
+    });
+  }
+  acc.classList.toggle('open', !open);
+}
+
 function pushView(view) {
   stack.push(view);
   render();
 }
 
+function stopQuizTimers() {
+  clearInterval(timerHandle);
+  clearTimeout(timerHandle);
+  timerHandle = null;
+}
+
 function popView() {
   if (stack.length > 0) {
     stack.pop();
+    if (!stack.length || (stack[stack.length - 1].type !== 'quizplay' && stack[stack.length - 1].type !== 'quizresult')) {
+      stopQuizTimers();
+    }
     render();
   }
 }
@@ -8272,20 +8677,33 @@ function render() {
     return;
   }
 
-  document.getElementById('backButtonContainer').classList.add('show');
-
   const view = stack[stack.length - 1];
+
+  if (view.type !== 'museum-detail') {
+    document.getElementById('backButtonContainer').classList.add('show');
+  } else {
+    document.getElementById('backButtonContainer').classList.remove('show');
+  }
   if (view.type === 'museum-detail') renderMuseumDetail(view.id);
+  if (view.type === 'museum-gallery') renderMuseumGallery();
+  if (view.type === 'gallery-photo') renderGalleryPhoto(view.src);
   if (view.type === 'explore-category') renderCategory(view.id);
   if (view.type === 'explore-item') renderItem(view.catId, view.itemId);
+  if (view.type === 'dance-page') renderDancePage();
+  if (view.type === 'dance-detail') renderDanceDetail(view.key);
   if (view.type === 'event-detail') renderEventDetail(view.id);
   if (view.type === 'event-booking') renderEventBooking(view.eventId, view.bookingType);
   if (view.type === 'booking-tickets') renderBookingTickets();
   if (view.type === 'booking-restaurant') renderBookingRestaurant();
   if (view.type === 'booking-venue') renderBookingVenue();
   if (view.type === 'booking-summary') renderBookingSummary();
+  if (view.type === 'display-page') renderDisplayPage();
+  if (view.type === 'display-item') renderDisplayItem(view.id);
+  if (view.type === 'around-detail') renderAroundDetail(view.key);
   if (view.type === 'culture-group') renderCultureGroup(view.id);
   if (view.type === 'culture-sub') renderCultureSub(view.id, view.subId);
+  if (view.type === 'merch-page') renderMerchPage();
+  if (view.type === 'merch-detail') renderMerchDetail(view.num);
   if (view.type === 'quizplay') renderQuizPlay();
   if (view.type === 'quizresult') renderQuizResult();
 }
@@ -8301,6 +8719,7 @@ function showTabContentOnly() {
 function showTab(tab) {
   activeTab = tab;
   stack = [];
+  stopQuizTimers();
   render();
   updateNavHighlight();
 }
@@ -8372,11 +8791,76 @@ contentEl.addEventListener('scroll', () => {
 
 function renderAboutHome() {
   setHeader("National Museum", "About", false);
-  let html = `
-    <div class="about-hero">
-      <h2>${MUSEUM_INFO.name}</h2>
-      <p>${MUSEUM_INFO.blurb}</p>
+  updateLogoTitle('Botswana National Museum');
+
+  const heroImg = selectedMuseumId ? (APP_DATA.museumImg[selectedMuseumId] || '') : APP_DATA.museumImg['national'] || '';
+  const heroName = selectedMuseumName();
+
+  let html = '';
+
+  if (heroImg) {
+    html += `
+      <div class="hero-image-space natural">
+        <img src="${heroImg}" alt="${heroName}">
+      </div>
+    `;
+  } else {
+    html += `
+      <div class="about-hero">
+        <h2>${heroName}</h2>
+        <p>${MUSEUM_INFO.blurb}</p>
+      </div>
+    `;
+  }
+
+  html += `
+    <div style="padding:12px 16px 4px;">
+      <button class="primary-btn" style="width:100%;" onclick="pushView({type:'museum-gallery'})">Museum Gallery</button>
     </div>
+  `;
+
+  const articleKey = APP_DATA.museumMap[selectedMuseumId] || APP_DATA.museumMap['national'];
+  const article = appArticle('museumArticles', articleKey);
+  if (article && article.body) {
+    const sections = parseMuseumSections(article.body);
+
+    let aboutBody = `<div class="info-card" style="line-height:1.7;">${paragraphsToHtml(sections.overview)}</div>`;
+
+    const groupTitles = ['History &amp; Purpose', 'On Display', 'Culture &amp; History', 'Today', 'Interest', 'Quick Fact', 'Comparison'];
+    groupTitles.forEach((label, idx) => {
+      const content = sections.groups[idx];
+      if (!content) return;
+      const id = 'acc-about-' + ['history', 'display', 'culture', 'today', 'interest', 'fact', 'comparison'][idx];
+      let bodyHtml = paragraphsToHtml(content);
+      if (idx === 1) {
+        bodyHtml += `<div style="margin-top:10px;"><button class="primary-btn" onclick="pushView({type:'display-page'})">View On Display</button></div>`;
+      }
+      aboutBody += `
+        <div class="acc" id="${id}">
+          <button class="acc-btn" onclick="toggleAcc(this)">
+            <span>${label}</span>
+          </button>
+          <div class="acc-body" style="line-height:1.7;">
+            ${bodyHtml}
+          </div>
+        </div>
+      `;
+    });
+
+    html += `
+      <div class="section-label">About ${heroName}</div>
+      <div class="acc" id="acc-about-info">
+        <button class="acc-btn" onclick="toggleAcc(this)">
+          <span>About Information</span>
+        </button>
+        <div class="acc-body">
+          ${aboutBody}
+        </div>
+      </div>
+    `;
+  }
+
+  html += `
     <div class="section-label">Opening Times</div>
     <div class="info-card">
       <div class="info-line">
@@ -8412,12 +8896,11 @@ function renderAboutHome() {
   `;
 
   MUSEUMS.forEach(mus => {
-    const img = getImage(mus.id);
+    const img = APP_DATA.museumImg[mus.id] || getImage(mus.id);
     html += `
-      <div class="cat-row" onclick="pushView({type:'museum-detail', id:'${mus.id}'})">
-        <div class="thumb" onclick="event.stopPropagation(); triggerImageUpload('${mus.id}')">
+      <div class="cat-row" onclick="selectedMuseumId='${mus.id}'; pushView({type:'museum-detail', id:'${mus.id}'})">
+        <div class="thumb">
           ${img ? `<img src="${img}">` : `📸`}
-          <div class="camera-icon">📷</div>
         </div>
         <div class="meta">
           <h3>${mus.name}</h3>
@@ -8433,22 +8916,32 @@ function renderAboutHome() {
 }
 
 function renderMuseumDetail(id) {
-  const mus = MUSEUMS.find(m => m.id === id);
+  const mus = MUSEUMS.find(m => m.id === id) || { id, name: "Museum", location: "" };
   setHeader("Museum", mus.name, true);
-  const img = getImage(id);
+  updateLogoTitle(mus.name);
+
+  const img = APP_DATA.museumImg[id] || getImage(id);
+  const articleKey = APP_DATA.museumMap[id];
+  const article = appArticle('museumArticles', articleKey);
+
   let extraHtml = '';
-  if (mus.history) extraHtml += '<div class="section-label">History</div><div class="info-card"><p>' + mus.history + '</p></div>';
-  if (mus.collections) extraHtml += '<div class="section-label">Collections</div><div class="info-card"><p>' + mus.collections + '</p></div>';
+  if (article && article.body) {
+    extraHtml += `<div class="section-label">About</div><div class="info-card" style="line-height:1.7;">${paragraphsToHtml(article.body)}</div>`;
+  } else {
+    if (mus.history) extraHtml += '<div class="section-label">History</div><div class="info-card"><p>' + mus.history + '</p></div>';
+    if (mus.collections) extraHtml += '<div class="section-label">Collections</div><div class="info-card"><p>' + mus.collections + '</p></div>';
+  }
   if (mus.hours) extraHtml += '<div class="info-card"><div class="info-line"><span class="k">Hours</span><span class="v">' + mus.hours + '</span></div></div>';
   if (mus.entry_fee) extraHtml += '<div class="info-card"><div class="info-line"><span class="k">Entry</span><span class="v">' + mus.entry_fee + '</span></div></div>';
   if (mus.phone) extraHtml += '<div class="info-card"><div class="info-line"><span class="k">Phone</span><span class="v">' + mus.phone + '</span></div></div>';
   if (mus.email) extraHtml += '<div class="info-card"><div class="info-line"><span class="k">Email</span><span class="v">' + mus.email + '</span></div></div>';
   if (mus.address) extraHtml += '<div class="info-card"><div class="info-line"><span class="k">Address</span><span class="v">' + mus.address + '</span></div></div>';
   if (mus.additional_info) extraHtml += '<div class="section-label">Additional Info</div><div class="info-card"><p>' + mus.additional_info + '</p></div>';
+
   document.getElementById('content').innerHTML = `
-    <div class="detail-image" onclick="triggerImageUpload('${id}')">
-      ${img ? `<img src="${img}">` : `<span>📸</span>`}
-      <div class="imgnote">Tap to upload photo</div>
+    <div class="hero-image-space" style="height:200px;">
+      ${img ? `<img src="${img}">` : `<span style="display:flex;align-items:center;justify-content:center;height:100%;font-size:40px;">📸</span>`}
+      <div class="img-label">${mus.name}</div>
     </div>
     <div class="detail-body">
       <h2>${mus.name}</h2>
@@ -8457,6 +8950,37 @@ function renderMuseumDetail(id) {
       <p>${mus.desc}</p>
     </div>
     ${extraHtml}
+    <div style="height:14px;"></div>
+  `;
+}
+
+function renderMuseumGallery() {
+  setHeader("About", "Museum Gallery", true);
+  const imgs = (APP_DATA && APP_DATA.galleryImgs) || [];
+  const grid = imgs.length ? imgs.map(src => `
+    <div class="ptile" onclick="pushView({type:'gallery-photo', src:'${src.replace(/'/g, "\\'")}'})">
+      <img src="${src}" loading="lazy" onerror="this.parentElement.style.display='none'">
+    </div>
+  `).join('') : `<p style="padding:16px;color:var(--muted);">No gallery images available.</p>`;
+
+  document.getElementById('content').innerHTML = `
+    <div class="detail-body">
+      <h2>Museum Gallery</h2>
+      <p>Photos of the Botswana National Museum and heritage sites.</p>
+    </div>
+    <div class="section-label">${imgs.length} Photos</div>
+    <div class="photo-grid">${grid}</div>
+    <div style="height:14px;"></div>
+  `;
+}
+
+function renderGalleryPhoto(src) {
+  setHeader("Gallery", "Photo", true);
+  document.getElementById('content').innerHTML = `
+    <div class="detail-body"><h2>Museum Gallery</h2></div>
+    <div style="padding:0 16px;">
+      <img src="${src}" style="width:100%; border-radius:14px; display:block;">
+    </div>
     <div style="height:14px;"></div>
   `;
 }
@@ -8473,12 +8997,11 @@ function renderExploreHome() {
       <h2>Wander the<br>living heritage.</h2>
       <p>Browse nine collections spanning presidents, sacred sites, crafts and wildlife.</p>
     </div>
-    <div class="section-label">Categories</div>
-    <div class="cat-list">
   `;
 
+  let catsHtml = '';
   CATEGORIES.forEach(cat => {
-    html += `
+    catsHtml += `
       <div class="cat-row" onclick="pushView({type:'explore-category', id:'${cat.id}'})">
         <div class="thumb" style="background:${cat.color}">${cat.icon}</div>
         <div class="meta">
@@ -8490,8 +9013,84 @@ function renderExploreHome() {
     `;
   });
 
-  html += `</div><div style="height:14px;"></div>`;
+  const danceItems = (APP_DATA && APP_DATA.danceItems) || [];
+  let featTiles = '';
+  if (danceItems.length) {
+    featTiles = `
+      <div class="featured-row">
+        <div class="feat-tile" onclick="pushView({type:'dance-page'})">
+          <img src="${danceItems[0].img}" onerror="this.style.display='none'">
+          <div class="ft-label">🇧🇼 Botswana Dance</div>
+          <div class="ft-sub">4 traditional dances</div>
+        </div>
+      </div>
+    `;
+  }
+
+  html += `
+    <div class="acc" id="acc-explore-cats">
+      <button class="acc-btn" onclick="toggleAcc(this)">
+        <span>Categories</span>
+      </button>
+      <div class="acc-body">
+        <div class="cat-list" style="margin:0; padding:0;">
+          ${catsHtml}
+        </div>
+      </div>
+    </div>
+  `;
+
+  if (featTiles) {
+    html += `
+      <div class="acc" id="acc-explore-feat">
+        <button class="acc-btn orange" onclick="toggleAcc(this)">
+          <span>Featured</span>
+        </button>
+        <div class="acc-body">
+          ${featTiles}
+        </div>
+      </div>
+    `;
+  }
+
+  html += `<div style="height:14px;"></div>`;
   document.getElementById('content').innerHTML = html;
+}
+
+function renderDancePage() {
+  setHeader("Featured", "Botswana Dance", true);
+  const items = (APP_DATA && APP_DATA.danceItems) || [];
+  const tiles = items.map(d => `
+    <div class="feat-tile" style="flex:0 0 44%;" onclick="pushView({type:'dance-detail', key:'${d.key}'})">
+      <img src="${d.img}" loading="lazy" onerror="this.style.display='none'">
+      <div class="ft-label">${d.title}</div>
+      <div class="ft-sub">Traditional dance</div>
+    </div>
+  `).join('');
+
+  document.getElementById('content').innerHTML = `
+    <div class="detail-body">
+      <h2>Botswana Dance</h2>
+      <p>Traditional dances that tell the story of Botswana's people.</p>
+    </div>
+    <div class="featured-row">${tiles}</div>
+    <div style="height:14px;"></div>
+  `;
+}
+
+function renderDanceDetail(key) {
+  const article = appArticle('danceArticles', key);
+  const item = (APP_DATA && APP_DATA.danceItems || []).find(d => d.key === key) || {};
+  setHeader("Dance", item.title || 'Dance', true);
+
+  document.getElementById('content').innerHTML = `
+    ${item.img ? `<div class="single-photo" style="margin:0 16px;"><img src="${item.img}" style="width:100%; height:200px; object-fit:cover; border-radius:14px;"></div>` : ''}
+    <div class="detail-body">
+      <h2>${item.title || article.title}</h2>
+      ${article && article.body ? `<div style="line-height:1.7;">${paragraphsToHtml(article.body)}</div>` : '<p style="color:var(--muted);">No article yet.</p>'}
+    </div>
+    <div style="height:14px;"></div>
+  `;
 }
 
 function renderCategory(id) {
@@ -8557,6 +9156,9 @@ function renderItem(catId, itemId) {
 
 function renderEngageHome() {
   setHeader("Events", "Engage", false);
+  const oi = APP_DATA.otherImgs || {};
+  const thumb = (key, fallback) => oi[key] ? `<img src="${oi[key]}">` : `<span style="font-size:22px;">${fallback}</span>`;
+
   let html = `
     <div class="hero">
       <div class="hero-badge">Book & Explore</div>
@@ -8566,42 +9168,57 @@ function renderEngageHome() {
     <div class="section-label">Quick Booking</div>
     <div class="cat-list">
       <div class="cat-row" onclick="pushView({type:'booking-tickets'})">
-        <div class="thumb" style="background:var(--terracotta)">
-          <span style="font-size:22px;">🎫</span>
-        </div>
+        <div class="thumb">${thumb('book_tickets', '🎫')}</div>
         <div class="meta">
           <h3>Museum Entry Tickets</h3>
           <p>Standard, student, child &amp; group rates</p>
         </div>
       </div>
       <div class="cat-row" onclick="pushView({type:'booking-restaurant'})">
-        <div class="thumb" style="background:var(--ocean-blue)">
-          <span style="font-size:22px;">🍽️</span>
-        </div>
+        <div class="thumb">${thumb('restaurant', '🍽️')}</div>
         <div class="meta">
           <h3>Restaurant Reservation</h3>
           <p>Dine-in, pre-order &amp; dietary options</p>
         </div>
       </div>
       <div class="cat-row" onclick="pushView({type:'booking-venue'})">
-        <div class="thumb" style="background:var(--terracotta)">
-          <span style="font-size:22px;">🏛️</span>
-        </div>
+        <div class="thumb">${thumb('events', '🏛️')}</div>
         <div class="meta">
           <h3>Venue Rental</h3>
           <p>Events, conferences &amp; celebrations</p>
         </div>
       </div>
-      <div class="cat-row" onclick="pushView({type:'booking-summary'})">
-        <div class="thumb" style="background:var(--ocean-blue)">
-          <span style="font-size:22px;">📋</span>
-        </div>
+      <div class="cat-row" onclick="pushView({type:'merch-page'})">
+        <div class="thumb">${thumb('merchandise', '🛍️')}</div>
         <div class="meta">
-          <h3>Booking Summary</h3>
-          <p>Review &amp; checkout all bookings</p>
+          <h3>Merchandise</h3>
+          <p>Shirts, dresses, baskets &amp; crafts</p>
         </div>
       </div>
     </div>
+  `;
+
+  const displayItems = (APP_DATA && APP_DATA.displayItems) || [];
+  if (displayItems.length) {
+    html += `
+      <div class="acc" id="acc-engage-display">
+        <button class="acc-btn" onclick="toggleAcc(this)">
+          <span>On Display</span>
+        </button>
+        <div class="acc-body">
+          <div class="photo-grid">
+            ${displayItems.map(d => `
+              <div class="ptile" onclick="pushView({type:'display-item', id:${d.id}})">
+                <img src="${d.img}" loading="lazy" onerror="this.parentElement.style.display='none'">
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  html += `
     <div class="section-label">Featured Events</div>
     <div class="cat-list">
   `;
@@ -8625,6 +9242,132 @@ function renderEngageHome() {
 
   html += `</div><div style="height:14px;"></div>`;
   document.getElementById('content').innerHTML = html;
+}
+
+function renderDisplayPage() {
+  setHeader("Collections", "On Display", true);
+  const items = (APP_DATA && APP_DATA.displayItems) || [];
+  const grid = items.map(d => `
+    <div class="display-card" onclick="pushView({type:'display-item', id:${d.id}})">
+      <img src="${d.img}" loading="lazy" onerror="this.parentElement.style.display='none'">
+      <div class="dc-body">
+        <h4>${d.title}</h4>
+        <p>${d.images.length} photo${d.images.length > 1 ? 's' : ''}</p>
+      </div>
+    </div>
+  `).join('');
+
+  document.getElementById('content').innerHTML = `
+    <div class="detail-body">
+      <h2>On Display</h2>
+      <p>Artifacts from Botswana's living heritage collection.</p>
+    </div>
+    <div class="section-label">${items.length} Items</div>
+    <div class="photo-grid">${grid}</div>
+    <div style="height:14px;"></div>
+  `;
+}
+
+function renderDisplayItem(id) {
+  const item = (APP_DATA && APP_DATA.displayItems || []).find(d => d.id === id);
+  if (!item) return renderDisplayPage();
+  setHeader("On Display", item.title, true);
+
+  const article = appArticle('displayArticles', item.articleKey);
+  const gallery = item.images.map(src => `
+    <div class="ptile" onclick="pushView({type:'gallery-photo', src:'${src.replace(/'/g, "\\'")}'})">
+      <img src="${src}" loading="lazy" onerror="this.parentElement.style.display='none'">
+    </div>
+  `).join('');
+
+  document.getElementById('content').innerHTML = `
+    <div class="hero-image-space" style="height:200px;">
+      <img src="${item.img}">
+      <div class="img-label">${item.title}</div>
+    </div>
+    <div class="detail-body">
+      <h2>${item.title}</h2>
+      ${article && article.body ? `<div style="line-height:1.7;">${paragraphsToHtml(article.body)}</div>` : '<p style="color:var(--muted);">No article yet.</p>'}
+    </div>
+    <div class="section-label">${item.images.length} Photos</div>
+    <div class="photo-grid">${gallery}</div>
+    <div style="height:14px;"></div>
+  `;
+}
+
+function renderAroundDetail(key) {
+  const article = appArticle('aroundArticles', key);
+  const item = (APP_DATA && APP_DATA.aroundItems || []).find(a => a.key === key) || {};
+  setHeader("Around Botswana", item.title || article.title || 'Article', true);
+
+  document.getElementById('content').innerHTML = `
+    ${item.img ? `<div style="padding:0 16px;"><img src="${item.img}" class="single-photo" onerror="this.style.display='none'"></div>` : ''}
+    <div class="detail-body">
+      <h2>${item.title || article.title}</h2>
+      ${article && article.body ? `<div style="line-height:1.7;">${paragraphsToHtml(article.body)}</div>` : '<p style="color:var(--muted);">No article yet.</p>'}
+    </div>
+    <div style="height:14px;"></div>
+  `;
+}
+
+function renderMerchPage() {
+  setHeader("Shop", "Merchandise", true);
+  const items = (APP_DATA && APP_DATA.merchItems) || [];
+
+  let html = `
+    <div class="detail-body">
+      <h2>Merchandise</h2>
+      <p>Wear and keep Botswana's culture with you.</p>
+    </div>
+  `;
+
+  const cats = [];
+  items.forEach(it => { if (cats.indexOf(it.cat) === -1) cats.push(it.cat); });
+
+  cats.forEach(cat => {
+    const catItems = items.filter(it => it.cat === cat);
+    html += `<div class="section-label">${cat}</div><div class="photo-grid">`;
+    catItems.forEach(it => {
+      html += `
+        <div class="merch-card" onclick="pushView({type:'merch-detail', num:'${it.num}'})">
+          ${it.img ? `<img src="${it.img}" loading="lazy" onerror="this.parentElement.style.display='none'">` : ''}
+          <div class="mc-body">
+            <h4>${it.title}</h4>
+            <div class="price">P${it.price}</div>
+            <p>${(it.info || '').slice(0, 70)}${(it.info || '').length > 70 ? '…' : ''}</p>
+          </div>
+        </div>
+      `;
+    });
+    html += `</div>`;
+  });
+
+  html += `<div style="height:14px;"></div>`;
+  document.getElementById('content').innerHTML = html;
+}
+
+function renderMerchDetail(num) {
+  const it = (APP_DATA && APP_DATA.merchItems || []).find(m => m.num === num);
+  if (!it) return renderMerchPage();
+  setHeader("Shop", it.title, true);
+
+  let metaHtml = '';
+  if (it.extra) metaHtml += `<div class="info-card"><p style="color:var(--muted); font-size:12px;">${it.extra}</p></div>`;
+
+  document.getElementById('content').innerHTML = `
+    ${it.img ? `<div style="padding:0 16px;"><img src="${it.img}" style="width:100%; height:220px; object-fit:cover; border-radius:14px;"></div>` : ''}
+    <div class="detail-body">
+      <h2>${it.title}</h2>
+      <div style="color:var(--terracotta); font-weight:700; font-size:18px; margin-bottom:8px;">P${it.price}</div>
+      <p>${it.info || ''}</p>
+      <div class="section-label">Details</div>
+      <div class="info-card">
+        <div class="info-line"><span class="k">Category</span><span class="v">${it.cat}</span></div>
+      </div>
+      ${metaHtml}
+    </div>
+    <div style="height:14px;"></div>
+  `;
 }
 
 function renderEventDetail(id) {
@@ -9594,12 +10337,11 @@ function renderLearnHome() {
       <h2>Deepen your<br>understanding.</h2>
       <p>Explore Botswana's ethnic groups and test your knowledge with trivia games.</p>
     </div>
-    <div class="section-label">Ethnic Groups & Cultures</div>
-    <div class="cat-list">
   `;
 
+  let culturesHtml = '';
   CULTURES.forEach(cult => {
-    html += `
+    culturesHtml += `
       <div class="cat-row" onclick="pushView({type:'culture-group', id:'${cult.id}'})">
         <div class="thumb" style="background:var(--ocean-blue)">${cult.icon}</div>
         <div class="meta">
@@ -9611,7 +10353,44 @@ function renderLearnHome() {
     `;
   });
 
-  html += `</div>
+  html += `
+    <div class="acc" id="acc-learn-cultures">
+      <button class="acc-btn" onclick="toggleAcc(this)">
+        <span>Ethnic Groups &amp; Cultures</span>
+      </button>
+      <div class="acc-body">
+        <div class="cat-list" style="margin:0; padding:0;">
+          ${culturesHtml}
+        </div>
+      </div>
+    </div>
+  `;
+
+  const aroundItems = (APP_DATA && APP_DATA.aroundItems) || [];
+  if (aroundItems.length) {
+    const tiles = aroundItems.map(a => `
+      <div class="around-tile" onclick="pushView({type:'around-detail', key:'${a.key}'})">
+        <img src="${a.img}" loading="lazy" onerror="this.style.display='none'">
+        <div class="meta">
+          <h3>${a.title}</h3>
+          <p>Around Botswana</p>
+        </div>
+      </div>
+    `).join('');
+
+    html += `
+      <div class="acc" id="acc-learn-around">
+        <button class="acc-btn orange" onclick="toggleAcc(this)">
+          <span>🌍 Around Botswana</span><span class="chev">▾</span>
+        </button>
+        <div class="acc-body">
+          ${tiles}
+        </div>
+      </div>
+    `;
+  }
+
+  html += `
     <div class="section-label">Trivia Games</div>
     <div style="padding:0 16px;">
   `;
@@ -9624,7 +10403,6 @@ function renderLearnHome() {
         <p>${g.desc}</p>
         <div class="startrow">
           <span class="qcount">${g.questions.length} questions · 5s each</span>
-          <button class="playbtn">Play</button>
         </div>
       </div>
     `;
@@ -9701,6 +10479,12 @@ function startGame(gameId) {
 
 function renderQuizPlay() {
   clearInterval(timerHandle);
+  if (!quizState || !quizState.game) {
+    stopQuizTimers();
+    stack.pop();
+    render();
+    return;
+  }
   const { game, qIndex, score } = quizState;
   const q = game.questions[qIndex];
   quizState.answered = false;
@@ -9747,6 +10531,7 @@ function renderQuizPlay() {
 }
 
 function answerQuiz(selectedIndex) {
+  if (!quizState || !quizState.game) return;
   if (quizState.answered) return;
   quizState.answered = true;
   clearInterval(timerHandle);
@@ -9764,7 +10549,8 @@ function answerQuiz(selectedIndex) {
 
   if (selectedIndex === q.correct) quizState.score++;
 
-  setTimeout(() => {
+  timerHandle = setTimeout(() => {
+    if (!quizState) return;
     if (qIndex + 1 < game.questions.length) {
       quizState.qIndex++;
       renderQuizPlay();
@@ -9777,6 +10563,11 @@ function answerQuiz(selectedIndex) {
 
 function renderQuizResult() {
   clearInterval(timerHandle);
+  if (!quizState || !quizState.game) {
+    stack.pop();
+    render();
+    return;
+  }
   const { game, score } = quizState;
   const total = game.questions.length;
   const pct = Math.round((score / total) * 100);
@@ -9814,6 +10605,22 @@ function renderMenuHome() {
     </div>
     <div class="section-label">Menu</div>
     <div style="display:flex; flex-direction:column; gap:0;">
+      <div class="menu-link" onclick="pushView({type:'booking-summary'})">
+        <div class="icon">📋</div>
+        <div style="flex:1;">
+          <div style="font-weight: 600;">Booking Summary</div>
+          <div style="font-size:12px; color:var(--muted);">Review &amp; checkout all bookings</div>
+        </div>
+
+      </div>
+      <div class="menu-link" onclick="pushView({type:'merch-page'})">
+        <div class="icon">🛍️</div>
+        <div style="flex:1;">
+          <div style="font-weight: 600;">Merchandise</div>
+          <div style="font-size:12px; color:var(--muted);">T-shirts, dresses, baskets &amp; crafts</div>
+        </div>
+
+      </div>
       <div class="menu-link" onclick="alert('Phone: ${MUSEUM_INFO.phones[0]}')">
         <div class="icon">📞</div>
         <div style="flex:1;">
