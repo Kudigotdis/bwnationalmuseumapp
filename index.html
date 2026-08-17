@@ -8938,6 +8938,23 @@ function renderMuseumDetail(id) {
   if (mus.address) extraHtml += '<div class="info-card"><div class="info-line"><span class="k">Address</span><span class="v">' + mus.address + '</span></div></div>';
   if (mus.additional_info) extraHtml += '<div class="section-label">Additional Info</div><div class="info-card"><p>' + mus.additional_info + '</p></div>';
 
+  let catListHtml = '<div class="section-label">Other Museums in Botswana</div><div class="cat-list">';
+  MUSEUMS.forEach(mus2 => {
+    const img2 = APP_DATA.museumImg[mus2.id] || getImage(mus2.id);
+    catListHtml += `
+      <div class="cat-row" onclick="selectedMuseumId='${mus2.id}'; stack.pop(); pushView({type:'museum-detail', id:'${mus2.id}'})">
+        <div class="thumb">
+          ${img2 ? `<img src="${img2}">` : `📸`}
+        </div>
+        <div class="meta">
+          <h3>${mus2.name}</h3>
+          <p>${mus2.location}</p>
+        </div>
+      </div>
+    `;
+  });
+  catListHtml += '</div>';
+
   document.getElementById('content').innerHTML = `
     <div class="hero-image-space" style="height:200px;">
       ${img ? `<img src="${img}">` : `<span style="display:flex;align-items:center;justify-content:center;height:100%;font-size:40px;">📸</span>`}
@@ -8950,6 +8967,7 @@ function renderMuseumDetail(id) {
       <p>${mus.desc}</p>
     </div>
     ${extraHtml}
+    ${catListHtml}
     <div style="height:14px;"></div>
   `;
 }
