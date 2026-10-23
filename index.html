@@ -10399,9 +10399,10 @@ function renderLearnHome() {
     html += `
       <div class="acc" id="acc-learn-around">
         <button class="acc-btn orange" onclick="toggleAcc(this)">
-          <span>🌍 Around Botswana</span><span class="chev">▾</span>
+          <span>Around Botswana</span>
         </button>
         <div class="acc-body">
+
           ${tiles}
         </div>
       </div>
@@ -10409,7 +10410,13 @@ function renderLearnHome() {
   }
 
   html += `
-    <div class="section-label">Trivia Games</div>
+      <div class="around-tile" id="acc-interactive-map" onclick="window.open('Learn Botswana Interactive Map/Learn-Botswana-Interactive-Map.html','_blank')" style="background:#D17226; color:#fff;">
+        <div class="meta">
+          <h3 style="color:#fff;">Botswana Map</h3>
+        </div>
+      </div>
+
+      <div class="section-label">Trivia Games</div>
     <div style="padding:0 16px;">
   `;
 

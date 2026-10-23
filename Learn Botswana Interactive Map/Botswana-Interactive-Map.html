@@ -1,0 +1,1289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="dark" />
+<title>Explore Botswana's Heritage</title>
+<style>
+  /* ============================================================
+     DESIGN TOKENS
+     ============================================================ */
+  :root{
+    --ink:        #f4ece0;
+    --ink-soft:   #d9cbb8;
+    --muted:      #b09d87;
+    --panel:      rgba(32, 25, 19, .86);
+    --panel-line: rgba(255,255,255,.10);
+    --land:       #d8bd94;
+    --land-line:  #8a6a44;
+
+    /* Category accents */
+    --c-museum:     #2b7ea6;
+    --c-historical: #c14f28;
+    --c-natural:    #38895a;
+
+    --radius: 16px;
+    --tap: 44px;
+  }
+
+  *, *::before, *::after{ box-sizing: border-box; }
+
+  html, body{ height: 100%; }
+
+  body{
+    margin: 0;
+    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+                 "Helvetica Neue", Arial, sans-serif;
+    color: var(--ink);
+    background:
+      radial-gradient(1200px 720px at 50% -12%, #2e241a 0%, transparent 62%),
+      radial-gradient(900px 620px at 105% 115%, #241a13 0%, transparent 58%),
+      #120f0c;
+    overflow: hidden;                    /* kiosk: no page scroll */
+    -webkit-tap-highlight-color: transparent;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ============================================================
+     SHELL LAYOUT
+     ============================================================ */
+  .app{
+    position: fixed;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .hud{
+    flex: 0 0 auto;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    padding: max(16px, env(safe-area-inset-top)) 22px 4px;
+  }
+
+  .hud h1{
+    margin: 0;
+    font-size: clamp(20px, 2.5vw, 32px);
+    font-weight: 700;
+    letter-spacing: -.022em;
+    line-height: 1.12;
+    text-wrap: balance;
+  }
+  .hud h1 em{
+    font-style: normal;
+    color: #e9c78d;
+  }
+  .hud .sub{
+    margin: 6px 0 0;
+    font-size: 13px;
+    letter-spacing: .01em;
+    color: var(--muted);
+  }
+
+  .stage{
+    position: relative;
+    flex: 1 1 auto;
+    min-height: 0;
+    display: flex;
+    padding: 8px 16px 14px;
+  }
+
+  /* The wrapper ALWAYS has exactly the SVG's aspect ratio, so that
+     percentage-positioned markers land on the right pixel. */
+  .map-frame{
+    position: relative;
+    margin: auto;
+    isolation: isolate;
+  }
+
+  #botswana-map{
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    filter: drop-shadow(0 22px 44px rgba(0,0,0,.55));
+  }
+
+  /* Country / district geometry — warm sand with a darker stroke */
+  #botswana-map path,
+  #botswana-map polygon,
+  #botswana-map polyline{
+    fill: url(#landGrad);
+    stroke: var(--land-line);
+    stroke-width: 1.1;
+    stroke-linejoin: round;
+    vector-effect: non-scaling-stroke;
+  }
+
+  /* ============================================================
+     MARKER LAYER
+     Markers live in HTML space (never inside the SVG) so they keep a
+     constant, finger-friendly screen size at any scale.
+     ============================================================ */
+  .marker-layer{
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 20;
+  }
+
+  .marker{
+    position: absolute;
+    width: var(--tap);
+    height: var(--tap);
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: none;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    display: grid;
+    place-items: center;
+    pointer-events: auto;
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+    transition: opacity .22s ease, transform .22s cubic-bezier(.2,.8,.3,1);
+    animation: marker-in .42s cubic-bezier(.2,.9,.3,1) backwards;
+  }
+
+  @keyframes marker-in{
+    from{ opacity: 0; transform: translate(-50%, -50%) scale(.4); }
+    to  { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  }
+
+  .marker-inner{
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: var(--c, #555);
+    border: 2.5px solid #fdf6ea;
+    box-shadow: 0 4px 12px rgba(0,0,0,.5), 0 0 0 1px rgba(0,0,0,.35);
+    transition: transform .18s cubic-bezier(.2,.8,.3,1), box-shadow .18s ease;
+  }
+
+  .marker-inner svg{
+    width: 18px;
+    height: 18px;
+    display: block;
+    fill: #fff;
+  }
+
+  /* Focus / hover / active states */
+  .marker:hover .marker-inner,
+  .marker:focus-visible .marker-inner{
+    transform: scale(1.12);
+    box-shadow: 0 6px 18px rgba(0,0,0,.6), 0 0 0 1px rgba(0,0,0,.35);
+  }
+
+  .marker:focus-visible{
+    outline: 3px solid #ffd79a;
+    outline-offset: 2px;
+    border-radius: 50%;
+  }
+
+  .marker.is-active{ z-index: 5; }
+  .marker.is-active .marker-inner{
+    transform: scale(1.16);
+    box-shadow: 0 6px 20px rgba(0,0,0,.6), 0 0 0 4px rgba(255, 214, 150, .35);
+  }
+
+  .marker.is-dimmed{
+    opacity: .22;
+    transform: translate(-50%, -50%) scale(.78);
+  }
+
+  /* ============================================================
+     LEGEND  (also acts as a category filter)
+     ============================================================ */
+  .legend{
+    position: absolute;
+    left: 16px;
+    bottom: 16px;
+    z-index: 30;
+    width: 226px;
+    padding: 12px 12px 10px;
+    border-radius: var(--radius);
+    background: var(--panel);
+    border: 1px solid var(--panel-line);
+    box-shadow: 0 18px 40px rgba(0,0,0,.5);
+    backdrop-filter: blur(14px) saturate(1.2);
+    -webkit-backdrop-filter: blur(14px) saturate(1.2);
+    transition: opacity .25s ease;
+  }
+
+  .legend h2{
+    margin: 0 0 8px;
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .legend-list{ list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
+
+  .legend-item{
+    width: 100%;
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 4px 8px;
+    border: 1px solid transparent;
+    border-radius: 11px;
+    background: transparent;
+    color: var(--ink-soft);
+    font: inherit;
+    font-size: 13px;
+    text-align: left;
+    cursor: pointer;
+    transition: background .16s ease, border-color .16s ease, color .16s ease;
+  }
+
+  .legend-item:hover{ background: rgba(255,255,255,.06); }
+
+  .legend-item:focus-visible{
+    outline: 2px solid #ffd79a;
+    outline-offset: 1px;
+  }
+
+  .legend-item[aria-pressed="true"]{
+    background: rgba(255,255,255,.10);
+    border-color: rgba(255,255,255,.20);
+    color: #fff;
+  }
+
+  .legend-ico{
+    width: 24px; height: 24px;
+    flex: 0 0 24px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: var(--c);
+    box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.85);
+  }
+  .legend-ico svg{ width: 13px; height: 13px; fill: #fff; display: block; }
+
+  .legend-label{ flex: 1 1 auto; }
+
+  .legend-count{
+    font-size: 11px;
+    font-variant-numeric: tabular-nums;
+    color: var(--muted);
+    background: rgba(255,255,255,.07);
+    border-radius: 999px;
+    padding: 1px 7px;
+  }
+
+  .legend-total{
+    margin: 9px 0 0;
+    padding-top: 9px;
+    border-top: 1px solid var(--panel-line);
+    font-size: 11.5px;
+    color: var(--muted);
+    letter-spacing: .02em;
+  }
+
+  /* ============================================================
+     POPUP
+     ============================================================ */
+  .popup{
+    position: fixed;
+    z-index: 60;
+    width: min(330px, calc(100vw - 24px));
+    padding: 18px 18px 16px;
+    border-radius: 18px;
+    background: linear-gradient(180deg, #fffdf8 0%, #f7ecdc 100%);
+    color: #241c14;
+    box-shadow:
+      0 24px 60px rgba(0,0,0,.6),
+      0 2px 0 rgba(255,255,255,.6) inset,
+      0 0 0 1px rgba(0,0,0,.07);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(8px) scale(.97);
+    transform-origin: 50% 100%;
+    transition:
+      opacity .2s ease,
+      transform .2s cubic-bezier(.2,.8,.3,1),
+      visibility 0s linear .2s;
+  }
+
+  .popup.is-open{
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    transition:
+      opacity .2s ease,
+      transform .24s cubic-bezier(.2,.8,.3,1),
+      visibility 0s;
+  }
+
+  .popup .pill{
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .07em;
+    text-transform: uppercase;
+    color: #fff;
+    background: var(--c, #555);
+    box-shadow: 0 2px 8px rgba(0,0,0,.18);
+  }
+
+  .popup h2{
+    margin: 10px 30px 8px 0;
+    font-size: 19px;
+    line-height: 1.24;
+    letter-spacing: -.015em;
+    font-weight: 700;
+    color: #1c1610;
+  }
+
+  .popup-desc{
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.52;
+    color: #4a3d30;
+  }
+
+  .popup-meta{
+    margin: 12px 0 0;
+    font-size: 11.5px;
+    letter-spacing: .05em;
+    color: #8a7660;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .popup-close{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 34px;
+    height: 34px;
+    display: grid;
+    place-items: center;
+    border: 0;
+    border-radius: 50%;
+    background: rgba(36, 28, 20, .07);
+    color: #4a3d30;
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+    transition: background .15s ease;
+  }
+  .popup-close:hover{ background: rgba(36, 28, 20, .14); }
+  .popup-close:focus-visible{ outline: 2px solid #b3823c; outline-offset: 2px; }
+
+  /* Bottom-sheet mode (small screens) */
+  .popup.is-sheet{
+    left: 0 !important;
+    right: 0;
+    top: auto !important;
+    bottom: 0;
+    width: 100%;
+    max-width: 100%;
+    border-radius: 22px 22px 0 0;
+    padding: 12px 20px calc(20px + env(safe-area-inset-bottom));
+    transform: translateY(26px);
+  }
+  .popup.is-sheet.is-open{ transform: translateY(0); }
+
+  .sheet-grab{
+    display: none;
+    width: 40px;
+    height: 4px;
+    margin: 0 auto 12px;
+    border-radius: 999px;
+    background: rgba(36,28,20,.22);
+  }
+  .popup.is-sheet .sheet-grab{ display: block; }
+  .popup.is-sheet h2{ font-size: 21px; }
+
+  .backdrop{
+    position: fixed;
+    inset: 0;
+    z-index: 55;
+    background: rgba(8, 6, 4, .5);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    opacity: 0;
+    transition: opacity .22s ease;
+  }
+  .backdrop.is-open{ opacity: 1; }
+
+  /* Hide the legend while the bottom sheet is open on phones */
+  body.sheet-open .legend{ opacity: 0; pointer-events: none; }
+
+  /* ============================================================
+     BASE-MAP LOADER (shown while the SVG placeholder is empty)
+     ============================================================ */
+  .loader{
+    position: absolute;
+    inset: 0;
+    z-index: 40;
+    display: grid;
+    place-items: center;
+    padding: 16px;
+  }
+  .loader[hidden]{ display: none; }
+
+  .loader-card{
+    width: min(460px, 100%);
+    padding: 26px 24px 22px;
+    border-radius: 20px;
+    text-align: center;
+    background: rgba(30, 24, 18, .92);
+    border: 1px dashed rgba(255,255,255,.22);
+    box-shadow: 0 24px 60px rgba(0,0,0,.55);
+  }
+
+  .loader-card .glyph{
+    width: 52px; height: 52px;
+    margin: 0 auto 12px;
+    border-radius: 14px;
+    display: grid; place-items: center;
+    background: rgba(255,255,255,.07);
+    color: #e9c78d;
+  }
+  .loader-card .glyph svg{ width: 26px; height: 26px; fill: currentColor; }
+
+  .loader-card h2{
+    margin: 0 0 8px;
+    font-size: 17px;
+    letter-spacing: -.01em;
+  }
+  .loader-card p{
+    margin: 0 0 18px;
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: var(--muted);
+  }
+  .loader-card code{
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 12px;
+    background: rgba(255,255,255,.09);
+    padding: 1px 5px;
+    border-radius: 5px;
+    color: var(--ink-soft);
+  }
+
+  .loader-actions{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+  }
+
+  .btn{
+    min-height: var(--tap);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 18px;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,.18);
+    background: linear-gradient(180deg, #eccb92, #d7ab63);
+    color: #241a10;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: .01em;
+    cursor: pointer;
+    transition: filter .15s ease, transform .15s ease;
+  }
+  .btn:hover{ filter: brightness(1.06); }
+  .btn:active{ transform: translateY(1px); }
+  .btn:focus-visible{ outline: 3px solid #ffd79a; outline-offset: 2px; }
+
+  .btn.ghost{
+    background: rgba(255,255,255,.06);
+    color: var(--ink);
+    border-color: rgba(255,255,255,.20);
+  }
+
+  .drop-hint{
+    margin-top: 14px;
+    font-size: 11.5px;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.32);
+  }
+
+  /* ============================================================
+     RESPONSIVE
+     ============================================================ */
+  @media (max-width: 720px){
+    .hud{ padding: max(14px, env(safe-area-inset-top)) 16px 2px; }
+    .hud .sub{ font-size: 12px; }
+
+    .stage{ padding: 6px 8px 8px; }
+
+    .legend{
+      left: 8px;
+      right: 8px;
+      bottom: 8px;
+      width: auto;
+      padding: 8px 8px 6px;
+    }
+    .legend h2{ display: none; }
+    .legend-list{
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+    .legend-item{
+      flex-direction: column;
+      gap: 3px;
+      min-height: 56px;
+      padding: 6px 2px;
+      text-align: center;
+      font-size: 11px;
+      line-height: 1.15;
+    }
+    .legend-count{ display: none; }
+    .legend-total{ display: none; }
+
+    .stage{ padding-bottom: 78px; }  /* keep the map clear of the legend */
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *, *::before, *::after{
+      animation-duration: .001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: .001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="app">
+
+  <header class="hud">
+    <div>
+      <h1>Explore <em>Botswana's</em> Heritage</h1>
+      <p class="sub" id="subtitle">8 sites · 3 categories · tap a marker</p>
+    </div>
+  </header>
+
+  <main class="stage" id="stage">
+
+    <div class="map-frame" id="mapFrame">
+
+      <!-- ============================================================
+           STEP 1 — INLINE SVG
+           Paste the *contents* of botswana.svg below, replacing the
+           placeholder comment. Keep the <svg id="botswana-map"> wrapper
+           (its viewBox will be auto-detected). If you paste the whole
+           file, the app strips the outer <svg> tag for you.
+           ============================================================ -->
+      <svg id="botswana-map"
+           viewBox="0 0 1000 974"
+           preserveAspectRatio="xMidYMid meet"
+           role="img"
+           aria-label="Map of Botswana">
+        <!-- PASTE YOUR BOTSWANA SVG HERE -->
+      </svg>
+
+      <!-- Markers are HTML buttons, absolutely positioned over the map -->
+      <div class="marker-layer" id="markerLayer"></div>
+
+      <!-- Shown only while the map geometry is missing -->
+      <div class="loader" id="loader">
+        <div class="loader-card">
+          <div class="glyph">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 2 2 7v2h20V7L12 2Zm-7 9h2.6v7H5v-7Zm4.7 0h2.6v7h-2.6v-7Zm4.7 0H17v7h-2.6v-7ZM3 20h18v2H3v-2Z"/>
+            </svg>
+          </div>
+          <h2>Base map not loaded yet</h2>
+          <p>
+            The SVG slot above is still a placeholder. Drop
+            <code>botswana.svg</code> or <code>bw.json</code> anywhere on this
+            page — or pick a file below. All markers and projection logic are
+            already wired up.
+          </p>
+          <div class="loader-actions">
+            <label class="btn">
+              Choose SVG
+              <input id="svgInput" type="file" accept=".svg,image/svg+xml" hidden />
+            </label>
+            <label class="btn ghost">
+              Choose bw.json
+              <input id="jsonInput" type="file" accept=".json,application/json" hidden />
+            </label>
+          </div>
+          <div class="drop-hint">Drag &amp; drop works too</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Legend = category filter -->
+    <aside class="legend" id="legend" aria-label="Site categories">
+      <h2>Categories</h2>
+      <ul class="legend-list" id="legendList"></ul>
+      <p class="legend-total" id="legendTotal"></p>
+    </aside>
+
+  </main>
+</div>
+
+<div class="backdrop" id="backdrop" hidden></div>
+
+<div class="popup" id="popup" role="dialog" aria-modal="false"
+     aria-labelledby="popupTitle" aria-hidden="true"></div>
+
+<script>
+(function () {
+  'use strict';
+
+  /* ============================================================
+     1. PROJECTION SETUP
+     ------------------------------------------------------------
+     The whole app uses a plain equirectangular (linear) projection
+     against Botswana's bounding box. Change these four numbers and
+     every marker moves with the map.
+     ============================================================ */
+  const BOTSWANA_BBOX = {
+    north: -17.78,
+    south: -26.91,
+    west:  20.00,
+    east:  29.37
+  };
+
+  const SVG_NS = 'http://www.w3.org/2000/svg';
+
+  // Default viewBox aspect, derived from the bounding box.
+  const DEFAULT_VB_W = 1000;
+  const DEFAULT_VB_H = Math.round(
+    DEFAULT_VB_W *
+    (BOTSWANA_BBOX.north - BOTSWANA_BBOX.south) /
+    (BOTSWANA_BBOX.east  - BOTSWANA_BBOX.west)
+  ); // ≈ 974
+
+  /* Live viewBox — replaced with the real one when the SVG loads. */
+  let viewBox = { x: 0, y: 0, w: DEFAULT_VB_W, h: DEFAULT_VB_H };
+
+  /**
+   * lat/lng → SVG user-space coordinates.
+   * Linear equirectangular mapping of the bounding box onto the viewBox.
+   * @returns {{x:number, y:number}} coordinates in the SVG's own units
+   */
+  function project(lat, lng) {
+    const x = viewBox.x +
+      ((lng - BOTSWANA_BBOX.west) /
+       (BOTSWANA_BBOX.east - BOTSWANA_BBOX.west)) * viewBox.w;
+
+    const y = viewBox.y +
+      ((BOTSWANA_BBOX.north - lat) /
+       (BOTSWANA_BBOX.north - BOTSWANA_BBOX.south)) * viewBox.h;
+
+    return { x: x, y: y };
+  }
+
+  /* ============================================================
+     2. INLINE SVG ICON GLYPHS (24×24, no icon fonts, no files)
+     ============================================================ */
+  const ICONS = {
+    /* Columned building — museum */
+    museum:
+      '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">' +
+        '<path d="M12 2.4 21.6 8.6H2.4L12 2.4Z"/>' +
+        '<rect x="5.8" y="9.8" width="2" height="8"/>' +
+        '<rect x="11"   y="9.8" width="2" height="8"/>' +
+        '<rect x="16.2" y="9.8" width="2" height="8"/>' +
+        '<rect x="3" y="18.4" width="18" height="2.9" rx=".8"/>' +
+      '</svg>',
+
+    /* Obelisk — historical site */
+    historical:
+      '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">' +
+        '<path d="M12 1.8 14.7 7.6V19.2H9.3V7.6L12 1.8Z"/>' +
+        '<rect x="7.2" y="19" width="9.6" height="2.9" rx=".8"/>' +
+      '</svg>',
+
+    /* Rock arch / cave mouth — natural monument */
+    natural:
+      '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">' +
+        '<path d="M2.6 19V17c0-5.6 4.2-10.1 9.4-10.1S21.4 11.4 21.4 17v2h-5.1v-2' +
+              'c0-2.8-1.9-5.1-4.3-5.1S7.7 14.2 7.7 17v2H2.6Z"/>' +
+        '<rect x="1.8" y="19.6" width="20.4" height="2.2" rx="1.1"/>' +
+      '</svg>'
+  };
+
+  const CATEGORIES = {
+    museum:     { label: 'Museum',            color: 'var(--c-museum)'     },
+    historical: { label: 'Historical Site',   color: 'var(--c-historical)' },
+    natural:    { label: 'Natural Monument',  color: 'var(--c-natural)'    }
+  };
+
+  /* ============================================================
+     3. SITE DATA
+     ------------------------------------------------------------
+     Structure:
+       id          unique string
+       name        display name (also used for aria-label)
+       category    'museum' | 'historical' | 'natural'
+       lat / lng   real-world coordinates
+       description one sentence, shown in the popup
+       x / y       OPTIONAL hand-tuned overrides in SVG units.
+                   If either is present it wins over the projected value,
+                   so you can nudge a marker that lands slightly off.
+     ============================================================ */
+  const SITES = [
+    {
+      id: 'botswana-national-museum',
+      name: 'Botswana National Museum',
+      category: 'museum',
+      lat: -24.656994, lng: 25.919657,
+      description: "Established in 1967 and opened in Gaborone in 1968, the National Museum and Art Gallery is the country's principal repository of ethnographic, natural-history and contemporary art collections."
+    },
+    {
+      id: 'khama-iii-memorial-museum',
+      name: 'Khama III Memorial Museum',
+      category: 'museum',
+      lat: -22.382132, lng: 26.708068,
+      description: "Housed in a historic red-brick building in Serowe, it documents the Bangwato royal line from Chief Khama III to Sir Seretse Khama and keeps a dedicated section on the author Bessie Head."
+    },
+    {
+      id: 'phuthadikobo-museum',
+      name: 'Phuthadikobo Museum',
+      category: 'museum',
+      lat: -24.387833, lng: 26.152055,
+      description: "Perched on Phuthadikobo Hill above Mochudi in a 1921 schoolhouse, it preserves Bakgatla-ba-Kgafela craft, historical photography and the traditions of bogwera and bojale initiation."
+    },
+    {
+      id: 'supa-ngwao-museum',
+      name: 'Supa Ngwao Museum',
+      category: 'museum',
+      lat: -21.173611, lng: 27.5125,
+      description: "Founded in Francistown in 1986, its name means 'show culture' and its exhibits trace Kalanga heritage, early Monarch Mine gold working and the development of the region's railway."
+    },
+    {
+      id: 'tsodilo-hills',
+      name: 'Tsodilo Hills',
+      category: 'historical',
+      lat: -18.9667, lng: 21.7500,
+      description: "A UNESCO World Heritage Site known as the 'Louvre of the Desert', these sacred quartzite hills hold more than 4,500 rock paintings across over 400 individual sites."
+    },
+    {
+      id: 'old-palapye',
+      name: 'Old Palapye',
+      category: 'historical',
+      lat: -22.6167, lng: 27.5000,
+      description: "Capital of the Bangwato under Khama III from 1889 until 1902, its stone ruins include the London Missionary Society church begun around 1892 and the graves of the royal homesteads."
+    },
+    {
+      id: 'domboshaba-ruins',
+      name: 'Domboshaba Ruins',
+      category: 'historical',
+      lat: -20.5994637, lng: 27.3731012,
+      description: "A dry-stone walled Kalanga settlement occupied from roughly 1450 to the late 17th century, built in the same masonry tradition as Great Zimbabwe and Khami."
+    },
+    {
+      id: 'gcwihaba-caves',
+      name: 'Gcwihaba Caves',
+      category: 'natural',
+      lat: -20.0167, lng: 21.7833,
+      description: "A National Monument in a remote stretch of the Kalahari, this limestone cavern system of stalactites, stalagmites and bat colonies yields key palaeo-environmental and fossil evidence."
+    }
+  ];
+
+  /* ============================================================
+     4. DOM REFERENCES + APP STATE
+     ============================================================ */
+  const mapSvg      = document.getElementById('botswana-map');
+  const mapFrame    = document.getElementById('mapFrame');
+  const markerLayer = document.getElementById('markerLayer');
+  const stage       = document.getElementById('stage');
+  const legendList  = document.getElementById('legendList');
+  const legendTotal = document.getElementById('legendTotal');
+  const popup       = document.getElementById('popup');
+  const backdrop    = document.getElementById('backdrop');
+  const loader      = document.getElementById('loader');
+  const subtitle    = document.getElementById('subtitle');
+
+  let activeBtn   = null;   // marker button currently owning the popup
+  let activeSite  = null;
+  let activeCat   = null;   // null = show everything
+
+  const SHEET_QUERY = window.matchMedia('(max-width: 720px)');
+  const isSheetMode = () => SHEET_QUERY.matches;
+
+  /* ============================================================
+     5. VIEWBOX HANDLING + LAND GRADIENT
+     ============================================================ */
+  function readViewBox() {
+    const raw = (mapSvg.getAttribute('viewBox') || '').trim().split(/[\s,]+/).map(Number);
+    if (raw.length === 4 && raw.every(Number.isFinite) && raw[2] > 0 && raw[3] > 0) {
+      viewBox = { x: raw[0], y: raw[1], w: raw[2], h: raw[3] };
+    } else {
+      const w = parseFloat(mapSvg.getAttribute('width'))  || DEFAULT_VB_W;
+      const h = parseFloat(mapSvg.getAttribute('height')) || DEFAULT_VB_H;
+      viewBox = { x: 0, y: 0, w: w, h: h };
+      mapSvg.setAttribute('viewBox', '0 0 ' + w + ' ' + h);
+    }
+  }
+
+  /** Injects the shared sand gradient used by every land path. */
+  function ensureDefs() {
+    let defs = mapSvg.querySelector('defs[data-heritage="1"]');
+    if (!defs) {
+      defs = document.createElementNS(SVG_NS, 'defs');
+      defs.setAttribute('data-heritage', '1');
+      mapSvg.insertBefore(defs, mapSvg.firstChild);
+    }
+    defs.innerHTML =
+      '<linearGradient id="landGrad" gradientUnits="userSpaceOnUse" ' +
+        'x1="' + viewBox.x + '" y1="' + viewBox.y + '" ' +
+        'x2="' + (viewBox.x + viewBox.w * 0.8) + '" ' +
+        'y2="' + (viewBox.y + viewBox.h) + '">' +
+        '<stop offset="0" stop-color="#ecd8b4"/>' +
+        '<stop offset="0.5" stop-color="#dcc094"/>' +
+        '<stop offset="1" stop-color="#c8a675"/>' +
+      '</linearGradient>';
+  }
+
+  /* ============================================================
+     6. RESPONSIVE MAP FRAME
+     ------------------------------------------------------------
+     The frame is sized to the SVG's exact aspect ratio, so percentage
+     positioning of markers maps 1:1 onto rendered SVG pixels.
+     ============================================================ */
+  function fitFrame() {
+    const cs = getComputedStyle(stage);
+    const availW = stage.clientWidth
+      - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+    const availH = stage.clientHeight
+      - parseFloat(cs.paddingTop) - parseFloat(cs.paddingBottom);
+
+    if (availW <= 0 || availH <= 0) return;
+
+    const ar = viewBox.w / viewBox.h;
+    let w = availW;
+    let h = w / ar;
+    if (h > availH) { h = availH; w = h * ar; }
+
+    mapFrame.style.width  = Math.floor(w) + 'px';
+    mapFrame.style.height = Math.floor(h) + 'px';
+  }
+
+  /* ============================================================
+     7. MARKER RENDERING
+     ------------------------------------------------------------
+     Markers are absolutely-positioned <button>s living in the HTML
+     layer above the SVG — never inside it — so they keep a constant
+     on-screen size and a 44×44px tap target at any map scale.
+     ============================================================ */
+  function renderMarkers() {
+    markerLayer.innerHTML = '';
+
+    SITES.forEach(function (site, i) {
+      const cat = CATEGORIES[site.category] || CATEGORIES.museum;
+
+      // Project, then apply per-axis overrides if supplied.
+      const projected = project(site.lat, site.lng);
+      const svgX = (site.x != null) ? site.x : projected.x;
+      const svgY = (site.y != null) ? site.y : projected.y;
+
+      // Convert SVG user units → percentage of the viewBox.
+      const pctX = ((svgX - viewBox.x) / viewBox.w) * 100;
+      const pctY = ((svgY - viewBox.y) / viewBox.h) * 100;
+
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'marker';
+      btn.dataset.siteId = site.id;
+      btn.dataset.category = site.category;
+      btn.style.left = pctX.toFixed(4) + '%';
+      btn.style.top  = pctY.toFixed(4) + '%';
+      btn.style.setProperty('--c', cat.color);
+      btn.style.animationDelay = (i * 45) + 'ms';
+      btn.setAttribute('aria-label', site.name + ' — ' + cat.label);
+      btn.setAttribute('aria-haspopup', 'dialog');
+      btn.setAttribute('aria-expanded', 'false');
+      btn.innerHTML =
+        '<span class="marker-inner">' + ICONS[site.category] + '</span>';
+
+      /* --- marker → popup binding ------------------------------ */
+      btn.addEventListener('click', function (ev) {
+        ev.stopPropagation();
+        if (activeBtn === btn) { closePopup(true); return; }
+        openPopup(site, btn);
+      });
+
+      markerLayer.appendChild(btn);
+    });
+
+    applyCategoryFilter();
+  }
+
+  /* ============================================================
+     8. POPUP
+     ============================================================ */
+  function escapeHTML(str) {
+    return String(str).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+
+  function formatCoord(lat, lng) {
+    const ns = lat >= 0 ? 'N' : 'S';
+    const ew = lng >= 0 ? 'E' : 'W';
+    return Math.abs(lat).toFixed(4) + '° ' + ns + '  ·  ' +
+           Math.abs(lng).toFixed(4) + '° ' + ew;
+  }
+
+  function openPopup(site, btn) {
+    const cat = CATEGORIES[site.category] || CATEGORIES.museum;
+
+    popup.innerHTML =
+      '<div class="sheet-grab" aria-hidden="true"></div>' +
+      '<button class="popup-close" type="button" aria-label="Close details">' +
+        '&times;</button>' +
+      '<span class="pill" style="--c:' + cat.color + '">' +
+        escapeHTML(cat.label) + '</span>' +
+      '<h2 id="popupTitle">' + escapeHTML(site.name) + '</h2>' +
+      '<p class="popup-desc">' + escapeHTML(site.description) + '</p>' +
+      '<p class="popup-meta">' + formatCoord(site.lat, site.lng) + '</p>';
+
+    popup.querySelector('.popup-close')
+         .addEventListener('click', function () { closePopup(true); });
+
+    if (activeBtn && activeBtn !== btn) {
+      activeBtn.classList.remove('is-active');
+      activeBtn.setAttribute('aria-expanded', 'false');
+    }
+
+    activeBtn  = btn;
+    activeSite = site;
+    btn.classList.add('is-active');
+    btn.setAttribute('aria-expanded', 'true');
+
+    popup.classList.add('is-open');
+    popup.setAttribute('aria-hidden', 'false');
+
+    layoutPopup();
+    popup.querySelector('.popup-close').focus({ preventScroll: true });
+  }
+
+  function layoutPopup() {
+    if (!popup.classList.contains('is-open')) return;
+
+    const sheet = isSheetMode();
+    popup.classList.toggle('is-sheet', sheet);
+
+    if (sheet) {
+      popup.style.left = '';
+      popup.style.top  = '';
+      backdrop.hidden = false;
+      // force reflow so the fade-in transition runs
+      void backdrop.offsetWidth;
+      backdrop.classList.add('is-open');
+      document.body.classList.add('sheet-open');
+      return;
+    }
+
+    backdrop.classList.remove('is-open');
+    backdrop.hidden = true;
+    document.body.classList.remove('sheet-open');
+
+    if (!activeBtn) return;
+
+    const m = activeBtn.getBoundingClientRect();
+    const pw = popup.offsetWidth;
+    const ph = popup.offsetHeight;
+    const gap = 16;
+    const margin = 12;
+
+    let left = m.left + m.width / 2 - pw / 2;
+    let top  = m.top - ph - gap;
+
+    // Flip below the marker if there is no room above.
+    if (top < margin) top = m.bottom + gap;
+
+    // Clamp into the viewport.
+    if (top + ph > window.innerHeight - margin) {
+      top = Math.max(margin, window.innerHeight - ph - margin);
+    }
+    left = Math.min(Math.max(margin, left), window.innerWidth - pw - margin);
+
+    popup.style.left = Math.round(left) + 'px';
+    popup.style.top  = Math.round(top)  + 'px';
+  }
+
+  function closePopup(restoreFocus) {
+    if (!popup.classList.contains('is-open')) return;
+
+    popup.classList.remove('is-open');
+    popup.setAttribute('aria-hidden', 'true');
+    backdrop.classList.remove('is-open');
+    document.body.classList.remove('sheet-open');
+
+    const btn = activeBtn;
+    if (btn) {
+      btn.classList.remove('is-active');
+      btn.setAttribute('aria-expanded', 'false');
+    }
+    activeBtn = null;
+    activeSite = null;
+
+    if (restoreFocus && btn) btn.focus({ preventScroll: true });
+  }
+
+  /* ============================================================
+     9. LEGEND + CATEGORY FILTER
+     ============================================================ */
+  function renderLegend() {
+    legendList.innerHTML = Object.keys(CATEGORIES).map(function (key) {
+      const cat = CATEGORIES[key];
+      const count = SITES.filter(function (s) { return s.category === key; }).length;
+      return (
+        '<li>' +
+          '<button class="legend-item" type="button" data-cat="' + key + '" ' +
+                  'aria-pressed="false">' +
+            '<span class="legend-ico" style="--c:' + cat.color + '">' +
+              ICONS[key] + '</span>' +
+            '<span class="legend-label">' + escapeHTML(cat.label) + '</span>' +
+            '<span class="legend-count">' + count + '</span>' +
+          '</button>' +
+        '</li>'
+      );
+    }).join('');
+
+    legendTotal.textContent = SITES.length + ' heritage sites mapped';
+
+    legendList.addEventListener('click', function (ev) {
+      const btn = ev.target.closest('.legend-item');
+      if (!btn) return;
+      const cat = btn.dataset.cat;
+      activeCat = (activeCat === cat) ? null : cat;
+
+      legendList.querySelectorAll('.legend-item').forEach(function (el) {
+        el.setAttribute('aria-pressed', String(el.dataset.cat === activeCat));
+      });
+      applyCategoryFilter();
+    });
+  }
+
+  function applyCategoryFilter() {
+    markerLayer.querySelectorAll('.marker').forEach(function (m) {
+      const dim = activeCat !== null && m.dataset.category !== activeCat;
+      m.classList.toggle('is-dimmed', dim);
+    });
+  }
+
+  /* ============================================================
+     10. MAP LOADING
+     ------------------------------------------------------------
+     Two supported sources:
+       a) an inline SVG pasted into #botswana-map
+       b) the raw bw.json GeoJSON, rendered through the same projection
+     ============================================================ */
+  function hasGeometry() {
+    return !!mapSvg.querySelector('path, polygon, polyline, g, circle, rect, ellipse');
+  }
+
+  function afterMapLoaded() {
+    readViewBox();
+    ensureDefs();
+    fitFrame();
+    renderMarkers();
+    loader.hidden = true;
+    subtitle.textContent =
+      SITES.length + ' sites · 3 categories · tap a marker';
+  }
+
+  /** Replace the map contents with an SVG document's inner markup. */
+  function loadSVGText(text) {
+    const doc = new DOMParser().parseFromString(text, 'image/svg+xml');
+    const root = doc.documentElement;
+
+    if (!root || root.nodeName.toLowerCase() !== 'svg' ||
+        doc.querySelector('parsererror')) {
+      throw new Error('That file is not a valid SVG.');
+    }
+
+    // Preserve the source viewBox (or derive one from width/height).
+    let vb = root.getAttribute('viewBox');
+    if (!vb) {
+      const w = parseFloat(root.getAttribute('width'))  || DEFAULT_VB_W;
+      const h = parseFloat(root.getAttribute('height')) || DEFAULT_VB_H;
+      vb = '0 0 ' + w + ' ' + h;
+    }
+    mapSvg.setAttribute('viewBox', vb);
+
+    // Serialise every child of the pasted <svg> into our wrapper.
+    const ser = new XMLSerializer();
+    let inner = '';
+    for (let i = 0; i < root.childNodes.length; i++) {
+      inner += ser.serializeToString(root.childNodes[i]);
+    }
+    mapSvg.innerHTML = inner;
+
+    if (!hasGeometry()) throw new Error('That SVG contains no geometry.');
+    afterMapLoaded();
+  }
+
+  /**
+   * Build the SVG geometry from the bw.json FeatureCollection using the
+   * very same equirectangular projection as the markers — so districts
+   * and pins are guaranteed to line up.
+   */
+  function loadGeoJSON(gj) {
+    if (!gj || !Array.isArray(gj.features)) {
+      throw new Error('That file is not a GeoJSON FeatureCollection.');
+    }
+
+    mapSvg.setAttribute('viewBox',
+      viewBox.x + ' ' + viewBox.y + ' ' + viewBox.w + ' ' + viewBox.h);
+
+    const parts = [];
+
+    gj.features.forEach(function (f) {
+      const g = f && f.geometry;
+      if (!g) return;
+
+      const polys =
+        g.type === 'Polygon'      ? [g.coordinates] :
+        g.type === 'MultiPolygon' ?  g.coordinates  : [];
+
+      let d = '';
+      polys.forEach(function (poly) {
+        poly.forEach(function (ring) {
+          if (!ring || ring.length < 3) return;
+          for (let i = 0; i < ring.length; i++) {
+            const p = project(ring[i][1], ring[i][0]);   // GeoJSON is [lng, lat]
+            d += (i === 0 ? 'M' : 'L') + p.x.toFixed(1) + ' ' + p.y.toFixed(1);
+          }
+          d += 'Z';
+        });
+      });
+
+      if (d) {
+        parts.push('<path class="district" fill-rule="evenodd" d="' + d + '"/>');
+      }
+    });
+
+    if (!parts.length) throw new Error('No polygons found in that file.');
+
+    mapSvg.innerHTML = parts.join('');
+    afterMapLoaded();
+  }
+
+  /* ---- file input + drag & drop plumbing ---- */
+  function readFile(file) {
+    const reader = new FileReader();
+    reader.onload = function () {
+      try {
+        const text = String(reader.result);
+
+        if (/\.json$/i.test(file.name) || /^\s*\{/.test(text)) {
+          loadGeoJSON(JSON.parse(text));
+        } else {
+          loadSVGText(text);
+        }
+      } catch (err) {
+        window.alert('Could not read that file:\n' + err.message);
+      }
+    };
+    reader.readAsText(file);
+  }
+
+  document.getElementById('svgInput').addEventListener('change', function (e) {
+    if (e.target.files && e.target.files[0]) readFile(e.target.files[0]);
+  });
+  document.getElementById('jsonInput').addEventListener('change', function (e) {
+    if (e.target.files && e.target.files[0]) readFile(e.target.files[0]);
+  });
+
+  ['dragenter', 'dragover'].forEach(function (type) {
+    document.addEventListener(type, function (e) {
+      e.preventDefault();
+      document.body.style.opacity = '.94';
+    });
+  });
+  ['dragleave', 'drop'].forEach(function (type) {
+    document.addEventListener(type, function (e) {
+      e.preventDefault();
+      document.body.style.opacity = '';
+    });
+  });
+  document.addEventListener('drop', function (e) {
+    const file = e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0];
+    if (file) readFile(file);
+  });
+
+  /* ============================================================
+     11. GLOBAL INTERACTIONS
+     ============================================================ */
+  // Tap anywhere outside the popup / active marker → close.
+  document.addEventListener('pointerdown', function (e) {
+    if (!popup.classList.contains('is-open')) return;
+    if (popup.contains(e.target)) return;
+
+    const marker = e.target.closest ? e.target.closest('.marker') : null;
+    if (marker && marker === activeBtn) return;   // let the click toggle it
+    closePopup(false);
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closePopup(true);
+  });
+
+  backdrop.addEventListener('click', function () { closePopup(true); });
+
+  // Keep the frame and popup correct on resize / orientation change.
+  let rafId = 0;
+  function onResize() {
+    cancelAnimationFrame(rafId);
+    rafId = requestAnimationFrame(function () {
+      fitFrame();
+      layoutPopup();
+    });
+  }
+  window.addEventListener('resize', onResize);
+  window.addEventListener('orientationchange', onResize);
+  if (SHEET_QUERY.addEventListener) {
+    SHEET_QUERY.addEventListener('change', layoutPopup);
+  }
+
+  if ('ResizeObserver' in window) {
+    new ResizeObserver(fitFrame).observe(stage);
+  }
+
+  /* ============================================================
+     12. INIT
+     ============================================================ */
+  function init() {
+    readViewBox();
+    ensureDefs();
+    renderLegend();
+    fitFrame();
+
+    if (hasGeometry()) {
+      afterMapLoaded();          // an SVG was pasted inline: we're live
+    } else {
+      // Nothing to draw yet — keep the frame shaped and show the loader.
+      mapSvg.innerHTML = '';
+      loader.hidden = false;
+      renderMarkers();           // markers still render once the map arrives
+      fitFrame();
+    }
+  }
+
+  init();
+})();
+</script>
+</body>
+</html>
